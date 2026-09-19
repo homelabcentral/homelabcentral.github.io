@@ -1,0 +1,23 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homelab Central – Documentation</title><link>https://homelabcentral.net/docs/</link><description>Recent content in Documentation on Homelab Central</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://homelabcentral.net/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting Started</title><link>https://homelabcentral.net/docs/getting-started/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://homelabcentral.net/docs/getting-started/</guid><description>
+&lt;h2 data-hextra-search-id="what-a-home-lab-is-for"&gt;What a home lab is for&lt;span class="hx:absolute hx:-mt-20" id="what-a-home-lab-is-for"&gt;&lt;/span&gt;
+&lt;a href="#what-a-home-lab-is-for" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A home lab is a machine you control end to end: the storage, the network path,
+the update schedule, and the failure modes. The point is not to replace every
+hosted service, it is to know exactly what happens to the ones you do run.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="start-with-one-box"&gt;Start with one box&lt;span class="hx:absolute hx:-mt-20" id="start-with-one-box"&gt;&lt;/span&gt;
+&lt;a href="#start-with-one-box" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Resist the urge to build a cluster. One machine with enough RAM to hold your
+working set, a pair of mirrored disks, and a UPS will teach you more than three
+nodes you are afraid to reboot.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-400 hx:bg-blue-50 hx:text-blue-700 hx:dark:border-blue-500/70 hx:dark:bg-blue-950/60 hx:dark:text-blue-400"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Idle power is the number that matters. A server drawing 90W costs roughly ten
+times as much to run over three years as one drawing 9W, and you will notice
+the electricity bill long before you notice the extra cores.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="next-steps"&gt;Next steps&lt;span class="hx:absolute hx:-mt-20" id="next-steps"&gt;&lt;/span&gt;
+&lt;a href="#next-steps" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Pick a hypervisor or container runtime and stay on it for a year&lt;/li&gt;
+&lt;li&gt;Put backups somewhere the lab cannot reach with its own credentials&lt;/li&gt;
+&lt;li&gt;Write down what you did, before you forget why&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

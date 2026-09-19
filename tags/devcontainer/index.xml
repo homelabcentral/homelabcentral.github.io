@@ -1,0 +1,1061 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homelab Central – Devcontainer</title><link>https://homelabcentral.net/tags/devcontainer/</link><description>Recent content in Devcontainer on Homelab Central</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 19 Sep 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://homelabcentral.net/tags/devcontainer/index.xml" rel="self" type="application/rss+xml"/><item><title>git and gh CLI in a dev container</title><link>https://homelabcentral.net/blog/git-and-gh-cli-in-a-dev-container/</link><pubDate>Sat, 19 Sep 2026 00:00:00 +0000</pubDate><guid>https://homelabcentral.net/blog/git-and-gh-cli-in-a-dev-container/</guid><description>
+&lt;div class="hextra-lead"&gt;&lt;p&gt;Two GitHub identities on one laptop: your work account for work, your personal account for everything else. A dev container, an SSH key, and a token keep them apart. Platform agnostic - Runs on mac OS, linux and windows with WSL.&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="the-problem"&gt;The problem&lt;span class="hx:absolute hx:-mt-20" id="the-problem"&gt;&lt;/span&gt;
+&lt;a href="#the-problem" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;You are deep in a work project and the open source tool you depend on has a
+bug. You know the fix. It is ten lines.&lt;/p&gt;
+&lt;p&gt;On a good day you would clone the repo, patch it, open a pull request, and move
+on. But the repo belongs to your personal GitHub account, and you are on the
+work laptop. So you wait. You get home, open the personal laptop, try to
+remember what the bug was, and fix it then.&lt;/p&gt;
+&lt;p&gt;Except with a back-to-office mandate the personal laptop is not always with
+you. The context switch is expensive. And often enough the fix never gets
+pushed at all, which helps nobody — least of all the project you took the fix
+from.&lt;/p&gt;
+&lt;p&gt;What you actually want is both identities on the machine you already have, with
+no chance of one acting as the other.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="the-solution"&gt;The solution&lt;span class="hx:absolute hx:-mt-20" id="the-solution"&gt;&lt;/span&gt;
+&lt;a href="#the-solution" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Docker settled &lt;em&gt;&amp;ldquo;it works on my machine&amp;rdquo;&lt;/em&gt; by shipping the runtime. A dev
+container settles the question after it — &lt;em&gt;&amp;ldquo;it develops on my machine&amp;rdquo;&lt;/em&gt; — by
+shipping the environment you work in. Add git and &lt;code&gt;gh&lt;/code&gt;, and it ships the
+identity you work as.&lt;/p&gt;
+&lt;p&gt;Three pieces, each doing one job:&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-700 hx:hover:text-neutral-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/&gt;&lt;/svg&gt;Dev container&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;A reproducible environment per project, isolated from your work setup.&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-700 hx:hover:text-neutral-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/&gt;&lt;/svg&gt;SSH key&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Your personal git identity, for clone, push and pull.&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-700 hx:hover:text-neutral-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/&gt;&lt;/svg&gt;GitHub token&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Your personal gh identity, for pull requests and everything else on the API.&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;Open the folder, VS Code builds the container, and inside it you are your
+personal self. Close the window and you are back to work. Nothing on the host
+changes, and no credential is written to the repository.&lt;/p&gt;
+&lt;p&gt;It is also deliberately platform agnostic. The same repository, the same
+&lt;code&gt;devcontainer.json&lt;/code&gt;, the same &lt;code&gt;docker-compose.yml&lt;/code&gt; — on the Ubuntu desktop at
+home and on the work MacBook, without a per-machine branch anywhere in the
+project. The container is Linux either way, so nothing inside it knows or cares
+what it is running on.&lt;/p&gt;
+&lt;p&gt;Exactly one thing differs between the two machines, and it is on the host, not
+in the repo: the command that reads the token out of the local secret store.
+macOS has the login keychain, Ubuntu has the login keyring or &lt;code&gt;pass&lt;/code&gt;. One line
+in your shell profile, different on each machine, and everything downstream is
+identical.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="why-both-git-and-gh"&gt;Why both git and gh&lt;span class="hx:absolute hx:-mt-20" id="why-both-git-and-gh"&gt;&lt;/span&gt;
+&lt;a href="#why-both-git-and-gh" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;They do different jobs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;git&lt;/strong&gt; moves code. Clone, commit, push, pull.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;gh&lt;/strong&gt; does everything around the code. Open the pull request, comment on the
+issue, cut the release.&lt;/p&gt;
+&lt;p&gt;Sending the fix upstream needs both: git to push the branch, &lt;code&gt;gh&lt;/code&gt; to open the
+pull request. git cannot open a pull request, and &lt;code&gt;gh&lt;/code&gt; cannot push a commit.&lt;/p&gt;
+&lt;p&gt;Two tools, so two logins — and they do not share one.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tool&lt;/th&gt;
+&lt;th&gt;Signs in with&lt;/th&gt;
+&lt;th&gt;Where it comes from&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;git&lt;/td&gt;
+&lt;td&gt;SSH key&lt;/td&gt;
+&lt;td&gt;your host &lt;code&gt;ssh-agent&lt;/code&gt;, forwarded into the container&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;gh&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;token&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;GH_TOKEN&lt;/code&gt; in the container&amp;rsquo;s environment&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Set up one and the other still does not work. So set up both.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="git-uses-the-ssh-key"&gt;Git uses the SSH key&lt;span class="hx:absolute hx:-mt-20" id="git-uses-the-ssh-key"&gt;&lt;/span&gt;
+&lt;a href="#git-uses-the-ssh-key" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Your keys never enter the container. VS Code forwards the host &lt;code&gt;ssh-agent&lt;/code&gt;
+automatically, and the agent does the signing — the container just asks it to.&lt;/p&gt;
+&lt;p&gt;What the container &lt;em&gt;does&lt;/em&gt; need is your &lt;code&gt;~/.ssh/config&lt;/code&gt;, mounted read-only, so
+ssh knows which key to ask for. With more than one key in the agent, ssh cannot
+guess: it tries them in order and GitHub answers with whichever account matches
+the first one that works. A host alias plus &lt;code&gt;IdentitiesOnly yes&lt;/code&gt; makes the
+choice explicit.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gh-uses-the-token"&gt;gh uses the token&lt;span class="hx:absolute hx:-mt-20" id="gh-uses-the-token"&gt;&lt;/span&gt;
+&lt;a href="#gh-uses-the-token" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;gh&lt;/code&gt; does not speak SSH at all. Every command it runs is an HTTPS API call, and
+it authenticates with a token.&lt;/p&gt;
+&lt;p&gt;That token comes from your host&amp;rsquo;s secret store, gets exported only while VS
+Code is working out the container&amp;rsquo;s environment, and is passed in under the
+name &lt;code&gt;GH_TOKEN&lt;/code&gt;. It is never written to a file, and your host&amp;rsquo;s own &lt;code&gt;gh&lt;/code&gt; login
+is left completely alone.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-400 hx:bg-blue-50 hx:text-blue-700 hx:dark:border-blue-500/70 hx:dark:bg-blue-950/60 hx:dark:text-blue-400"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;The rename matters. &lt;code&gt;gh&lt;/code&gt; prefers &lt;code&gt;GH_TOKEN&lt;/code&gt; over its stored credentials, so
+exporting it under that name on the host would quietly re-authenticate every
+terminal you have as the wrong account. Under any other name, nothing on the
+host notices.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 data-hextra-search-id="how-to-do-it"&gt;How to do it&lt;span class="hx:absolute hx:-mt-20" id="how-to-do-it"&gt;&lt;/span&gt;
+&lt;a href="#how-to-do-it" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-steps hx:ml-4 hx:mb-12 hx:ltr:border-l hx:rtl:border-r hx:border-neutral-200 hx:ltr:pl-6 hx:rtl:pr-6 hx:dark:border-neutral-800 [counter-reset:step]"&gt;
+&lt;h3 data-hextra-search-id="create-a-key-for-the-second-identity"&gt;Create a key for the second identity&lt;span class="hx:absolute hx:-mt-20" id="create-a-key-for-the-second-identity"&gt;&lt;/span&gt;
+&lt;a href="#create-a-key-for-the-second-identity" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;If you already have a personal SSH key on this machine, skip ahead. Otherwise:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_personal -C &lt;span class="s2"&gt;&amp;#34;personal&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Add the public half to GitHub under &lt;strong&gt;Settings → SSH and GPG keys&lt;/strong&gt;, on the
+personal account.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cat ~/.ssh/id_ed25519_personal.pub&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 data-hextra-search-id="teach-ssh-which-key-belongs-to-which-account"&gt;Teach ssh which key belongs to which account&lt;span class="hx:absolute hx:-mt-20" id="teach-ssh-which-key-belongs-to-which-account"&gt;&lt;/span&gt;
+&lt;a href="#teach-ssh-which-key-belongs-to-which-account" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Give the second identity its own &lt;code&gt;Host&lt;/code&gt; alias, and tell ssh to use &lt;em&gt;only&lt;/em&gt; the
+key you named. Both halves matter.&lt;/p&gt;
+&lt;p&gt;Change &lt;code&gt;~/.ssh/id_ed25519&lt;/code&gt; below to whatever your existing work key actually
+is. Adding &lt;code&gt;IdentitiesOnly yes&lt;/code&gt; makes that line binding, so a wrong path there
+locks you out of your work repositories.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;span class="hx:truncate"&gt;~/.ssh/config&lt;/span&gt;&lt;/div&gt;&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;Host *
+IgnoreUnknown UseKeychain
+Host github.com
+User git
+AddKeysToAgent yes
+UseKeychain yes
+IdentitiesOnly yes
+IdentityFile ~/.ssh/id_ed25519
+Host github-personal
+HostName github.com
+User git
+AddKeysToAgent yes
+UseKeychain yes
+IdentitiesOnly yes
+IdentityFile ~/.ssh/id_ed25519_personal&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-400 hx:bg-amber-50 hx:text-amber-700 hx:dark:border-amber-500/70 hx:dark:bg-amber-950/60 hx:dark:text-amber-400"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;p&gt;&lt;code&gt;IdentitiesOnly yes&lt;/code&gt; is the part people leave out, and without it the rest does
+not hold. On its own, &lt;code&gt;IdentityFile&lt;/code&gt; is a &lt;em&gt;preference&lt;/em&gt;: ssh still offers every
+key your agent is holding, in whatever order the agent returns them, and GitHub
+authenticates you as whichever one matches first. That can easily be the other
+account — and you will not notice, because the connection succeeds.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;IdentitiesOnly yes&lt;/code&gt; restricts each host to the key it names, so the config
+actually decides.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Load the new key into the agent once, on the host:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ssh -T github-personal&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;This matters more than it looks. The container gets its keys from the forwarded
+agent, and the agent only holds what has been added to it. &lt;code&gt;AddKeysToAgent yes&lt;/code&gt;
+adds a key the first time you use it — on the host. Until that has happened at
+least once, there is nothing to forward and git inside the container fails with
+&lt;code&gt;Permission denied (publickey)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Then point the repository at the alias, and git picks the right key every time:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git remote set-url origin github-personal:you/your-project.git&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;If the project is not yours, fork it first — you cannot push to someone else&amp;rsquo;s
+repository, so &lt;code&gt;origin&lt;/code&gt; has to be your copy:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gh repo fork owner/project --clone
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git remote set-url origin github-personal:you/project.git&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;gh repo fork --clone&lt;/code&gt; sets &lt;code&gt;origin&lt;/code&gt; to your fork and &lt;code&gt;upstream&lt;/code&gt; to the
+original, which is what &lt;code&gt;gh pr create&lt;/code&gt; expects. Run it inside the container,
+where &lt;code&gt;gh&lt;/code&gt; is already authenticated as the personal account.&lt;/p&gt;
+&lt;p&gt;Set the matching identity on the repo too, so commits are attributed correctly:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config user.name &lt;span class="s2"&gt;&amp;#34;Your Name&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config user.email &lt;span class="s2"&gt;&amp;#34;you@personal.example&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-red-400 hx:bg-red-50 hx:text-red-700 hx:dark:border-red-500/70 hx:dark:bg-red-950/60 hx:dark:text-red-400"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25a.749.749 0 0 1-.53.22H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;code&gt;UseKeychain&lt;/code&gt; is macOS-only. Without &lt;code&gt;IgnoreUnknown UseKeychain&lt;/code&gt; in a leading
+&lt;code&gt;Host *&lt;/code&gt; block, Linux OpenSSH rejects the &lt;strong&gt;whole file&lt;/strong&gt; with
+&lt;code&gt;Bad configuration option: usekeychain&lt;/code&gt; — and every host in it stops resolving,
+inside the container and out.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 data-hextra-search-id="create-a-token-for-gh"&gt;Create a token for gh&lt;span class="hx:absolute hx:-mt-20" id="create-a-token-for-gh"&gt;&lt;/span&gt;
+&lt;a href="#create-a-token-for-gh" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Which kind of token you need depends on whose repository you are working on,
+and this is the one place where GitHub&amp;rsquo;s newer fine-grained tokens will quietly
+not do the job.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;You are working on&lt;/th&gt;
+&lt;th&gt;Token type&lt;/th&gt;
+&lt;th&gt;Scope or permissions&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Your own repositories, or your organisation&amp;rsquo;s&lt;/td&gt;
+&lt;td&gt;Fine-grained&lt;/td&gt;
+&lt;td&gt;the specific repositories&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Someone else&amp;rsquo;s project, through a fork&lt;/td&gt;
+&lt;td&gt;Classic&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;public_repo&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-400 hx:bg-amber-50 hx:text-amber-700 hx:dark:border-amber-500/70 hx:dark:bg-amber-950/60 hx:dark:text-amber-400"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;p&gt;A fine-grained token can only act on repositories owned by its &lt;strong&gt;resource
+owner&lt;/strong&gt; — you, or an organisation you belong to. Opening a pull request is a
+call against the &lt;em&gt;upstream&lt;/em&gt; repository, so for a project you do not own the
+token has no reach and &lt;code&gt;gh pr create&lt;/code&gt; fails with:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;GraphQL: Resource not accessible by personal access token (createPullRequest)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;There is no way to grant it: you cannot create a fine-grained token whose
+resource owner is a stranger&amp;rsquo;s account. Contributing upstream needs a classic
+token.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Contributing to other people&amp;rsquo;s projects&lt;/strong&gt; —
+&lt;a
+href="https://github.com/settings/tokens/new"target="_blank" rel="noopener"&gt;github.com/settings/tokens/new&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;,
+signed in as the personal account. Tick &lt;code&gt;public_repo&lt;/code&gt;, which covers pushing to
+your forks and opening pull requests anywhere public. Use the broader &lt;code&gt;repo&lt;/code&gt;
+only if you also work on private repositories, and add &lt;code&gt;workflow&lt;/code&gt; only if you
+edit files under &lt;code&gt;.github/workflows/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Working on your own repositories&lt;/strong&gt; —
+&lt;a
+href="https://github.com/settings/personal-access-tokens/new"target="_blank" rel="noopener"&gt;github.com/settings/personal-access-tokens/new&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;
+gives you something much tighter:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Field&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Resource owner&lt;/td&gt;
+&lt;td&gt;the account that &lt;strong&gt;owns the repository&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Repository access&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Only select repositories&lt;/strong&gt;, or all of yours for drive-by work&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Permission&lt;/th&gt;
+&lt;th&gt;Level&lt;/th&gt;
+&lt;th&gt;Needed for&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Metadata&lt;/td&gt;
+&lt;td&gt;Read-only&lt;/td&gt;
+&lt;td&gt;mandatory, granted automatically&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Contents&lt;/td&gt;
+&lt;td&gt;Read and write&lt;/td&gt;
+&lt;td&gt;reading files through the API, releases&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pull requests&lt;/td&gt;
+&lt;td&gt;Read and write&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;gh pr create&lt;/code&gt;, &lt;code&gt;gh pr merge&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Issues&lt;/td&gt;
+&lt;td&gt;Read and write&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;gh issue&lt;/code&gt; — skip it if you do not use it&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Workflows&lt;/td&gt;
+&lt;td&gt;Read and write&lt;/td&gt;
+&lt;td&gt;only if you edit &lt;code&gt;.github/workflows/&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Either way, give it an expiry you will actually notice — 90 days is a reasonable
+default — and copy the value. GitHub shows it once.&lt;/p&gt;
+&lt;div
+data-alert="important" class="hextra-alert"
+&gt;
+&lt;p class="hextra-alert-title"&gt;&lt;svg height=16px class="hextra-alert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/&gt;&lt;/svg&gt;&lt;span class="hextra-alert-title-text"&gt;Important&lt;/span&gt;
+&lt;/p&gt;
+&lt;div class="hextra-alert-content"&gt;&lt;p&gt;For a fine-grained token on an organisation&amp;rsquo;s repository, the token is created
+in a &lt;strong&gt;pending&lt;/strong&gt; state and an organisation owner has to approve it before it
+works at all.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 data-hextra-search-id="store-the-token-on-the-host"&gt;Store the token on the host&lt;span class="hx:absolute hx:-mt-20" id="store-the-token-on-the-host"&gt;&lt;/span&gt;
+&lt;a href="#store-the-token-on-the-host" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Never in the repo, never in a &lt;code&gt;.env&lt;/code&gt;. Put it in the machine&amp;rsquo;s own secret store.&lt;/p&gt;
+&lt;p&gt;Pick your platform below — the tabs stay in sync for the rest of the page. On
+Remote SSH, &amp;ldquo;the host&amp;rdquo; means the &lt;strong&gt;remote&lt;/strong&gt; machine, not your laptop.&lt;/p&gt;
+&lt;div class="hextra-scrollbar hx:overflow-x-auto hx:overflow-y-hidden hx:overscroll-x-contain"&gt;
+&lt;div class="hx:mt-4 hx:flex hx:w-max hx:min-w-full hx:border-b hx:border-neutral-200 hx:pb-px hx:dark:border-neutral-800" role="tablist" data-tab-group="macOS,Ubuntu — graphical login,Ubuntu — no graphical login"&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-03-0" role="tab" type="button" aria-controls="tabs-panel-tabs-03-0" aria-selected="true" tabindex="0" data-state="selected"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/&gt;&lt;/svg&gt;&lt;span&gt;macOS&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-03-1" role="tab" type="button" aria-controls="tabs-panel-tabs-03-1" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/&gt;&lt;/svg&gt;&lt;span&gt;Ubuntu — graphical login&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-03-2" role="tab" type="button" aria-controls="tabs-panel-tabs-03-2" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/&gt;&lt;/svg&gt;&lt;span&gt;Ubuntu — no graphical login&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-03-0" role="tabpanel" aria-labelledby="tabs-tab-tabs-03-0" aria-hidden="false" tabindex="0" data-state="selected"&gt;&lt;p&gt;The login keychain, unlocked when you log in. &lt;code&gt;security&lt;/code&gt; is built in.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;security add-generic-password -a personal -s gh-token-personal -U -w&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Leave &lt;code&gt;-w&lt;/code&gt; bare and last. &lt;code&gt;security&lt;/code&gt; then prompts for the value instead of
+taking it as an argument, so the token never lands in your shell history or in
+the process table. &lt;code&gt;-U&lt;/code&gt; updates an existing item, which is what you want when
+rotating.&lt;/p&gt;
+&lt;p&gt;Read it back:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;security find-generic-password -a personal -s gh-token-personal -w&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-03-1" role="tabpanel" aria-labelledby="tabs-tab-tabs-03-1" aria-hidden="true"&gt;&lt;p&gt;A desktop session has a login keyring, unlocked by PAM when you sign in. That
+is the direct counterpart to the macOS keychain.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install libsecret-tools&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;secret-tool store --label&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;gh-token-personal&amp;#39;&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; account personal service gh-token-personal&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;secret-tool&lt;/code&gt; prompts for the value and reads it from stdin, same as bare &lt;code&gt;-w&lt;/code&gt;
+above.&lt;/p&gt;
+&lt;p&gt;Read it back:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;secret-tool lookup account personal service gh-token-personal&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;account&lt;/code&gt; and &lt;code&gt;service&lt;/code&gt; are not special names. Unlike &lt;code&gt;security&lt;/code&gt;, where &lt;code&gt;-a&lt;/code&gt;
+and &lt;code&gt;-s&lt;/code&gt; are fixed fields, libsecret attributes are arbitrary key/value pairs
+you invent — these just mirror the macOS command. Lookup matches exact strings,
+so a typo returns empty rather than an error.&lt;/p&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-03-2" role="tabpanel" aria-labelledby="tabs-tab-tabs-03-2" aria-hidden="true"&gt;&lt;p&gt;A headless server, a Remote SSH target, or WSL has no unlocked login keyring,
+and &lt;code&gt;secret-tool&lt;/code&gt; will quietly return nothing. Use &lt;code&gt;pass&lt;/code&gt;, which is GPG-backed
+and does not need a desktop session.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install pass&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;If there is no GPG key on the box yet:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gpg --quick-generate-key &lt;span class="s2"&gt;&amp;#34;you@personal.example&amp;#34;&lt;/span&gt; default default never
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;pass init you@personal.example&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Store and read:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;pass insert personal/gh-token
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;pass show personal/gh-token&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;One ordering detail matters: VS Code resolves your shell environment
+non-interactively, so if &lt;code&gt;gpg-agent&lt;/code&gt; still wants the passphrase it has nowhere
+to prompt and the token comes back empty. Unlock once per boot before launching
+the editor, and give the agent a long cache in &lt;code&gt;~/.gnupg/gpg-agent.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="na"&gt;default-cache-ttl 34560000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="na"&gt;max-cache-ttl 34560000&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;h3 data-hextra-search-id="export-it-for-vs-code-only"&gt;Export it for VS Code only&lt;span class="hx:absolute hx:-mt-20" id="export-it-for-vs-code-only"&gt;&lt;/span&gt;
+&lt;a href="#export-it-for-vs-code-only" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;At startup VS Code spawns an interactive login shell — &lt;code&gt;$SHELL -i -l -c&lt;/code&gt; —
+purely to capture your environment, and sets &lt;code&gt;VSCODE_RESOLVING_ENVIRONMENT=1&lt;/code&gt;
+while doing it.&lt;/p&gt;
+&lt;p&gt;Hang the export off that variable and the token exists in exactly one transient
+process, and in no terminal you ever type into.&lt;/p&gt;
+&lt;div class="hextra-scrollbar hx:overflow-x-auto hx:overflow-y-hidden hx:overscroll-x-contain"&gt;
+&lt;div class="hx:mt-4 hx:flex hx:w-max hx:min-w-full hx:border-b hx:border-neutral-200 hx:pb-px hx:dark:border-neutral-800" role="tablist" data-tab-group="macOS,Ubuntu — graphical login,Ubuntu — no graphical login"&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-04-0" role="tab" type="button" aria-controls="tabs-panel-tabs-04-0" aria-selected="true" tabindex="0" data-state="selected"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/&gt;&lt;/svg&gt;&lt;span&gt;macOS&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-04-1" role="tab" type="button" aria-controls="tabs-panel-tabs-04-1" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/&gt;&lt;/svg&gt;&lt;span&gt;Ubuntu — graphical login&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-04-2" role="tab" type="button" aria-controls="tabs-panel-tabs-04-2" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/&gt;&lt;/svg&gt;&lt;span&gt;Ubuntu — no graphical login&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-04-0" role="tabpanel" aria-labelledby="tabs-tab-tabs-04-0" aria-hidden="false" tabindex="0" data-state="selected"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="currentColor" d="M21.038 4.9L13.461.402a2.86 2.86 0 0 0-2.923.001L2.961 4.9A3.02 3.02 0 0 0 1.5 7.503v8.995c0 1.073.557 2.066 1.462 2.603l7.577 4.497a2.86 2.86 0 0 0 2.922 0l7.577-4.497a3.02 3.02 0 0 0 1.462-2.603V7.503A3.02 3.02 0 0 0 21.038 4.9M15.17 18.946l.013.646c.001.078-.05.167-.111.198l-.383.22c-.061.031-.111-.007-.112-.085l-.007-.635c-.328.136-.66.169-.872.084c-.04-.016-.057-.075-.041-.142l.139-.584a.24.24 0 0 1 .069-.121a.2.2 0 0 1 .036-.026q.033-.017.062-.006c.229.077.521.041.802-.101c.357-.181.596-.545.592-.907c-.003-.328-.181-.465-.613-.468c-.55.001-1.064-.107-1.072-.917c-.007-.667.34-1.361.889-1.8l-.007-.652c-.001-.08.048-.168.111-.2l.37-.236c.061-.031.111.007.112.087l.006.653c.273-.109.511-.138.726-.088c.047.012.067.076.048.151l-.144.578a.26.26 0 0 1-.065.116a.2.2 0 0 1-.038.028a.1.1 0 0 1-.057.009c-.098-.022-.332-.073-.699.113c-.385.195-.52.53-.517.778c.003.297.155.387.681.396c.7.012 1.003.318 1.01 1.023c.007.689-.362 1.433-.928 1.888m3.973-1.087c0 .06-.008.116-.058.145l-1.916 1.164c-.05.029-.09.004-.09-.056v-.494c0-.06.037-.093.087-.122l1.887-1.129c.05-.029.09-.004.09.056zm1.316-11.062l-7.168 4.427c-.894.523-1.553 1.109-1.553 2.187v8.833c0 .645.26 1.063.66 1.184a2.3 2.3 0 0 1-.398.039c-.42 0-.833-.114-1.197-.33L3.226 18.64a2.5 2.5 0 0 1-1.201-2.142V7.503c0-.881.46-1.702 1.201-2.142L10.803.863a2.34 2.34 0 0 1 2.394 0l7.577 4.498a2.48 2.48 0 0 1 1.164 1.732c-.252-.536-.818-.682-1.479-.296"/&gt;&lt;/svg&gt;&lt;span class="hx:truncate"&gt;~/.zshrc&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-zsh" data-lang="zsh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; -n &lt;span class="nv"&gt;$VSCODE_RESOLVING_ENVIRONMENT&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PERSONAL_GH_TOKEN&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;security find-generic-password &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; -a personal -s gh-token-personal -w 2&amp;gt;/dev/null&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;fi&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-04-1" role="tabpanel" aria-labelledby="tabs-tab-tabs-04-1" aria-hidden="true"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="currentColor" d="M21.038 4.9L13.461.402a2.86 2.86 0 0 0-2.923.001L2.961 4.9A3.02 3.02 0 0 0 1.5 7.503v8.995c0 1.073.557 2.066 1.462 2.603l7.577 4.497a2.86 2.86 0 0 0 2.922 0l7.577-4.497a3.02 3.02 0 0 0 1.462-2.603V7.503A3.02 3.02 0 0 0 21.038 4.9M15.17 18.946l.013.646c.001.078-.05.167-.111.198l-.383.22c-.061.031-.111-.007-.112-.085l-.007-.635c-.328.136-.66.169-.872.084c-.04-.016-.057-.075-.041-.142l.139-.584a.24.24 0 0 1 .069-.121a.2.2 0 0 1 .036-.026q.033-.017.062-.006c.229.077.521.041.802-.101c.357-.181.596-.545.592-.907c-.003-.328-.181-.465-.613-.468c-.55.001-1.064-.107-1.072-.917c-.007-.667.34-1.361.889-1.8l-.007-.652c-.001-.08.048-.168.111-.2l.37-.236c.061-.031.111.007.112.087l.006.653c.273-.109.511-.138.726-.088c.047.012.067.076.048.151l-.144.578a.26.26 0 0 1-.065.116a.2.2 0 0 1-.038.028a.1.1 0 0 1-.057.009c-.098-.022-.332-.073-.699.113c-.385.195-.52.53-.517.778c.003.297.155.387.681.396c.7.012 1.003.318 1.01 1.023c.007.689-.362 1.433-.928 1.888m3.973-1.087c0 .06-.008.116-.058.145l-1.916 1.164c-.05.029-.09.004-.09-.056v-.494c0-.06.037-.093.087-.122l1.887-1.129c.05-.029.09-.004.09.056zm1.316-11.062l-7.168 4.427c-.894.523-1.553 1.109-1.553 2.187v8.833c0 .645.26 1.063.66 1.184a2.3 2.3 0 0 1-.398.039c-.42 0-.833-.114-1.197-.33L3.226 18.64a2.5 2.5 0 0 1-1.201-2.142V7.503c0-.881.46-1.702 1.201-2.142L10.803.863a2.34 2.34 0 0 1 2.394 0l7.577 4.498a2.48 2.48 0 0 1 1.164 1.732c-.252-.536-.818-.682-1.479-.296"/&gt;&lt;/svg&gt;&lt;span class="hx:truncate"&gt;~/.zshrc&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-zsh" data-lang="zsh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; -n &lt;span class="nv"&gt;$VSCODE_RESOLVING_ENVIRONMENT&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PERSONAL_GH_TOKEN&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;secret-tool lookup &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; account personal service gh-token-personal 2&amp;gt;/dev/null&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;fi&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-04-2" role="tabpanel" aria-labelledby="tabs-tab-tabs-04-2" aria-hidden="true"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="currentColor" d="M21.038 4.9L13.461.402a2.86 2.86 0 0 0-2.923.001L2.961 4.9A3.02 3.02 0 0 0 1.5 7.503v8.995c0 1.073.557 2.066 1.462 2.603l7.577 4.497a2.86 2.86 0 0 0 2.922 0l7.577-4.497a3.02 3.02 0 0 0 1.462-2.603V7.503A3.02 3.02 0 0 0 21.038 4.9M15.17 18.946l.013.646c.001.078-.05.167-.111.198l-.383.22c-.061.031-.111-.007-.112-.085l-.007-.635c-.328.136-.66.169-.872.084c-.04-.016-.057-.075-.041-.142l.139-.584a.24.24 0 0 1 .069-.121a.2.2 0 0 1 .036-.026q.033-.017.062-.006c.229.077.521.041.802-.101c.357-.181.596-.545.592-.907c-.003-.328-.181-.465-.613-.468c-.55.001-1.064-.107-1.072-.917c-.007-.667.34-1.361.889-1.8l-.007-.652c-.001-.08.048-.168.111-.2l.37-.236c.061-.031.111.007.112.087l.006.653c.273-.109.511-.138.726-.088c.047.012.067.076.048.151l-.144.578a.26.26 0 0 1-.065.116a.2.2 0 0 1-.038.028a.1.1 0 0 1-.057.009c-.098-.022-.332-.073-.699.113c-.385.195-.52.53-.517.778c.003.297.155.387.681.396c.7.012 1.003.318 1.01 1.023c.007.689-.362 1.433-.928 1.888m3.973-1.087c0 .06-.008.116-.058.145l-1.916 1.164c-.05.029-.09.004-.09-.056v-.494c0-.06.037-.093.087-.122l1.887-1.129c.05-.029.09-.004.09.056zm1.316-11.062l-7.168 4.427c-.894.523-1.553 1.109-1.553 2.187v8.833c0 .645.26 1.063.66 1.184a2.3 2.3 0 0 1-.398.039c-.42 0-.833-.114-1.197-.33L3.226 18.64a2.5 2.5 0 0 1-1.201-2.142V7.503c0-.881.46-1.702 1.201-2.142L10.803.863a2.34 2.34 0 0 1 2.394 0l7.577 4.498a2.48 2.48 0 0 1 1.164 1.732c-.252-.536-.818-.682-1.479-.296"/&gt;&lt;/svg&gt;&lt;span class="hx:truncate"&gt;~/.zshrc&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-zsh" data-lang="zsh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; -n &lt;span class="nv"&gt;$VSCODE_RESOLVING_ENVIRONMENT&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PERSONAL_GH_TOKEN&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;pass show personal/gh-token 2&amp;gt;/dev/null&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;fi&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Two details worth knowing. The &lt;code&gt;2&amp;gt;/dev/null&lt;/code&gt; is not cosmetic: anything written
+to stderr during environment resolution can corrupt what VS Code parses back.
+And keep the block fast — VS Code gives shell resolution ten seconds before it
+gives up with &lt;em&gt;&amp;ldquo;Unable to resolve your shell environment in a reasonable
+time&amp;rdquo;&lt;/em&gt;, and when it gives up your token is simply absent.&lt;/p&gt;
+&lt;p&gt;Using bash, the same block goes in &lt;code&gt;~/.bashrc&lt;/code&gt;; VS Code runs the shell as both
+interactive and login, so make sure your &lt;code&gt;~/.bash_profile&lt;/code&gt; sources &lt;code&gt;~/.bashrc&lt;/code&gt;,
+as Ubuntu&amp;rsquo;s default already does. For fish, use
+&lt;code&gt;test -n &amp;quot;$VSCODE_RESOLVING_ENVIRONMENT&amp;quot;&lt;/code&gt; in &lt;code&gt;~/.config/fish/config.fish&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="wire-it-into-the-container"&gt;Wire it into the container&lt;span class="hx:absolute hx:-mt-20" id="wire-it-into-the-container"&gt;&lt;/span&gt;
+&lt;a href="#wire-it-into-the-container" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Two things go in: the token as &lt;code&gt;GH_TOKEN&lt;/code&gt;, and your &lt;code&gt;~/.ssh&lt;/code&gt; folder mounted
+read-only so ssh can read the config and pick the right key.&lt;/p&gt;
+&lt;p&gt;How you declare them depends on how the dev container is built. Compose-based
+containers put both in &lt;code&gt;docker-compose.yml&lt;/code&gt;; the simpler image- or
+Dockerfile-based ones put them straight in &lt;code&gt;devcontainer.json&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="hextra-scrollbar hx:overflow-x-auto hx:overflow-y-hidden hx:overscroll-x-contain"&gt;
+&lt;div class="hx:mt-4 hx:flex hx:w-max hx:min-w-full hx:border-b hx:border-neutral-200 hx:pb-px hx:dark:border-neutral-800" role="tablist" data-tab-group="docker-compose.yml,devcontainer.json"&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-05-0" role="tab" type="button" aria-controls="tabs-panel-tabs-05-0" aria-selected="true" tabindex="0" data-state="selected"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/&gt;&lt;/svg&gt;&lt;span&gt;docker-compose.yml&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-05-1" role="tab" type="button" aria-controls="tabs-panel-tabs-05-1" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/&gt;&lt;/svg&gt;&lt;span&gt;devcontainer.json&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-05-0" role="tabpanel" aria-labelledby="tabs-tab-tabs-05-0" aria-hidden="false" tabindex="0" data-state="selected"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="currentColor" d="m0 .97l4.111 6.453v4.09h2.638v-4.09L11.053.969H8.214L5.58 5.125L2.965.969Zm12.093.024l-4.47 10.544h2.114l.97-2.345h4.775l.804 2.345h2.26L14.255.994Zm1.133 2.225l1.463 3.87h-3.096zm3.06 9.475v10.29H24v-2.199h-5.454v-8.091zm-12.175.002v10.335h2.217v-7.129l2.32 4.792h1.746l2.4-4.96v7.295h2.127V12.696h-2.904L9.44 17.37l-2.455-4.674Z"/&gt;&lt;/svg&gt;&lt;span class="hx:truncate"&gt;.devcontainer/docker-compose.yml&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;services&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;dev&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;image&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;mcr.microsoft.com/devcontainers/base:ubuntu&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;user&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;vscode&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;environment&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line hl"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="l"&gt;GH_TOKEN=${PERSONAL_GH_TOKEN:-}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;volumes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="l"&gt;..:/workspaces/your-project:cached&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;bind&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;source&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;${HOME}/.ssh&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;target&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;/home/vscode/.ssh&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;read_only&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;command&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;sleep infinity&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Compose reads &lt;code&gt;${...}&lt;/code&gt; straight from the environment it is invoked with, which
+is the one VS Code just resolved. &lt;code&gt;:-&lt;/code&gt; supplies an empty default, so an unset
+variable is quiet rather than fatal — &lt;code&gt;gh&lt;/code&gt; is simply unauthenticated then.&lt;/p&gt;
+&lt;p&gt;Write the SSH mount in long syntax, not as a string. On the compose code path
+the dev containers CLI uses, a mount string&amp;rsquo;s &lt;code&gt;readonly&lt;/code&gt; flag is silently
+dropped; &lt;code&gt;read_only: true&lt;/code&gt; under long syntax survives.&lt;/p&gt;
+&lt;p&gt;Your &lt;code&gt;devcontainer.json&lt;/code&gt; still exists alongside this, pointing at the compose
+file and naming the service:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="currentColor" d="M12.043 23.968c.479-.004.953-.029 1.426-.094a11.8 11.8 0 0 0 3.146-.863a12.4 12.4 0 0 0 3.793-2.542a12 12 0 0 0 2.44-3.427a11.8 11.8 0 0 0 1.02-3.476c.149-1.16.135-2.346-.045-3.499a12 12 0 0 0-.793-2.788a11 11 0 0 0-.854-1.617c-1.168-1.837-2.861-3.314-4.81-4.3a13 13 0 0 0-2.172-.87h-.005c.119.063.24.132.345.201c.12.074.239.146.351.225a9 9 0 0 1 1.559 1.33c1.063 1.145 1.797 2.548 2.218 4.041c.284.982.434 1.998.495 3.017c.044.743.044 1.491-.047 2.229c-.149 1.27-.554 2.51-1.228 3.596a7.5 7.5 0 0 1-1.903 2.084c-1.244.928-2.877 1.482-4.436 1.114a4 4 0 0 1-.748-.258a4.7 4.7 0 0 1-.779-.45a6 6 0 0 1-1.244-1.105a6.5 6.5 0 0 1-1.049-1.747a7.4 7.4 0 0 1-.494-2.54c-.03-1.273.225-2.553.854-3.67a6.4 6.4 0 0 1 1.663-1.918c.225-.178.464-.333.704-.479l.016-.007a5.1 5.1 0 0 0-1.441-.12a5 5 0 0 0-1.228.24c-.359.12-.704.27-1.019.45a6 6 0 0 0-.733.494c-.211.18-.42.36-.615.555c-1.123 1.153-1.768 2.682-2.022 4.256c-.15.973-.15 1.96-.091 2.95c.105 1.395.391 2.787.945 4.062a8.5 8.5 0 0 0 1.348 2.173a8.14 8.14 0 0 0 3.132 2.23a8 8 0 0 0 2.113.54c.074.015.149.015.209.015zm-2.934-.398a4 4 0 0 1-.45-.228a8.5 8.5 0 0 1-2.038-1.534c-1.094-1.137-1.827-2.566-2.247-4.08a15.2 15.2 0 0 1-.495-3.172a12 12 0 0 1 .046-2.082c.135-1.257.495-2.501 1.124-3.58a6.9 6.9 0 0 1 1.783-2.053a6.2 6.2 0 0 1 1.633-.9a5.36 5.36 0 0 1 3.522-.045c.029 0 .029 0 .045.03c.015.015.045.015.06.03c.045.016.104.045.165.074c.239.12.479.271.704.42a6.3 6.3 0 0 1 2.097 2.502c.42.914.615 1.934.631 2.938c.014 1.079-.18 2.157-.645 3.146a6.4 6.4 0 0 1-2.638 2.832c.09.03.18.045.271.075c.225.044.449.074.688.074c1.468.045 2.892-.66 3.94-1.647q.293-.27.54-.585c.225-.27.435-.54.614-.823c.239-.375.435-.75.614-1.154a8 8 0 0 0 .509-1.664c.196-1.004.211-2.022.149-3.026c-.135-2.022-.673-4.045-1.842-5.724a9 9 0 0 0-.555-.719a10 10 0 0 0-1.063-1.034a8.5 8.5 0 0 0-1.363-.915a10 10 0 0 0-1.692-.598l-.3-.06c-.209-.03-.42-.044-.634-.06a9 9 0 0 0-1.015.016c-.704.045-1.412.16-2.112.337C5.799 1.227 2.863 3.566 1.3 6.67A11.8 11.8 0 0 0 .238 9.801a11.8 11.8 0 0 0-.104 3.775c.12 1.02.374 2.023.778 2.977c.227.57.511 1.124.825 1.648c1.094 1.783 2.683 3.236 4.51 4.24c.688.39 1.408.69 2.157.944c.226.074.45.15.689.21z"/&gt;&lt;/svg&gt;&lt;span class="hx:truncate"&gt;.devcontainer/devcontainer.json&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;your-project&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;dockerComposeFile&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;docker-compose.yml&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;service&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;dev&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;workspaceFolder&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/workspaces/your-project&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-05-1" role="tabpanel" aria-labelledby="tabs-tab-tabs-05-1" aria-hidden="true"&gt;&lt;p&gt;No compose file, so both go in &lt;code&gt;devcontainer.json&lt;/code&gt; directly:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="currentColor" d="M12.043 23.968c.479-.004.953-.029 1.426-.094a11.8 11.8 0 0 0 3.146-.863a12.4 12.4 0 0 0 3.793-2.542a12 12 0 0 0 2.44-3.427a11.8 11.8 0 0 0 1.02-3.476c.149-1.16.135-2.346-.045-3.499a12 12 0 0 0-.793-2.788a11 11 0 0 0-.854-1.617c-1.168-1.837-2.861-3.314-4.81-4.3a13 13 0 0 0-2.172-.87h-.005c.119.063.24.132.345.201c.12.074.239.146.351.225a9 9 0 0 1 1.559 1.33c1.063 1.145 1.797 2.548 2.218 4.041c.284.982.434 1.998.495 3.017c.044.743.044 1.491-.047 2.229c-.149 1.27-.554 2.51-1.228 3.596a7.5 7.5 0 0 1-1.903 2.084c-1.244.928-2.877 1.482-4.436 1.114a4 4 0 0 1-.748-.258a4.7 4.7 0 0 1-.779-.45a6 6 0 0 1-1.244-1.105a6.5 6.5 0 0 1-1.049-1.747a7.4 7.4 0 0 1-.494-2.54c-.03-1.273.225-2.553.854-3.67a6.4 6.4 0 0 1 1.663-1.918c.225-.178.464-.333.704-.479l.016-.007a5.1 5.1 0 0 0-1.441-.12a5 5 0 0 0-1.228.24c-.359.12-.704.27-1.019.45a6 6 0 0 0-.733.494c-.211.18-.42.36-.615.555c-1.123 1.153-1.768 2.682-2.022 4.256c-.15.973-.15 1.96-.091 2.95c.105 1.395.391 2.787.945 4.062a8.5 8.5 0 0 0 1.348 2.173a8.14 8.14 0 0 0 3.132 2.23a8 8 0 0 0 2.113.54c.074.015.149.015.209.015zm-2.934-.398a4 4 0 0 1-.45-.228a8.5 8.5 0 0 1-2.038-1.534c-1.094-1.137-1.827-2.566-2.247-4.08a15.2 15.2 0 0 1-.495-3.172a12 12 0 0 1 .046-2.082c.135-1.257.495-2.501 1.124-3.58a6.9 6.9 0 0 1 1.783-2.053a6.2 6.2 0 0 1 1.633-.9a5.36 5.36 0 0 1 3.522-.045c.029 0 .029 0 .045.03c.015.015.045.015.06.03c.045.016.104.045.165.074c.239.12.479.271.704.42a6.3 6.3 0 0 1 2.097 2.502c.42.914.615 1.934.631 2.938c.014 1.079-.18 2.157-.645 3.146a6.4 6.4 0 0 1-2.638 2.832c.09.03.18.045.271.075c.225.044.449.074.688.074c1.468.045 2.892-.66 3.94-1.647q.293-.27.54-.585c.225-.27.435-.54.614-.823c.239-.375.435-.75.614-1.154a8 8 0 0 0 .509-1.664c.196-1.004.211-2.022.149-3.026c-.135-2.022-.673-4.045-1.842-5.724a9 9 0 0 0-.555-.719a10 10 0 0 0-1.063-1.034a8.5 8.5 0 0 0-1.363-.915a10 10 0 0 0-1.692-.598l-.3-.06c-.209-.03-.42-.044-.634-.06a9 9 0 0 0-1.015.016c-.704.045-1.412.16-2.112.337C5.799 1.227 2.863 3.566 1.3 6.67A11.8 11.8 0 0 0 .238 9.801a11.8 11.8 0 0 0-.104 3.775c.12 1.02.374 2.023.778 2.977c.227.57.511 1.124.825 1.648c1.094 1.783 2.683 3.236 4.51 4.24c.688.39 1.408.69 2.157.944c.226.074.45.15.689.21z"/&gt;&lt;/svg&gt;&lt;span class="hx:truncate"&gt;.devcontainer/devcontainer.json&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;your-project&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;image&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;mcr.microsoft.com/devcontainers/base:ubuntu&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;remoteUser&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;vscode&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;remoteEnv&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line hl"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;GH_TOKEN&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;${localEnv:PERSONAL_GH_TOKEN}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;mounts&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,readonly&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;${localEnv:...}&lt;/code&gt; reads from the environment VS Code resolved — the same one
+compose would have read. An unset variable becomes an empty string, so a missing
+token leaves &lt;code&gt;gh&lt;/code&gt; unauthenticated rather than breaking the build.&lt;/p&gt;
+&lt;p&gt;Here the &lt;code&gt;readonly&lt;/code&gt; flag in the mount string is honoured. That flag only gets
+dropped on the compose conversion path, which is why the other tab needs long
+syntax and this one does not.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-400 hx:bg-blue-50 hx:text-blue-700 hx:dark:border-blue-500/70 hx:dark:bg-blue-950/60 hx:dark:text-blue-400"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;p&gt;Use &lt;code&gt;remoteEnv&lt;/code&gt;, not &lt;code&gt;containerEnv&lt;/code&gt;. &lt;code&gt;containerEnv&lt;/code&gt; bakes the value into the
+container itself: it shows up in &lt;code&gt;docker inspect&lt;/code&gt;, and it is fixed until you
+rebuild, so a rotated token means a full rebuild. &lt;code&gt;remoteEnv&lt;/code&gt; is applied by VS
+Code to terminals, tasks and debug sessions, so nothing is stored in the
+container&amp;rsquo;s configuration and a new token is picked up when you reconnect.&lt;/p&gt;
+&lt;p&gt;It is the same choice the dev containers CLI makes for its own &lt;code&gt;--secrets-file&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;div
+data-alert="note" class="hextra-alert"
+&gt;
+&lt;p class="hextra-alert-title"&gt;&lt;svg height=16px class="hextra-alert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/&gt;&lt;/svg&gt;&lt;span class="hextra-alert-title-text"&gt;Note&lt;/span&gt;
+&lt;/p&gt;
+&lt;div class="hextra-alert-content"&gt;&lt;p&gt;Either way, nothing is written to disk. No &lt;code&gt;.env&lt;/code&gt;, and no plaintext copy of
+the token lands in the files VS Code generates under its &lt;code&gt;globalStorage&lt;/code&gt;.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 data-hextra-search-id="a-tighter-ssh-mount"&gt;A tighter SSH mount&lt;span class="hx:absolute hx:-mt-20" id="a-tighter-ssh-mount"&gt;&lt;/span&gt;
+&lt;a href="#a-tighter-ssh-mount" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Mounting the whole &lt;code&gt;~/.ssh&lt;/code&gt; folder is the shortest path, not the tightest one.&lt;/p&gt;
+&lt;p&gt;Your private keys do not travel through that mount. VS Code forwards the host
+&lt;code&gt;ssh-agent&lt;/code&gt; automatically and the agent does the signing; the mount exists only
+so ssh can read &lt;code&gt;~/.ssh/config&lt;/code&gt;, because configuration is not part of the agent
+protocol. The keys are along for the ride, readable by anything in the
+container, for no reason.&lt;/p&gt;
+&lt;p&gt;Two ways to narrow it. Both keep the forwarded agent exactly as it is.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Option 1 — mount only the two files ssh actually reads.&lt;/strong&gt; &lt;code&gt;config&lt;/code&gt; to resolve
+the alias, &lt;code&gt;known_hosts&lt;/code&gt; so GitHub&amp;rsquo;s host key is already trusted:&lt;/p&gt;
+&lt;div class="hextra-scrollbar hx:overflow-x-auto hx:overflow-y-hidden hx:overscroll-x-contain"&gt;
+&lt;div class="hx:mt-4 hx:flex hx:w-max hx:min-w-full hx:border-b hx:border-neutral-200 hx:pb-px hx:dark:border-neutral-800" role="tablist" data-tab-group="docker-compose.yml,devcontainer.json"&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-06-0" role="tab" type="button" aria-controls="tabs-panel-tabs-06-0" aria-selected="true" tabindex="0" data-state="selected"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/&gt;&lt;/svg&gt;&lt;span&gt;docker-compose.yml&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-06-1" role="tab" type="button" aria-controls="tabs-panel-tabs-06-1" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/&gt;&lt;/svg&gt;&lt;span&gt;devcontainer.json&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-06-0" role="tabpanel" aria-labelledby="tabs-tab-tabs-06-0" aria-hidden="false" tabindex="0" data-state="selected"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="currentColor" d="m0 .97l4.111 6.453v4.09h2.638v-4.09L11.053.969H8.214L5.58 5.125L2.965.969Zm12.093.024l-4.47 10.544h2.114l.97-2.345h4.775l.804 2.345h2.26L14.255.994Zm1.133 2.225l1.463 3.87h-3.096zm3.06 9.475v10.29H24v-2.199h-5.454v-8.091zm-12.175.002v10.335h2.217v-7.129l2.32 4.792h1.746l2.4-4.96v7.295h2.127V12.696h-2.904L9.44 17.37l-2.455-4.674Z"/&gt;&lt;/svg&gt;&lt;span class="hx:truncate"&gt;.devcontainer/docker-compose.yml&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;services&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;dev&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;image&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;mcr.microsoft.com/devcontainers/base:ubuntu&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;user&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;vscode&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;environment&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="l"&gt;GH_TOKEN=${PERSONAL_GH_TOKEN:-}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;volumes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="l"&gt;..:/workspaces/your-project:cached&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;bind&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;source&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;${HOME}/.ssh/config&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;target&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;/home/vscode/.ssh/config&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;read_only&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;bind&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;source&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;${HOME}/.ssh/known_hosts&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;target&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;/home/vscode/.ssh/known_hosts&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;read_only&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;command&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;sleep infinity&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-06-1" role="tabpanel" aria-labelledby="tabs-tab-tabs-06-1" aria-hidden="true"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="currentColor" d="M12.043 23.968c.479-.004.953-.029 1.426-.094a11.8 11.8 0 0 0 3.146-.863a12.4 12.4 0 0 0 3.793-2.542a12 12 0 0 0 2.44-3.427a11.8 11.8 0 0 0 1.02-3.476c.149-1.16.135-2.346-.045-3.499a12 12 0 0 0-.793-2.788a11 11 0 0 0-.854-1.617c-1.168-1.837-2.861-3.314-4.81-4.3a13 13 0 0 0-2.172-.87h-.005c.119.063.24.132.345.201c.12.074.239.146.351.225a9 9 0 0 1 1.559 1.33c1.063 1.145 1.797 2.548 2.218 4.041c.284.982.434 1.998.495 3.017c.044.743.044 1.491-.047 2.229c-.149 1.27-.554 2.51-1.228 3.596a7.5 7.5 0 0 1-1.903 2.084c-1.244.928-2.877 1.482-4.436 1.114a4 4 0 0 1-.748-.258a4.7 4.7 0 0 1-.779-.45a6 6 0 0 1-1.244-1.105a6.5 6.5 0 0 1-1.049-1.747a7.4 7.4 0 0 1-.494-2.54c-.03-1.273.225-2.553.854-3.67a6.4 6.4 0 0 1 1.663-1.918c.225-.178.464-.333.704-.479l.016-.007a5.1 5.1 0 0 0-1.441-.12a5 5 0 0 0-1.228.24c-.359.12-.704.27-1.019.45a6 6 0 0 0-.733.494c-.211.18-.42.36-.615.555c-1.123 1.153-1.768 2.682-2.022 4.256c-.15.973-.15 1.96-.091 2.95c.105 1.395.391 2.787.945 4.062a8.5 8.5 0 0 0 1.348 2.173a8.14 8.14 0 0 0 3.132 2.23a8 8 0 0 0 2.113.54c.074.015.149.015.209.015zm-2.934-.398a4 4 0 0 1-.45-.228a8.5 8.5 0 0 1-2.038-1.534c-1.094-1.137-1.827-2.566-2.247-4.08a15.2 15.2 0 0 1-.495-3.172a12 12 0 0 1 .046-2.082c.135-1.257.495-2.501 1.124-3.58a6.9 6.9 0 0 1 1.783-2.053a6.2 6.2 0 0 1 1.633-.9a5.36 5.36 0 0 1 3.522-.045c.029 0 .029 0 .045.03c.015.015.045.015.06.03c.045.016.104.045.165.074c.239.12.479.271.704.42a6.3 6.3 0 0 1 2.097 2.502c.42.914.615 1.934.631 2.938c.014 1.079-.18 2.157-.645 3.146a6.4 6.4 0 0 1-2.638 2.832c.09.03.18.045.271.075c.225.044.449.074.688.074c1.468.045 2.892-.66 3.94-1.647q.293-.27.54-.585c.225-.27.435-.54.614-.823c.239-.375.435-.75.614-1.154a8 8 0 0 0 .509-1.664c.196-1.004.211-2.022.149-3.026c-.135-2.022-.673-4.045-1.842-5.724a9 9 0 0 0-.555-.719a10 10 0 0 0-1.063-1.034a8.5 8.5 0 0 0-1.363-.915a10 10 0 0 0-1.692-.598l-.3-.06c-.209-.03-.42-.044-.634-.06a9 9 0 0 0-1.015.016c-.704.045-1.412.16-2.112.337C5.799 1.227 2.863 3.566 1.3 6.67A11.8 11.8 0 0 0 .238 9.801a11.8 11.8 0 0 0-.104 3.775c.12 1.02.374 2.023.778 2.977c.227.57.511 1.124.825 1.648c1.094 1.783 2.683 3.236 4.51 4.24c.688.39 1.408.69 2.157.944c.226.074.45.15.689.21z"/&gt;&lt;/svg&gt;&lt;span class="hx:truncate"&gt;.devcontainer/devcontainer.json&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;your-project&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;image&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;mcr.microsoft.com/devcontainers/base:ubuntu&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;remoteUser&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;vscode&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;remoteEnv&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;GH_TOKEN&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;${localEnv:PERSONAL_GH_TOKEN}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;mounts&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;source=${localEnv:HOME}/.ssh/config,target=/home/vscode/.ssh/config,type=bind,readonly&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;source=${localEnv:HOME}/.ssh/known_hosts,target=/home/vscode/.ssh/known_hosts,type=bind,readonly&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;One line changed, private keys never exposed. Both files must already exist on
+the host or the bind fails — &lt;code&gt;known_hosts&lt;/code&gt; does if you have ever connected to
+GitHub from this machine.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Option 2 — drop the ssh config and tell git directly.&lt;/strong&gt; Set the key per
+repository instead:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config core.sshCommand &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s1"&gt;&amp;#39;ssh -i ~/.ssh/id_ed25519_personal.pub -o IdentitiesOnly=yes&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;That lands in &lt;code&gt;.git/config&lt;/code&gt;, which is already inside the bind-mounted
+workspace, so it reaches the container with no extra configuration. Leave the
+&lt;code&gt;~&lt;/code&gt; unexpanded — git runs the command through a shell, and the same value then
+works on the host and in the container.&lt;/p&gt;
+&lt;p&gt;The part that looks wrong is &lt;code&gt;-i&lt;/code&gt; pointing at a &lt;strong&gt;public&lt;/strong&gt; key. It works because
+the private half is in the forwarded agent: ssh uses the public key to choose
+which agent identity to offer, and the agent signs. &lt;code&gt;IdentitiesOnly yes&lt;/code&gt; stops
+it offering anything else.&lt;/p&gt;
+&lt;p&gt;The container still needs to read that &lt;code&gt;.pub&lt;/code&gt; file and &lt;code&gt;known_hosts&lt;/code&gt;. Both are
+public, so mount just those two:&lt;/p&gt;
+&lt;div class="hextra-scrollbar hx:overflow-x-auto hx:overflow-y-hidden hx:overscroll-x-contain"&gt;
+&lt;div class="hx:mt-4 hx:flex hx:w-max hx:min-w-full hx:border-b hx:border-neutral-200 hx:pb-px hx:dark:border-neutral-800" role="tablist" data-tab-group="docker-compose.yml,devcontainer.json"&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-07-0" role="tab" type="button" aria-controls="tabs-panel-tabs-07-0" aria-selected="true" tabindex="0" data-state="selected"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/&gt;&lt;/svg&gt;&lt;span&gt;docker-compose.yml&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-07-1" role="tab" type="button" aria-controls="tabs-panel-tabs-07-1" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/&gt;&lt;/svg&gt;&lt;span&gt;devcontainer.json&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-07-0" role="tabpanel" aria-labelledby="tabs-tab-tabs-07-0" aria-hidden="false" tabindex="0" data-state="selected"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="currentColor" d="m0 .97l4.111 6.453v4.09h2.638v-4.09L11.053.969H8.214L5.58 5.125L2.965.969Zm12.093.024l-4.47 10.544h2.114l.97-2.345h4.775l.804 2.345h2.26L14.255.994Zm1.133 2.225l1.463 3.87h-3.096zm3.06 9.475v10.29H24v-2.199h-5.454v-8.091zm-12.175.002v10.335h2.217v-7.129l2.32 4.792h1.746l2.4-4.96v7.295h2.127V12.696h-2.904L9.44 17.37l-2.455-4.674Z"/&gt;&lt;/svg&gt;&lt;span class="hx:truncate"&gt;.devcontainer/docker-compose.yml&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;volumes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="l"&gt;..:/workspaces/your-project:cached&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;bind&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;source&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;${HOME}/.ssh/id_ed25519_personal.pub&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;target&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;/home/vscode/.ssh/id_ed25519_personal.pub&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;read_only&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;bind&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;source&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;${HOME}/.ssh/known_hosts&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;target&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;/home/vscode/.ssh/known_hosts&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;read_only&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-07-1" role="tabpanel" aria-labelledby="tabs-tab-tabs-07-1" aria-hidden="true"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="currentColor" d="M12.043 23.968c.479-.004.953-.029 1.426-.094a11.8 11.8 0 0 0 3.146-.863a12.4 12.4 0 0 0 3.793-2.542a12 12 0 0 0 2.44-3.427a11.8 11.8 0 0 0 1.02-3.476c.149-1.16.135-2.346-.045-3.499a12 12 0 0 0-.793-2.788a11 11 0 0 0-.854-1.617c-1.168-1.837-2.861-3.314-4.81-4.3a13 13 0 0 0-2.172-.87h-.005c.119.063.24.132.345.201c.12.074.239.146.351.225a9 9 0 0 1 1.559 1.33c1.063 1.145 1.797 2.548 2.218 4.041c.284.982.434 1.998.495 3.017c.044.743.044 1.491-.047 2.229c-.149 1.27-.554 2.51-1.228 3.596a7.5 7.5 0 0 1-1.903 2.084c-1.244.928-2.877 1.482-4.436 1.114a4 4 0 0 1-.748-.258a4.7 4.7 0 0 1-.779-.45a6 6 0 0 1-1.244-1.105a6.5 6.5 0 0 1-1.049-1.747a7.4 7.4 0 0 1-.494-2.54c-.03-1.273.225-2.553.854-3.67a6.4 6.4 0 0 1 1.663-1.918c.225-.178.464-.333.704-.479l.016-.007a5.1 5.1 0 0 0-1.441-.12a5 5 0 0 0-1.228.24c-.359.12-.704.27-1.019.45a6 6 0 0 0-.733.494c-.211.18-.42.36-.615.555c-1.123 1.153-1.768 2.682-2.022 4.256c-.15.973-.15 1.96-.091 2.95c.105 1.395.391 2.787.945 4.062a8.5 8.5 0 0 0 1.348 2.173a8.14 8.14 0 0 0 3.132 2.23a8 8 0 0 0 2.113.54c.074.015.149.015.209.015zm-2.934-.398a4 4 0 0 1-.45-.228a8.5 8.5 0 0 1-2.038-1.534c-1.094-1.137-1.827-2.566-2.247-4.08a15.2 15.2 0 0 1-.495-3.172a12 12 0 0 1 .046-2.082c.135-1.257.495-2.501 1.124-3.58a6.9 6.9 0 0 1 1.783-2.053a6.2 6.2 0 0 1 1.633-.9a5.36 5.36 0 0 1 3.522-.045c.029 0 .029 0 .045.03c.015.015.045.015.06.03c.045.016.104.045.165.074c.239.12.479.271.704.42a6.3 6.3 0 0 1 2.097 2.502c.42.914.615 1.934.631 2.938c.014 1.079-.18 2.157-.645 3.146a6.4 6.4 0 0 1-2.638 2.832c.09.03.18.045.271.075c.225.044.449.074.688.074c1.468.045 2.892-.66 3.94-1.647q.293-.27.54-.585c.225-.27.435-.54.614-.823c.239-.375.435-.75.614-1.154a8 8 0 0 0 .509-1.664c.196-1.004.211-2.022.149-3.026c-.135-2.022-.673-4.045-1.842-5.724a9 9 0 0 0-.555-.719a10 10 0 0 0-1.063-1.034a8.5 8.5 0 0 0-1.363-.915a10 10 0 0 0-1.692-.598l-.3-.06c-.209-.03-.42-.044-.634-.06a9 9 0 0 0-1.015.016c-.704.045-1.412.16-2.112.337C5.799 1.227 2.863 3.566 1.3 6.67A11.8 11.8 0 0 0 .238 9.801a11.8 11.8 0 0 0-.104 3.775c.12 1.02.374 2.023.778 2.977c.227.57.511 1.124.825 1.648c1.094 1.783 2.683 3.236 4.51 4.24c.688.39 1.408.69 2.157.944c.226.074.45.15.689.21z"/&gt;&lt;/svg&gt;&lt;span class="hx:truncate"&gt;.devcontainer/devcontainer.json&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;mounts&amp;#34;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;source=${localEnv:HOME}/.ssh/id_ed25519_personal.pub,target=/home/vscode/.ssh/id_ed25519_personal.pub,type=bind,readonly&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="s2"&gt;&amp;#34;source=${localEnv:HOME}/.ssh/known_hosts,target=/home/vscode/.ssh/known_hosts,type=bind,readonly&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The trade-off is scope: &lt;code&gt;core.sshCommand&lt;/code&gt; covers git and nothing else, so
+&lt;code&gt;ssh -T github-personal&lt;/code&gt; stops working as a check inside the container. Use
+&lt;code&gt;git ls-remote&lt;/code&gt; instead.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-400 hx:bg-blue-50 hx:text-blue-700 hx:dark:border-blue-500/70 hx:dark:bg-blue-950/60 hx:dark:text-blue-400"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;p&gt;Outside VS Code, the &lt;code&gt;devcontainer&lt;/code&gt; CLI does not forward the agent for you:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;--mount &lt;span class="nv"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;bind,source&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;SSH_AUTH_SOCK&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;,target&lt;span class="o"&gt;=&lt;/span&gt;/ssh-agent &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;--remote-env &lt;span class="nv"&gt;SSH_AUTH_SOCK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/ssh-agent&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;On macOS the socket is a launchd path that only resolves on the host, so the
+bind is required — passing the variable through on its own is not enough.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 data-hextra-search-id="check-both-halves"&gt;Check both halves&lt;span class="hx:absolute hx:-mt-20" id="check-both-halves"&gt;&lt;/span&gt;
+&lt;a href="#check-both-halves" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Quit VS Code &lt;strong&gt;completely&lt;/strong&gt; and relaunch, then open a terminal in the container
+and test each identity separately.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The token&lt;/strong&gt;, which is what &lt;code&gt;gh&lt;/code&gt; uses:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;GH_TOKEN&lt;/span&gt;&lt;span class="p"&gt;:+set&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;gh auth status&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The first prints &lt;code&gt;set&lt;/code&gt; or nothing, so you confirm it arrived without putting the
+secret on screen. The second should name the personal account:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;github.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; ✓ Logged in to github.com account you (GH_TOKEN)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; - Active account: true
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; - Token: ghp_************************************&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The parenthesis after the account name is the useful part. &lt;code&gt;GH_TOKEN&lt;/code&gt; means it
+picked up the environment variable; &lt;code&gt;keyring&lt;/code&gt; or &lt;code&gt;oauth_token&lt;/code&gt; means it found a
+stored login instead, and you are about to act as the wrong account.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The key&lt;/strong&gt;, which is what git uses — always through the alias:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ssh -T github-personal&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Hi you! You&amp;#39;ve successfully authenticated, but GitHub does not
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;provide shell access.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The name in the greeting is the account that key belongs to. If it is the wrong
+one, check &lt;code&gt;git remote -v&lt;/code&gt; — the remote has to use the alias, not
+&lt;code&gt;git@github.com&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-400 hx:bg-blue-50 hx:text-blue-700 hx:dark:border-blue-500/70 hx:dark:bg-blue-950/60 hx:dark:text-blue-400"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;code&gt;ssh -T git@github.com&lt;/code&gt; looks like the same test and is not. It asks &amp;ldquo;does &lt;em&gt;any&lt;/em&gt;
+key I am holding work&amp;rdquo;, which is almost always yes, and the name it greets you
+with is whichever key the agent happened to offer first — not the one your
+remote will use. Always test the alias.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Finally, confirm the two are genuinely independent by checking git separately:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git remote -v
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git config user.email&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 data-hextra-search-id="why-not-the-simpler-options"&gt;Why not the simpler options&lt;span class="hx:absolute hx:-mt-20" id="why-not-the-simpler-options"&gt;&lt;/span&gt;
+&lt;a href="#why-not-the-simpler-options" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Each of these looks like it would work, and each fails in a way you notice
+late.&lt;/p&gt;
+&lt;div class="hextra-accordion not-prose" data-accordion-mode="collapse"&gt;
+&lt;details class="hextra-accordion__item" name="hextra-accordion-a883d0aed8" &gt;
+&lt;summary class="hextra-accordion__summary"&gt;
+&lt;span class="hextra-accordion__marker" aria-hidden="true"&gt;
+&lt;svg viewBox="0 0 24 24" width="16" height="16" focusable="false"&gt;
+&lt;path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" /&gt;
+&lt;/svg&gt;
+&lt;/span&gt;&lt;svg height=16 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;span class="hextra-accordion__title"&gt;Just run gh auth login in the container&lt;/span&gt;
+&lt;/summary&gt;
+&lt;div class="hextra-accordion__content"&gt;&lt;p&gt;Fine once. Then you rebuild and the credentials are gone, so you repeat the
+device-code dance every time. Persisting them in a volume leaves a live GitHub
+credential with no rotation and no lifecycle.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details class="hextra-accordion__item" name="hextra-accordion-a883d0aed8" &gt;
+&lt;summary class="hextra-accordion__summary"&gt;
+&lt;span class="hextra-accordion__marker" aria-hidden="true"&gt;
+&lt;svg viewBox="0 0 24 24" width="16" height="16" focusable="false"&gt;
+&lt;path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" /&gt;
+&lt;/svg&gt;
+&lt;/span&gt;&lt;svg height=16 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;span class="hextra-accordion__title"&gt;Put the token in a .env file&lt;/span&gt;
+&lt;/summary&gt;
+&lt;div class="hextra-accordion__content"&gt;&lt;p&gt;Plaintext, inside the working tree. &lt;code&gt;.gitignore&lt;/code&gt; holds until someone runs
+&lt;code&gt;git add -f&lt;/code&gt;, or copies the folder, or the backup tool does its job. A secret in
+the repo directory is a secret waiting to be committed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details class="hextra-accordion__item" name="hextra-accordion-a883d0aed8" &gt;
+&lt;summary class="hextra-accordion__summary"&gt;
+&lt;span class="hextra-accordion__marker" aria-hidden="true"&gt;
+&lt;svg viewBox="0 0 24 24" width="16" height="16" focusable="false"&gt;
+&lt;path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" /&gt;
+&lt;/svg&gt;
+&lt;/span&gt;&lt;svg height=16 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;span class="hextra-accordion__title"&gt;Use containerEnv instead of remoteEnv&lt;/span&gt;
+&lt;/summary&gt;
+&lt;div class="hextra-accordion__content"&gt;&lt;p&gt;&lt;code&gt;containerEnv&lt;/code&gt; bakes the value into the container. It lands in &lt;code&gt;docker inspect&lt;/code&gt;
+and in whatever the extension writes under its &lt;code&gt;globalStorage&lt;/code&gt;, and it is fixed
+for the container&amp;rsquo;s life — rotating the token means a full rebuild. &lt;code&gt;remoteEnv&lt;/code&gt;
+keeps the value out of the container&amp;rsquo;s configuration entirely.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details class="hextra-accordion__item" name="hextra-accordion-a883d0aed8" &gt;
+&lt;summary class="hextra-accordion__summary"&gt;
+&lt;span class="hextra-accordion__marker" aria-hidden="true"&gt;
+&lt;svg viewBox="0 0 24 24" width="16" height="16" focusable="false"&gt;
+&lt;path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" /&gt;
+&lt;/svg&gt;
+&lt;/span&gt;&lt;svg height=16 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;span class="hextra-accordion__title"&gt;Export GH_TOKEN on the host&lt;/span&gt;
+&lt;/summary&gt;
+&lt;div class="hextra-accordion__content"&gt;&lt;p&gt;The subtle one. &lt;code&gt;gh&lt;/code&gt; prefers &lt;code&gt;GH_TOKEN&lt;/code&gt; over stored credentials, so every
+terminal on your machine silently becomes the personal account. You find out
+weeks later when a work issue is filed under the wrong name.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details class="hextra-accordion__item" name="hextra-accordion-a883d0aed8" &gt;
+&lt;summary class="hextra-accordion__summary"&gt;
+&lt;span class="hextra-accordion__marker" aria-hidden="true"&gt;
+&lt;svg viewBox="0 0 24 24" width="16" height="16" focusable="false"&gt;
+&lt;path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" /&gt;
+&lt;/svg&gt;
+&lt;/span&gt;&lt;svg height=16 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;span class="hextra-accordion__title"&gt;Mount ~/.config/gh into the container&lt;/span&gt;
+&lt;/summary&gt;
+&lt;div class="hextra-accordion__content"&gt;&lt;p&gt;That is the host&amp;rsquo;s &lt;code&gt;gh&lt;/code&gt; login — the work account. Sharing it into the container
+gives you one identity in two places, which is the exact thing you set out to
+avoid.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details class="hextra-accordion__item" name="hextra-accordion-a883d0aed8" &gt;
+&lt;summary class="hextra-accordion__summary"&gt;
+&lt;span class="hextra-accordion__marker" aria-hidden="true"&gt;
+&lt;svg viewBox="0 0 24 24" width="16" height="16" focusable="false"&gt;
+&lt;path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" /&gt;
+&lt;/svg&gt;
+&lt;/span&gt;&lt;svg height=16 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;span class="hextra-accordion__title"&gt;Skip SSH and let gh handle git too&lt;/span&gt;
+&lt;/summary&gt;
+&lt;div class="hextra-accordion__content"&gt;&lt;p&gt;Workable, not wrong. &lt;code&gt;gh auth setup-git&lt;/code&gt; makes the token a git credential
+helper, so git over HTTPS uses it as well. You trade a second credential for a
+broader one: the token now covers pushes, and losing it costs more. Separate
+paths keep the blast radius smaller.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="when-gh_token-comes-back-empty"&gt;When GH_TOKEN comes back empty&lt;span class="hx:absolute hx:-mt-20" id="when-gh_token-comes-back-empty"&gt;&lt;/span&gt;
+&lt;a href="#when-gh_token-comes-back-empty" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-accordion not-prose" data-accordion-mode="collapse"&gt;
+&lt;details class="hextra-accordion__item" name="hextra-accordion-5143ddbfff" &gt;
+&lt;summary class="hextra-accordion__summary"&gt;
+&lt;span class="hextra-accordion__marker" aria-hidden="true"&gt;
+&lt;svg viewBox="0 0 24 24" width="16" height="16" focusable="false"&gt;
+&lt;path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" /&gt;
+&lt;/svg&gt;
+&lt;/span&gt;&lt;svg height=16 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/&gt;&lt;/svg&gt;&lt;span class="hextra-accordion__title"&gt;VS Code cached a stale environment&lt;/span&gt;
+&lt;/summary&gt;
+&lt;div class="hextra-accordion__content"&gt;&lt;p&gt;The resolved environment is computed once per application session. &lt;em&gt;Reload
+Window&lt;/em&gt; does not redo it. &lt;em&gt;Rebuild Container&lt;/em&gt; does not redo it. Quit VS Code
+entirely and start it again.&lt;/p&gt;
+&lt;p&gt;This is the usual answer, and it is confusing precisely because everything on
+disk looks right.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details class="hextra-accordion__item" name="hextra-accordion-5143ddbfff" &gt;
+&lt;summary class="hextra-accordion__summary"&gt;
+&lt;span class="hextra-accordion__marker" aria-hidden="true"&gt;
+&lt;svg viewBox="0 0 24 24" width="16" height="16" focusable="false"&gt;
+&lt;path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" /&gt;
+&lt;/svg&gt;
+&lt;/span&gt;&lt;svg height=16 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;span class="hextra-accordion__title"&gt;The guard never fired&lt;/span&gt;
+&lt;/summary&gt;
+&lt;div class="hextra-accordion__content"&gt;&lt;p&gt;Prove it instead of guessing. Add a probe to your shell rc:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-zsh" data-lang="zsh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;[[&lt;/span&gt; -n &lt;span class="nv"&gt;$VSCODE_RESOLVING_ENVIRONMENT&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; date &amp;gt;&amp;gt; /tmp/vscode-env-probe&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Quit and relaunch VS Code, then check the file. A new line means the guard
+fires and the lookup is at fault. No line means VS Code is not resolving your
+shell at all, usually because it inherited the environment from the terminal
+you launched it from. Remove the probe afterwards.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details class="hextra-accordion__item" name="hextra-accordion-5143ddbfff" &gt;
+&lt;summary class="hextra-accordion__summary"&gt;
+&lt;span class="hextra-accordion__marker" aria-hidden="true"&gt;
+&lt;svg viewBox="0 0 24 24" width="16" height="16" focusable="false"&gt;
+&lt;path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" /&gt;
+&lt;/svg&gt;
+&lt;/span&gt;&lt;svg height=16 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/&gt;&lt;/svg&gt;&lt;span class="hextra-accordion__title"&gt;The keyring is locked&lt;/span&gt;
+&lt;/summary&gt;
+&lt;div class="hextra-accordion__content"&gt;&lt;p&gt;Linux only, and silent — &lt;code&gt;secret-tool lookup&lt;/code&gt; exits successfully and prints
+nothing. Check by hand:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;secret-tool lookup service gh-token-personal &lt;span class="p"&gt;|&lt;/span&gt; wc -c&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Zero bytes where you know the secret exists means the keyring never unlocked.
+Switch that machine to &lt;code&gt;pass&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details class="hextra-accordion__item" name="hextra-accordion-5143ddbfff" &gt;
+&lt;summary class="hextra-accordion__summary"&gt;
+&lt;span class="hextra-accordion__marker" aria-hidden="true"&gt;
+&lt;svg viewBox="0 0 24 24" width="16" height="16" focusable="false"&gt;
+&lt;path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" /&gt;
+&lt;/svg&gt;
+&lt;/span&gt;&lt;svg height=16 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/&gt;&lt;/svg&gt;&lt;span class="hextra-accordion__title"&gt;The token expired&lt;/span&gt;
+&lt;/summary&gt;
+&lt;div class="hextra-accordion__content"&gt;&lt;p&gt;&lt;code&gt;gh auth status&lt;/code&gt; says so plainly. Rotate in place — all three store commands
+are idempotent — then quit and relaunch VS Code so the environment is resolved
+again.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details class="hextra-accordion__item" name="hextra-accordion-5143ddbfff" &gt;
+&lt;summary class="hextra-accordion__summary"&gt;
+&lt;span class="hextra-accordion__marker" aria-hidden="true"&gt;
+&lt;svg viewBox="0 0 24 24" width="16" height="16" focusable="false"&gt;
+&lt;path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6" /&gt;
+&lt;/svg&gt;
+&lt;/span&gt;&lt;svg height=16 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/&gt;&lt;/svg&gt;&lt;span class="hextra-accordion__title"&gt;Git works but gh does not, or the reverse&lt;/span&gt;
+&lt;/summary&gt;
+&lt;div class="hextra-accordion__content"&gt;&lt;p&gt;Expected, and the useful clue. Git failing is an SSH problem: check
+&lt;code&gt;ssh -T github-personal&lt;/code&gt;, the remote URL, and that the host block has
+&lt;code&gt;IdentitiesOnly yes&lt;/code&gt;. &lt;code&gt;gh&lt;/code&gt; failing is a token problem: check
+&lt;code&gt;echo &amp;quot;${GH_TOKEN:+set}&amp;quot;&lt;/code&gt; and what &lt;code&gt;gh auth status&lt;/code&gt; names in parentheses. They
+share nothing, so fix them separately.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="platform-summary"&gt;Platform summary&lt;span class="hx:absolute hx:-mt-20" id="platform-summary"&gt;&lt;/span&gt;
+&lt;a href="#platform-summary" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;macOS&lt;/th&gt;
+&lt;th&gt;Ubuntu, graphical login&lt;/th&gt;
+&lt;th&gt;Ubuntu, headless&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Store&lt;/td&gt;
+&lt;td&gt;login keychain&lt;/td&gt;
+&lt;td&gt;GNOME login keyring&lt;/td&gt;
+&lt;td&gt;GPG via &lt;code&gt;pass&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Write&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;security add-generic-password&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;secret-tool store&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;pass insert&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Read&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;security find-generic-password&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;secret-tool lookup&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;pass show&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Unlocked by&lt;/td&gt;
+&lt;td&gt;macOS login&lt;/td&gt;
+&lt;td&gt;PAM at sign-in&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;gpg-agent&lt;/code&gt;, once per boot&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SSH passphrase persists via&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;UseKeychain&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;gcr-ssh-agent&lt;/code&gt; + keyring&lt;/td&gt;
+&lt;td&gt;agent lifetime only&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Everything else is identical on all three: the guard, the compose file, the
+rename to &lt;code&gt;GH_TOKEN&lt;/code&gt;, the read-only &lt;code&gt;~/.ssh&lt;/code&gt; mount.&lt;/p&gt;
+&lt;p&gt;On Ubuntu, &lt;code&gt;UseKeychain&lt;/code&gt; has no equivalent — that job moved to &lt;strong&gt;gcr-ssh-agent&lt;/strong&gt;
+when gnome-keyring 46 dropped its SSH support. Enable it once and passphrases
+survive a reboot:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;systemctl --user &lt;span class="nb"&gt;enable&lt;/span&gt; --now gcr-ssh-agent.socket&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="worth-the-setup"&gt;Worth the setup&lt;span class="hx:absolute hx:-mt-20" id="worth-the-setup"&gt;&lt;/span&gt;
+&lt;a href="#worth-the-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Two identities on one laptop, no overlap between them, and the patch goes
+upstream the same afternoon you found the bug instead of waiting for a weekend
+and a second machine.&lt;/p&gt;
+&lt;p&gt;The dev container is what makes it portable. Same repository, same config, the
+Ubuntu box at home and the MacBook at work — and the only thing that differs is
+one line in your shell profile.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="limitations"&gt;Limitations&lt;span class="hx:absolute hx:-mt-20" id="limitations"&gt;&lt;/span&gt;
+&lt;a href="#limitations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;This guide is GitHub-centric, and it is worth being precise about which half.&lt;/p&gt;
+&lt;p&gt;The SSH side is not GitHub-specific at all. Host aliases, &lt;code&gt;IdentitiesOnly&lt;/code&gt;, the
+forwarded agent — that works against GitLab, Gitea, or a self-hosted instance
+with nothing more than a different &lt;code&gt;HostName&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The token side is. &lt;code&gt;gh&lt;/code&gt; only speaks to GitHub, and &lt;code&gt;GH_TOKEN&lt;/code&gt; is its variable.
+The pattern should carry over easily enough — &lt;code&gt;glab&lt;/code&gt; reads &lt;code&gt;GITLAB_TOKEN&lt;/code&gt;, and
+everything else here stays put — but I have not run it that way yet, so I am
+not going to write it up as though I had.&lt;/p&gt;
+&lt;p&gt;If I end up setting one of those up, I will extend this guide rather than start
+a new one.&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,18 @@
+# Homelab Central
+
+> Homelab guides, hardware notes, and self-hosting write-ups.
+
+
+## Documentation
+- [Getting Started](https://homelabcentral.net/docs/getting-started/): What a home lab is for A home lab is a machine you control end to end: the storage, the network …
+
+## Blog
+- [git and gh CLI in a dev container](https://homelabcentral.net/blog/git-and-gh-cli-in-a-dev-container/): Two GitHub identities on one laptop: your work account for work, your personal account for … - Published 2026-09-19
+- [What is a Homelab?](https://homelabcentral.net/blog/what-is-a-homelab/): In the simplest terms, a homelab is just a spare computer — or a collection of computers — that does … - Published 2026-09-17
+
+## Root Pages
+- [About](https://homelabcentral.net/about/): Homelab Central is your source for everything homelab — the hardware, the software that runs on it, …
+
+---
+Generated on 2026-09-19 16:54:06 UTC
+Site: https://homelabcentral.net/
