@@ -1,0 +1,142 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homelab Central – Networking</title><link>https://homelabcentral.net/tags/networking/</link><description>Recent content in Networking on Homelab Central</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 26 Sep 2026 18:05:00 +0530</lastBuildDate><atom:link href="https://homelabcentral.net/tags/networking/index.xml" rel="self" type="application/rss+xml"/><item><title>Changing the hostname</title><link>https://homelabcentral.net/blog/changing-the-hostname/</link><pubDate>Sat, 26 Sep 2026 18:05:00 +0530</pubDate><guid>https://homelabcentral.net/blog/changing-the-hostname/</guid><description>
+&lt;div class="hextra-lead"&gt;&lt;p&gt;Rename a machine so the name sticks — in the shell, on the network, and after a reboot.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Every box in a homelab ends up named something. The trap is that &amp;ldquo;the
+hostname&amp;rdquo; is not one value on either OS, so renaming half of it leaves you
+with a machine that answers to two names.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="rename-it"&gt;Rename it&lt;span class="hx:absolute hx:-mt-20" id="rename-it"&gt;&lt;/span&gt;
+&lt;a href="#rename-it" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="hextra-scrollbar hx:overflow-x-auto hx:overflow-y-hidden hx:overscroll-x-contain"&gt;
+&lt;div class="hx:mt-4 hx:flex hx:w-max hx:min-w-full hx:border-b hx:border-neutral-200 hx:pb-px hx:dark:border-neutral-800" role="tablist" data-tab-group="macOS,Ubuntu"&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-01-0" role="tab" type="button" aria-controls="tabs-panel-tabs-01-0" aria-selected="true" tabindex="0" data-state="selected"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"&gt;&lt;defs&gt;&lt;path id="SVG67go7b2R" d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258s.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854s-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116c-.508.139-1.653.589-1.968.607c-.316.018-1.256-.522-2.267-.665c-.647-.125-1.333.131-1.824.328c-.49.196-1.422.754-2.074 2.237c-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472c.357.013 1.061.154 1.782.539c.571.197 1.111.115 1.652-.105c.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/&gt;&lt;/defs&gt;&lt;g fill="currentColor"&gt;&lt;use href="#SVG67go7b2R"/&gt;&lt;use href="#SVG67go7b2R"/&gt;&lt;/g&gt;&lt;/svg&gt;&lt;span&gt;macOS&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-01-1" role="tab" type="button" aria-controls="tabs-panel-tabs-01-1" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"&gt;&lt;path fill="currentColor" d="M2.273 9.53a2.273 2.273 0 1 0 0-4.546a2.273 2.273 0 0 0 0 4.547Zm9.467-4.984a2.273 2.273 0 1 0 0-4.546a2.273 2.273 0 0 0 0 4.546M7.4 13.108a5.54 5.54 0 0 1-3.775-2.88a3.27 3.27 0 0 1-1.944.24a7.4 7.4 0 0 0 5.328 4.465c.53.113 1.072.169 1.614.166a3.25 3.25 0 0 1-.666-1.9a6 6 0 0 1-.557-.091m3.828 2.285a2.273 2.273 0 1 0 0-4.546a2.273 2.273 0 0 0 0 4.546m3.163-3.108a7.44 7.44 0 0 0 .373-8.726a3.3 3.3 0 0 1-1.278 1.498a5.57 5.57 0 0 1-.183 5.535a3.26 3.26 0 0 1 1.088 1.693M2.098 3.998a3.3 3.3 0 0 1 1.897.486a5.54 5.54 0 0 1 4.464-2.388c.037-.67.277-1.313.69-1.843a7.47 7.47 0 0 0-7.051 3.745"/&gt;&lt;/svg&gt;&lt;span&gt;Ubuntu&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-01-0" role="tabpanel" aria-labelledby="tabs-tab-tabs-01-0" aria-hidden="false" tabindex="0" data-state="selected"&gt;&lt;p&gt;macOS keeps three separate names, and &lt;code&gt;scutil&lt;/code&gt; sets all three.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;What uses it&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ComputerName&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Finder, AirDrop, the Sharing pane. Spaces and emoji allowed&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;LocalHostName&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Bonjour, the &lt;code&gt;.local&lt;/code&gt; address. Letters, digits and hyphens only&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;HostName&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;What &lt;code&gt;hostname&lt;/code&gt; and the shell prompt return&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class="hextra-steps hx:ml-4 hx:mb-12 hx:ltr:border-l hx:rtl:border-r hx:border-neutral-200 hx:ltr:pl-6 hx:rtl:pr-6 hx:dark:border-neutral-800 [counter-reset:step]"&gt;&lt;h3 data-hextra-search-id="set-all-three"&gt;Set all three&lt;span class="hx:absolute hx:-mt-20" id="set-all-three"&gt;&lt;/span&gt;
+&lt;a href="#set-all-three" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo scutil --set ComputerName &lt;span class="s2"&gt;&amp;#34;Rack 01&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo scutil --set LocalHostName &lt;span class="s2"&gt;&amp;#34;rack01&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo scutil --set HostName &lt;span class="s2"&gt;&amp;#34;rack01&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Read any of them back with &lt;code&gt;scutil --get ComputerName&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-400 hx:bg-amber-50 hx:text-amber-700 hx:dark:border-amber-500/70 hx:dark:bg-amber-950/60 hx:dark:text-amber-400"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Set &lt;code&gt;HostName&lt;/code&gt; explicitly even if the other two look right. When it is unset,
+macOS takes the name from DHCP and will rename itself back the next time it
+picks up a lease.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 data-hextra-search-id="flush-the-caches"&gt;Flush the caches&lt;span class="hx:absolute hx:-mt-20" id="flush-the-caches"&gt;&lt;/span&gt;
+&lt;a href="#flush-the-caches" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo dscacheutil -flushcache&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Bonjour keeps advertising the old &lt;code&gt;.local&lt;/code&gt; name until it does.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="open-a-new-terminal"&gt;Open a new terminal&lt;span class="hx:absolute hx:-mt-20" id="open-a-new-terminal"&gt;&lt;/span&gt;
+&lt;a href="#open-a-new-terminal" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The prompt is built at login, so the window you typed this in keeps the old
+name until you replace it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-01-1" role="tabpanel" aria-labelledby="tabs-tab-tabs-01-1" aria-hidden="true"&gt;&lt;p&gt;One value, and &lt;code&gt;hostnamectl&lt;/code&gt; owns it.&lt;/p&gt;
+&lt;div class="hextra-steps hx:ml-4 hx:mb-12 hx:ltr:border-l hx:rtl:border-r hx:border-neutral-200 hx:ltr:pl-6 hx:rtl:pr-6 hx:dark:border-neutral-800 [counter-reset:step]"&gt;&lt;h3 data-hextra-search-id="set-the-hostname"&gt;Set the hostname&lt;span class="hx:absolute hx:-mt-20" id="set-the-hostname"&gt;&lt;/span&gt;
+&lt;a href="#set-the-hostname" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;hostnamectl
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo hostnamectl set-hostname rack01&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The optional pretty name is the Ubuntu equivalent of macOS&amp;rsquo;s &lt;code&gt;ComputerName&lt;/code&gt; —
+free text, shown in GNOME:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo hostnamectl set-hostname &lt;span class="s2"&gt;&amp;#34;Rack 01&amp;#34;&lt;/span&gt; --pretty&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 data-hextra-search-id="fix-etchosts"&gt;Fix /etc/hosts&lt;span class="hx:absolute hx:-mt-20" id="fix-etchosts"&gt;&lt;/span&gt;
+&lt;a href="#fix-etchosts" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;hostnamectl&lt;/code&gt; does not touch &lt;code&gt;/etc/hosts&lt;/code&gt;, so the old name is still mapped
+there. Leave it and every &lt;code&gt;sudo&lt;/code&gt; prints &lt;code&gt;unable to resolve host&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;span class="hx:truncate"&gt;/etc/hosts&lt;/span&gt;&lt;/div&gt;&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;127.0.0.1 localhost
+127.0.1.1 rack01&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 data-hextra-search-id="stop-cloud-init-reverting-it"&gt;Stop cloud-init reverting it&lt;span class="hx:absolute hx:-mt-20" id="stop-cloud-init-reverting-it"&gt;&lt;/span&gt;
+&lt;a href="#stop-cloud-init-reverting-it" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;On any image with cloud-init — Ubuntu Server, most VPS and VM templates — the
+hostname is reapplied from metadata on every boot:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="currentColor" d="m0 .97l4.111 6.453v4.09h2.638v-4.09L11.053.969H8.214L5.58 5.125L2.965.969Zm12.093.024l-4.47 10.544h2.114l.97-2.345h4.775l.804 2.345h2.26L14.255.994Zm1.133 2.225l1.463 3.87h-3.096zm3.06 9.475v10.29H24v-2.199h-5.454v-8.091zm-12.175.002v10.335h2.217v-7.129l2.32 4.792h1.746l2.4-4.96v7.295h2.127V12.696h-2.904L9.44 17.37l-2.455-4.674Z"/&gt;&lt;/svg&gt;&lt;span class="hx:truncate"&gt;/etc/cloud/cloud.cfg&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;preserve_hostname&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Without that line the rename survives until the next reboot and no longer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;h2 data-hextra-search-id="verify"&gt;Verify&lt;span class="hx:absolute hx:-mt-20" id="verify"&gt;&lt;/span&gt;
+&lt;a href="#verify" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="hextra-scrollbar hx:overflow-x-auto hx:overflow-y-hidden hx:overscroll-x-contain"&gt;
+&lt;div class="hx:mt-4 hx:flex hx:w-max hx:min-w-full hx:border-b hx:border-neutral-200 hx:pb-px hx:dark:border-neutral-800" role="tablist" data-tab-group="macOS,Ubuntu"&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-02-0" role="tab" type="button" aria-controls="tabs-panel-tabs-02-0" aria-selected="true" tabindex="0" data-state="selected"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"&gt;&lt;defs&gt;&lt;path id="SVG67go7b2R" d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258s.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854s-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116c-.508.139-1.653.589-1.968.607c-.316.018-1.256-.522-2.267-.665c-.647-.125-1.333.131-1.824.328c-.49.196-1.422.754-2.074 2.237c-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472c.357.013 1.061.154 1.782.539c.571.197 1.111.115 1.652-.105c.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/&gt;&lt;/defs&gt;&lt;g fill="currentColor"&gt;&lt;use href="#SVG67go7b2R"/&gt;&lt;use href="#SVG67go7b2R"/&gt;&lt;/g&gt;&lt;/svg&gt;&lt;span&gt;macOS&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-02-1" role="tab" type="button" aria-controls="tabs-panel-tabs-02-1" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;svg height=1em class="hx:inline-block hx:shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"&gt;&lt;path fill="currentColor" d="M2.273 9.53a2.273 2.273 0 1 0 0-4.546a2.273 2.273 0 0 0 0 4.547Zm9.467-4.984a2.273 2.273 0 1 0 0-4.546a2.273 2.273 0 0 0 0 4.546M7.4 13.108a5.54 5.54 0 0 1-3.775-2.88a3.27 3.27 0 0 1-1.944.24a7.4 7.4 0 0 0 5.328 4.465c.53.113 1.072.169 1.614.166a3.25 3.25 0 0 1-.666-1.9a6 6 0 0 1-.557-.091m3.828 2.285a2.273 2.273 0 1 0 0-4.546a2.273 2.273 0 0 0 0 4.546m3.163-3.108a7.44 7.44 0 0 0 .373-8.726a3.3 3.3 0 0 1-1.278 1.498a5.57 5.57 0 0 1-.183 5.535a3.26 3.26 0 0 1 1.088 1.693M2.098 3.998a3.3 3.3 0 0 1 1.897.486a5.54 5.54 0 0 1 4.464-2.388c.037-.67.277-1.313.69-1.843a7.47 7.47 0 0 0-7.051 3.745"/&gt;&lt;/svg&gt;&lt;span&gt;Ubuntu&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-02-0" role="tabpanel" aria-labelledby="tabs-tab-tabs-02-0" aria-hidden="false" tabindex="0" data-state="selected"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;hostname
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;scutil --get HostName&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-02-1" role="tabpanel" aria-labelledby="tabs-tab-tabs-02-1" aria-hidden="true"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;hostname
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;hostnamectl --static&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;New shell, and both should agree.&lt;/p&gt;</description></item></channel></rss>

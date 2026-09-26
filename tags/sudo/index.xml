@@ -1,0 +1,282 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homelab Central – Sudo</title><link>https://homelabcentral.net/tags/sudo/</link><description>Recent content in Sudo on Homelab Central</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 26 Sep 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://homelabcentral.net/tags/sudo/index.xml" rel="self" type="application/rss+xml"/><item><title>Touch ID for sudo</title><link>https://homelabcentral.net/blog/touch-id-for-sudo/</link><pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate><guid>https://homelabcentral.net/blog/touch-id-for-sudo/</guid><description>
+&lt;div class="hextra-lead"&gt;&lt;p&gt;Two lines to use touchid to authenticate sudo and with tmux.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Touch ID is the best thing on a Mac. It logs you in, pays for things, signs you
+into Apple&amp;rsquo;s own sites. So the obvious question: can it authenticate &lt;code&gt;sudo&lt;/code&gt;
+too? It can, and it takes two minutes.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="works-on"&gt;Works on&lt;span class="hx:absolute hx:-mt-20" id="works-on"&gt;&lt;/span&gt;
+&lt;a href="#works-on" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-green-400 hx:bg-green-100 hx:text-green-950 hx:dark:border-green-800 hx:dark:bg-green-950 hx:dark:text-green-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"&gt;&lt;defs&gt;&lt;path id="SVG67go7b2R" d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258s.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854s-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116c-.508.139-1.653.589-1.968.607c-.316.018-1.256-.522-2.267-.665c-.647-.125-1.333.131-1.824.328c-.49.196-1.422.754-2.074 2.237c-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472c.357.013 1.061.154 1.782.539c.571.197 1.111.115 1.652-.105c.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/&gt;&lt;/defs&gt;&lt;g fill="currentColor"&gt;&lt;use href="#SVG67go7b2R"/&gt;&lt;use href="#SVG67go7b2R"/&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/span&gt;Sonoma 14&lt;/span&gt;
+&lt;/span&gt; &lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-blue-400 hx:bg-blue-100 hx:text-blue-950 hx:dark:border-blue-800 hx:dark:bg-blue-950 hx:dark:text-blue-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"&gt;&lt;defs&gt;&lt;path id="SVG67go7b2R" d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258s.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854s-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116c-.508.139-1.653.589-1.968.607c-.316.018-1.256-.522-2.267-.665c-.647-.125-1.333.131-1.824.328c-.49.196-1.422.754-2.074 2.237c-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472c.357.013 1.061.154 1.782.539c.571.197 1.111.115 1.652-.105c.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/&gt;&lt;/defs&gt;&lt;g fill="currentColor"&gt;&lt;use href="#SVG67go7b2R"/&gt;&lt;use href="#SVG67go7b2R"/&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/span&gt;Sequoia 15&lt;/span&gt;
+&lt;/span&gt; &lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-indigo-400 hx:bg-indigo-100 hx:text-indigo-950 hx:dark:border-indigo-800 hx:dark:bg-indigo-950 hx:dark:text-indigo-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"&gt;&lt;defs&gt;&lt;path id="SVG67go7b2R" d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258s.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854s-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116c-.508.139-1.653.589-1.968.607c-.316.018-1.256-.522-2.267-.665c-.647-.125-1.333.131-1.824.328c-.49.196-1.422.754-2.074 2.237c-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472c.357.013 1.061.154 1.782.539c.571.197 1.111.115 1.652-.105c.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/&gt;&lt;/defs&gt;&lt;g fill="currentColor"&gt;&lt;use href="#SVG67go7b2R"/&gt;&lt;use href="#SVG67go7b2R"/&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/span&gt;Tahoe 26&lt;/span&gt;
+&lt;/span&gt; &lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-purple-400 hx:bg-purple-100 hx:text-purple-950 hx:dark:border-purple-800 hx:dark:bg-purple-950 hx:dark:text-purple-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"&gt;&lt;defs&gt;&lt;path id="SVG67go7b2R" d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258s.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854s-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116c-.508.139-1.653.589-1.968.607c-.316.018-1.256-.522-2.267-.665c-.647-.125-1.333.131-1.824.328c-.49.196-1.422.754-2.074 2.237c-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472c.357.013 1.061.154 1.782.539c.571.197 1.111.115 1.652-.105c.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/&gt;&lt;/defs&gt;&lt;g fill="currentColor"&gt;&lt;use href="#SVG67go7b2R"/&gt;&lt;use href="#SVG67go7b2R"/&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/span&gt;Golden Gate 27&lt;/span&gt;
+&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/etc/pam.d/sudo_local&lt;/code&gt; arrived in Sonoma. On Ventura 13 and earlier neither it
+nor its template exists: the same &lt;code&gt;auth sufficient pam_tid.so&lt;/code&gt; line goes into
+&lt;code&gt;/etc/pam.d/sudo&lt;/code&gt; itself, and every major OS update wipes it.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="touch-id-for-sudo"&gt;Touch ID for sudo&lt;span class="hx:absolute hx:-mt-20" id="touch-id-for-sudo"&gt;&lt;/span&gt;
+&lt;a href="#touch-id-for-sudo" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-steps hx:ml-4 hx:mb-12 hx:ltr:border-l hx:rtl:border-r hx:border-neutral-200 hx:ltr:pl-6 hx:rtl:pr-6 hx:dark:border-neutral-800 [counter-reset:step]"&gt;
+&lt;h3 data-hextra-search-id="open-a-root-shell-first"&gt;Open a root shell first&lt;span class="hx:absolute hx:-mt-20" id="open-a-root-shell-first"&gt;&lt;/span&gt;
+&lt;a href="#open-a-root-shell-first" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;In a second window, and leave it open until everything below works:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo -s&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-400 hx:bg-amber-50 hx:text-amber-700 hx:dark:border-amber-500/70 hx:dark:bg-amber-950/60 hx:dark:text-amber-400"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;A broken file in &lt;code&gt;/etc/pam.d&lt;/code&gt; makes every &lt;code&gt;sudo&lt;/code&gt; fail — including the one you
+need to fix it. This shell is already root, so it keeps working no matter what
+you do to the config. Close it only once Touch ID prompts.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 data-hextra-search-id="copy-the-template"&gt;Copy the template&lt;span class="hx:absolute hx:-mt-20" id="copy-the-template"&gt;&lt;/span&gt;
+&lt;a href="#copy-the-template" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;macOS ships the file already written, commented out:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;/etc/pam.d/sudo&lt;/code&gt; has an &lt;code&gt;auth include sudo_local&lt;/code&gt; line at the top, and
+&lt;code&gt;sudo_local&lt;/code&gt; is the half that survives OS updates. Adding &lt;code&gt;pam_tid.so&lt;/code&gt; straight
+into &lt;code&gt;/etc/pam.d/sudo&lt;/code&gt; works too — until the next update replaces it.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="uncomment-the-line"&gt;Uncomment the line&lt;span class="hx:absolute hx:-mt-20" id="uncomment-the-line"&gt;&lt;/span&gt;
+&lt;a href="#uncomment-the-line" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo sed -i &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;s/^#auth/auth/&amp;#39;&lt;/span&gt; /etc/pam.d/sudo_local&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Which leaves:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;span class="hx:truncate"&gt;/etc/pam.d/sudo_local&lt;/span&gt;&lt;/div&gt;&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;auth sufficient pam_tid.so&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;sufficient&lt;/code&gt; is the important word: Touch ID succeeding is enough, and Touch ID
+not being available falls through to the password prompt.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="verify-it"&gt;Verify it&lt;span class="hx:absolute hx:-mt-20" id="verify-it"&gt;&lt;/span&gt;
+&lt;a href="#verify-it" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo -k
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo -v&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;sudo -k&lt;/code&gt; drops the cached credential, and &lt;code&gt;sudo -v&lt;/code&gt; asks for authentication and
+runs nothing — the harmless way to see the prompt. It should be the Touch ID
+sheet, not a password.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div
+data-alert="note" class="hextra-alert"
+&gt;
+&lt;p class="hextra-alert-title"&gt;&lt;svg height=16px class="hextra-alert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/&gt;&lt;/svg&gt;&lt;span class="hextra-alert-title-text"&gt;Note&lt;/span&gt;
+&lt;/p&gt;
+&lt;div class="hextra-alert-content"&gt;&lt;p&gt;PAM reads the file on every &lt;code&gt;sudo&lt;/code&gt;, so the change should apply immediately. If
+you still get a password prompt, open a new terminal window, and if that does
+not do it either, quit and reopen the terminal app.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="touch-id-for-sudo-inside-tmux"&gt;Touch ID for sudo inside tmux&lt;span class="hx:absolute hx:-mt-20" id="touch-id-for-sudo-inside-tmux"&gt;&lt;/span&gt;
+&lt;a href="#touch-id-for-sudo-inside-tmux" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The line above works in Terminal, iTerm2, Ghostty — and not in a tmux pane,
+where you get the password prompt instead.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pam_tid.so&lt;/code&gt; has to reach the GUI session to raise the biometric prompt, and it
+looks for it in the per-session bootstrap namespace of the process asking. A
+tmux server is a daemon: it keeps the namespace of whichever shell first started
+it, detached from your Aqua session. Nothing to prompt on, so PAM falls through
+to the password.&lt;/p&gt;
+&lt;p&gt;&lt;a
+href="https://github.com/fabianishere/pam_reattach"target="_blank" rel="noopener"&gt;&lt;code&gt;pam_reattach&lt;/code&gt;&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt; moves the
+authentication into the right namespace before &lt;code&gt;pam_tid.so&lt;/code&gt; runs.&lt;/p&gt;
+&lt;div class="hextra-steps hx:ml-4 hx:mb-12 hx:ltr:border-l hx:rtl:border-r hx:border-neutral-200 hx:ltr:pl-6 hx:rtl:pr-6 hx:dark:border-neutral-800 [counter-reset:step]"&gt;
+&lt;h3 data-hextra-search-id="install-the-module"&gt;Install the module&lt;span class="hx:absolute hx:-mt-20" id="install-the-module"&gt;&lt;/span&gt;
+&lt;a href="#install-the-module" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew install pam-reattach&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;That builds it and links the module into Homebrew&amp;rsquo;s prefix. Check it landed:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;ls -l &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;brew --prefix&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;/lib/pam/pam_reattach.so&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;details class="hx:last-of-type:mb-0 hx:rounded-lg hx:bg-neutral-100 hx:dark:bg-neutral-900 hx:p-2 hx:mt-4 hx:group hx:border hx:border-neutral-300 hx:dark:border hx:dark:border-neutral-700 hx:transition-colors hx:hover:border-neutral-500 hx:dark:hover:border-neutral-600" open&gt;
+&lt;summary class="hx:flex hx:items-center hx:cursor-pointer hx:select-none hx:list-none hx:p-1 hx:rounded-sm hx:transition-colors hx:hover:bg-neutral-200 hx:dark:hover:bg-neutral-800 hx:before:mr-1 hx:before:inline-block hx:before:transition-transform hx:before:content-[''] hx:dark:before:invert hx:rtl:before:rotate-180 hx:group-open:before:rotate-90"&gt;
+&lt;strong class="hx:text-lg"&gt;Without Homebrew&lt;/strong&gt;
+&lt;/summary&gt;
+&lt;div class="hx:p-2 hx:overflow-hidden"&gt;
+&lt;p&gt;CMake, and nothing else:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git clone https://github.com/fabianishere/pam_reattach
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; pam_reattach
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cmake -S . -B build -DCMAKE_BUILD_TYPE&lt;span class="o"&gt;=&lt;/span&gt;Release -DCMAKE_INSTALL_PREFIX:PATH&lt;span class="o"&gt;=&lt;/span&gt;/usr/local
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cmake --build build
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cmake --install build&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Three commands, not two — &lt;code&gt;cmake --install&lt;/code&gt; only copies what &lt;code&gt;cmake --build&lt;/code&gt;
+produced. The module lands at &lt;code&gt;/usr/local/lib/pam/pam_reattach.so&lt;/code&gt;. Add
+&lt;code&gt;-DCMAKE_OSX_ARCHITECTURES=&amp;quot;arm64;x86_64&amp;quot;&lt;/code&gt; to the configure step for a
+universal build, and to remove it later:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;xargs rm &amp;lt; build/install_manifest.txt&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;h3 data-hextra-search-id="get-the-path-right"&gt;Get the path right&lt;span class="hx:absolute hx:-mt-20" id="get-the-path-right"&gt;&lt;/span&gt;
+&lt;a href="#get-the-path-right" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;PAM searches &lt;code&gt;/usr/lib/pam&lt;/code&gt; and &lt;code&gt;/usr/local/lib/pam&lt;/code&gt;, and nothing else.
+Installed from source into &lt;code&gt;/usr/local&lt;/code&gt;, or by Homebrew on an Intel Mac, the
+module can be named on its own. Homebrew on Apple Silicon puts it under
+&lt;code&gt;/opt/homebrew&lt;/code&gt;, which is neither, so the line needs the full path. Print it
+rather than guessing:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;auth optional &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;brew --prefix&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;/lib/pam/pam_reattach.so ignore_ssh&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 data-hextra-search-id="put-it-above-pam_tid"&gt;Put it above pam_tid&lt;span class="hx:absolute hx:-mt-20" id="put-it-above-pam_tid"&gt;&lt;/span&gt;
+&lt;a href="#put-it-above-pam_tid" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo nano /etc/pam.d/sudo_local&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Paste the line from the previous step above the &lt;code&gt;pam_tid.so&lt;/code&gt; line:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;span class="hx:truncate"&gt;/etc/pam.d/sudo_local&lt;/span&gt;&lt;/div&gt;&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;auth optional /opt/homebrew/lib/pam/pam_reattach.so ignore_ssh
+auth sufficient pam_tid.so&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Order is the whole point — reattaching after the Touch ID attempt has already
+failed does nothing. Two words earn their place:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;optional&lt;/code&gt; keeps a missing or broken module from mattering. Uninstall
+&lt;code&gt;pam-reattach&lt;/code&gt; later and &lt;code&gt;sudo&lt;/code&gt; asks for your password again instead of
+refusing you.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ignore_ssh&lt;/code&gt; skips the reattach when &lt;code&gt;$SSH_CLIENT&lt;/code&gt;, &lt;code&gt;$SSH_CONNECTION&lt;/code&gt; or
+&lt;code&gt;$SSH_TTY&lt;/code&gt; is set. Without it, &lt;code&gt;sudo&lt;/code&gt; in a tmux session you reached over SSH
+asks for a touch on a laptop you are not sitting at.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 data-hextra-search-id="verify-it-1"&gt;Verify it&lt;span class="hx:absolute hx:-mt-20" id="verify-it-1"&gt;&lt;/span&gt;
+&lt;a href="#verify-it-1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Inside a pane, and then outside one, so you know both still work:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tmux new -A -s touchid-test
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo -k
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo -v&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div
+data-alert="note" class="hextra-alert"
+&gt;
+&lt;p class="hextra-alert-title"&gt;&lt;svg height=16px class="hextra-alert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/&gt;&lt;/svg&gt;&lt;span class="hextra-alert-title-text"&gt;Note&lt;/span&gt;
+&lt;/p&gt;
+&lt;div class="hextra-alert-content"&gt;&lt;p&gt;Again, the next &lt;code&gt;sudo&lt;/code&gt; should pick the change up on its own. If a pane still
+asks for a password, restart the tmux server — &lt;code&gt;tmux kill-server&lt;/code&gt;, which ends
+every session on it — and reattach. If it survives even that, quit and reopen
+the terminal app.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div
+data-alert="note" class="hextra-alert"
+&gt;
+&lt;p class="hextra-alert-title"&gt;&lt;svg height=16px class="hextra-alert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"&gt;&lt;path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/&gt;&lt;/svg&gt;&lt;span class="hextra-alert-title-text"&gt;Note&lt;/span&gt;
+&lt;/p&gt;
+&lt;div class="hextra-alert-content"&gt;&lt;p&gt;Anything else that starts a shell outside your GUI session can show the same
+symptom. The integrated terminals in VS Code and JetBrains IDEs usually need
+nothing, being children of the app itself — but if one of them asks for a
+password while Terminal does not, it is this same cause and this same fix.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="when-it-does-not-work"&gt;When it does not work&lt;span class="hx:absolute hx:-mt-20" id="when-it-does-not-work"&gt;&lt;/span&gt;
+&lt;a href="#when-it-does-not-work" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Symptom&lt;/th&gt;
+&lt;th&gt;Cause&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Password prompt in tmux, Touch ID everywhere else&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;pam_reattach&lt;/code&gt; missing, or listed below &lt;code&gt;pam_tid.so&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Password prompt over SSH&lt;/td&gt;
+&lt;td&gt;No sensor at the far end. Expected — &lt;code&gt;sufficient&lt;/code&gt; falls through&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Works, then stops after an OS update&lt;/td&gt;
+&lt;td&gt;The line went into &lt;code&gt;/etc/pam.d/sudo&lt;/code&gt;, not &lt;code&gt;sudo_local&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Nothing prompts and the password is refused&lt;/td&gt;
+&lt;td&gt;Typo in &lt;code&gt;sudo_local&lt;/code&gt;. Fix it from the root shell you kept open&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id="the-finished-file"&gt;The finished file&lt;span class="hx:absolute hx:-mt-20" id="the-finished-file"&gt;&lt;/span&gt;
+&lt;a href="#the-finished-file" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Both halves together, and nothing else in it:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div class="hextra-code-filename not-prose" dir="auto"&gt;&lt;span class="hx:truncate"&gt;/etc/pam.d/sudo_local&lt;/span&gt;&lt;/div&gt;&lt;div&gt;
+&lt;pre&gt;&lt;code&gt;# sudo_local: local config file which survives system update and is included for sudo
+auth optional /opt/homebrew/lib/pam/pam_reattach.so ignore_ssh
+auth sufficient pam_tid.so&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-10"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Drop the first &lt;code&gt;auth&lt;/code&gt; line if you never use tmux. &lt;code&gt;/etc/pam.d/sudo&lt;/code&gt; stays
+untouched — it already includes this file.&lt;/p&gt;</description></item></channel></rss>

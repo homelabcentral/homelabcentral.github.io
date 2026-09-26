@@ -1,0 +1,719 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homelab Central – Productivity &amp; Documents</title><link>https://homelabcentral.net/software/productivity/</link><description>Recent content in Productivity &amp; Documents on Homelab Central</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://homelabcentral.net/software/productivity/index.xml" rel="self" type="application/rss+xml"/><item><title>Adobe Acrobat Reader</title><link>https://homelabcentral.net/software/productivity/adobe-acrobat-reader/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://homelabcentral.net/software/productivity/adobe-acrobat-reader/</guid><description>
+&lt;div class="hextra-lead"&gt;&lt;p&gt;The reference PDF reader, for forms and documents Preview mishandles.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a href="https://formulae.brew.sh/cask/adobe-acrobat-reader" title="Homebrew cask" target="_blank" rel="noreferrer" class="hextra-badge-link not-prose hx:no-underline hover:hx:no-underline"&gt;&lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-blue-400 hx:bg-blue-100 hx:text-blue-950 hx:dark:border-blue-800 hx:dark:bg-blue-950 hx:dark:text-blue-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"&gt;&lt;path fill="currentColor" d="M39.677 32.971c-4.6 0-8.45 3.142-9.603 7.389c-4.063.572-7.218 4.032-7.218 8.247c0 4.1 2.954 7.522 6.84 8.293l.017.002q2.16.395 4.272.992l.014.004c5.603 1.511 16.501 3.582 28.567 3.28c.77 1.572 1.95 2.906 3.442 3.808l-.013-.007c.523.324.946 1.19.946 1.695a5.444 5.444 0 0 0 5.425 5.428c1.417 0 2.755-.428 3.77-1.286c1.014-.858 1.66-2.172 1.66-3.664l-.003-.807l-.004-.093a8.75 8.75 0 0 1 1.004-4.75V61.5c.433-.804.707-1.696.883-2.62c1.964-.515 3.918-1.088 5.831-1.81l.006-.002a9.5 9.5 0 0 1 2.08-.54h.005a8.39 8.39 0 0 0 7.229-8.3c0-4.613-3.765-8.379-8.378-8.379c-1.329 0-2.567.355-3.682.908c-1.607-3.64-5.226-6.192-9.448-6.192c-4.792 0-8.802 3.297-9.973 7.729c-1.763-2.056-4.317-3.42-7.231-3.42c-2.579 0-4.847 1.099-6.577 2.76c-.66-4.874-4.811-8.662-9.861-8.662zm0 2.288a7.692 7.692 0 0 1 7.267 10.265a1.144 1.144 0 0 0 .894 1.506l.027.005a1.144 1.144 0 0 0 1.235-.757l.001.003l.001-.005l.036-.021a7.32 7.32 0 0 1 6.977-5.095a7.32 7.32 0 0 1 6.958 5.042a1.144 1.144 0 0 0 2.224-.476a8.046 8.046 0 0 1 8.022-8.876a8.06 8.06 0 0 1 7.69 5.63a1.144 1.144 0 0 0 1.378.761l.802-.21a1 1 0 0 0 .273-.11a6.04 6.04 0 0 1 2.987-.785a6.07 6.07 0 0 1 6.09 6.09a6.08 6.08 0 0 1-5.255 6.034h-.006a11.8 11.8 0 0 0-2.585.672a57 57 0 0 1-6.272 1.944a1.14 1.14 0 0 0-.862.995a6.8 6.8 0 0 1-.78 2.548l-.002.004a11.04 11.04 0 0 0-1.27 5.996l-.002-.094l.005.826c0 .875-.313 1.465-.85 1.918c-.535.454-1.34.746-2.293.746a3.123 3.123 0 0 1-3.14-3.141a4.28 4.28 0 0 0-2.024-3.638l-.011-.007a6.85 6.85 0 0 1-2.84-3.395a1.14 1.14 0 0 0-1.105-.732c-12.054.406-23.121-1.72-28.638-3.207l-.015-.005a48 48 0 0 0-4.471-1.038l.017.004c-2.839-.563-4.997-3.046-4.997-6.049a6.07 6.07 0 0 1 5.872-6.08a1.144 1.144 0 0 0 1.085-.938a7.695 7.695 0 0 1 7.578-6.331zM42.135.018a1.14 1.14 0 0 0-.9.811c-1.683 5.888.956 11.472 4.474 15.656a32 32 0 0 0 2.54 2.679a10.9 10.9 0 0 0-3.551.1c-6.317 1.243-11.695 5.254-14.617 13.505c-1.198 3.384-1.251 6.903-.865 10.1a6.1 6.1 0 0 1 1.8-.338a1.1 1.1 0 0 0 .437-.173c-.32-2.887-.224-5.977.784-8.826c2.713-7.663 7.224-10.906 12.902-12.024c1.956-.385 3.544-.058 5.28.508c.868.283 1.763.632 2.724.965l.178.055c.91.31 1.875.604 2.933.808a1.144 1.144 0 0 0 1.344-1.312a13 13 0 0 1-.002-4.197c.045-.281.087-.564.148-.837c.348-1.561.946-2.992 1.65-4.268a19.8 19.8 0 0 1 3.534-4.598c.376.285.754.54 1.128.96c.183.205.173.215.312.387c-1.77 1.643-5.705 6.102-5.077 13.084a1.144 1.144 0 0 0 1.18 1.04c2.503-.09 4.175-.921 5.634-1.593c1.46-.673 2.712-1.217 4.968-1.147c4.667.147 8.738 3.814 10.34 6.052c1.729 2.633 3.858 5.907 3.512 14.883v.037a6 6 0 0 1 1.524-.196q.389.002.764.053c.316-9.267-2.162-13.402-3.907-16.06l-.025-.037c-1.945-2.722-6.366-6.837-12.136-7.017c-2.681-.084-4.49.66-5.996 1.354c-1.161.535-2.246.944-3.571 1.174c.008-6.857 5.037-10.568 5.037-10.568a1.144 1.144 0 0 0 .261-1.584s-.46-.653-1.112-1.384c-.65-.73-1.438-1.576-2.507-2.022a1.14 1.14 0 0 0-1.2.201a23 23 0 0 0-4.665 5.877c-.257.463-.481.97-.706 1.479c-.493-1.63-1.16-3.144-2.035-4.54c-2.415-3.849-6.316-6.74-11.888-8.98a1.14 1.14 0 0 0-.627-.066zm1.036 2.775c4.532 2.018 7.624 4.428 9.541 7.486c1.4 2.23 2.21 4.867 2.548 7.988c.016.152.025.312.037.466v.002c.085.902.138 1.834.148 2.818c-.33-.175-.724-.428-1.097-.655c-.243-.148-.456-.254-.711-.423c-1.953-1.284-4.252-3.17-6.179-5.46c-2.944-3.504-4.989-7.784-4.287-12.222m44.048 51.483a11.8 11.8 0 0 0-2.527.66a53 53 0 0 1-1.928.681l-.153.298c-.034.065-.148.236-.191.314h2.847v3.359a3.07 3.07 0 0 0 3.055 3.052h7.084a7.45 7.45 0 0 1 7.451 7.45v30.955a7.46 7.46 0 0 1-2.193 5.277a7.45 7.45 0 0 1-3.821 2.034a7.5 7.5 0 0 1-1.465.14h-.006c-2.389.005-4.897 0-6.987-.028a3.055 3.055 0 0 0-3.116 3.051c0 2.5 0 6.734-.009 8.553v.005a.76.76 0 0 1-.266.57c-1.156.863-4.513 2.629-10.991 3.83a65 65 0 0 1-4.268.64c-3.104.368-6.737.597-10.957.597c-16.572 0-24.462-2.779-26.607-4.009a.76.76 0 0 1-.349-.633l-.14-64.842h4.064c-.057-.106-.087-.177-.142-.281c-.327-.083-.699-.17-.996-.25l-.012-.003a48 48 0 0 0-4.473-1.038l.017.004a6 6 0 0 1-.517-.127a1.14 1.14 0 0 0-.228.553s.123 57.551.14 65.987a3.06 3.06 0 0 0 1.412 2.57l.042.024C33.85 125.326 41.904 128 58.777 128c17.268 0 25.066-3.614 27.629-5.55l.039-.032a3.05 3.05 0 0 0 1.1-2.342c.01-1.837.01-6.06.01-8.558a.76.76 0 0 1 .229-.546l.001-.001a.76.76 0 0 1 .552-.218h.008c2.11.03 4.629.033 7.025.027a9.74 9.74 0 0 0 9.772-9.736V70.09a9.74 9.74 0 0 0-9.738-9.739H88.32a.75.75 0 0 1-.764-.764v-4.504a1.14 1.14 0 0 0-.337-.81zm1.58 13.728a3.5 3.5 0 0 0-1.351.269a3.5 3.5 0 0 0-1.146.764v.001a3.5 3.5 0 0 0-.765 1.145a3.5 3.5 0 0 0-.269 1.351v27.781a3.5 3.5 0 0 0 .27 1.352a3.5 3.5 0 0 0 .764 1.146a3.5 3.5 0 0 0 1.146.764a3.5 3.5 0 0 0 1.351.269h6.082a3.5 3.5 0 0 0 1.351-.269a3.5 3.5 0 0 0 1.146-.764a3.5 3.5 0 0 0 .764-1.146a3.5 3.5 0 0 0 .27-1.352v-27.78a3.5 3.5 0 0 0-.269-1.35a3.5 3.5 0 0 0-.764-1.146h-.001a3.5 3.5 0 0 0-1.147-.765a3.5 3.5 0 0 0-1.35-.27zm0 2.288h6.082a1.244 1.244 0 0 1 1.243 1.242v27.781a1.243 1.243 0 0 1-1.243 1.244H88.8a1.24 1.24 0 0 1-.879-.363h-.001a1.24 1.24 0 0 1-.363-.88v-27.78a1.24 1.24 0 0 1 .767-1.15q.226-.092.476-.093zm-7.756.506c-.051.131-.1.264-.157.393a8.3 8.3 0 0 1-1.071 1.813a6.8 6.8 0 0 1-.973 1.014a9.2 9.2 0 0 1-2.277 1.417a10.2 10.2 0 0 1-3.35.826q-.425.034-.85.034h-.011a9.3 9.3 0 0 1-1.763-.176a9.2 9.2 0 0 1-3.156-1.264a9.5 9.5 0 0 1-1.934-1.62a10 10 0 0 1-1.03-1.339a10 10 0 0 1-1.09-2.319a10 10 0 0 1-.386-1.704a14 14 0 0 1-1.418-1.187a13 13 0 0 1-1.223-1.36a107 107 0 0 1-10.647-.513q-1.641-.163-3.186-.362c-.444-.057-.858-.122-1.29-.183a3 3 0 0 1 .058.29v45.745a2.6 2.6 0 0 1-.032.412a2.6 2.6 0 0 1-.096.402a2.6 2.6 0 0 1-.156.383a2.6 2.6 0 0 1-.22.352a3 3 0 0 1-.267.313a3 3 0 0 1-.313.267a2.6 2.6 0 0 1-.354.219a3 3 0 0 1-.38.156a2.6 2.6 0 0 1-.402.097a2.6 2.6 0 0 1-.412.031a2.6 2.6 0 0 1-1.009-.2a2.6 2.6 0 0 1-.852-.57a2.6 2.6 0 0 1-.568-.853a2.6 2.6 0 0 1-.202-1.009V64.557a2.6 2.6 0 0 1 .202-1.006l.06-.091c-.713-.136-1.418-.272-2.08-.412a99 99 0 0 1-2.165-.484v51.163a1.91 1.91 0 0 0 .956 1.656c2.416 1.152 9.426 3.9 21.715 3.9c12.372 0 19.172-3.341 21.45-4.718a1.9 1.9 0 0 0 .874-1.599c.004-5.664.005-27.954.005-42.168m-17.335-2.335c.058.04.008.035.08.08l.004-.008c-.032-.02-.052-.053-.084-.072"/&gt;&lt;/svg&gt;&lt;/span&gt;Homebrew cask&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt; &lt;a href="https://get.adobe.com/reader/" title="Direct download" target="_blank" rel="noreferrer" class="hextra-badge-link not-prose hx:no-underline hover:hx:no-underline"&gt;&lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-orange-400 hx:bg-orange-100 hx:text-orange-950 hx:dark:border-orange-800 hx:dark:bg-orange-950 hx:dark:text-orange-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"&gt;&lt;path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m3.25 13.25h9m-8.5-6.5 4 3.5 4-3.5m-4-5v8.5"/&gt;&lt;/svg&gt;&lt;/span&gt;Direct download&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-does"&gt;What it does&lt;span class="hx:absolute hx:-mt-20" id="what-it-does"&gt;&lt;/span&gt;
+&lt;a href="#what-it-does" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Acrobat Reader displays PDFs, fills and saves AcroForms and XFA forms, applies signatures, and handles annotation and commenting. Its advantage over Preview is fidelity on documents that use features Preview implements partially — complex forms, embedded JavaScript, digital signature validation, and some government and banking documents that outright require it.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="notes"&gt;Notes&lt;span class="hx:absolute hx:-mt-20" id="notes"&gt;&lt;/span&gt;
+&lt;a href="#notes" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Free; the paid Acrobat Pro adds editing, OCR and conversion.&lt;/li&gt;
+&lt;li&gt;It installs background updater and integration components. If that is unwelcome, &lt;a
+href="https://homelabcentral.net/software/productivity/stirling-pdf/"&gt;Stirling-PDF&lt;/a&gt; covers manipulation locally and Preview covers reading.&lt;/li&gt;
+&lt;li&gt;The installed folder is named &lt;strong&gt;Adobe Acrobat DC&lt;/strong&gt;, which is the older product naming.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="alternative-to"&gt;Alternative to&lt;span class="hx:absolute hx:-mt-20" id="alternative-to"&gt;&lt;/span&gt;
+&lt;a href="#alternative-to" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-borderless-table" tabindex="0"&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Alternative&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Trade-off&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://support.apple.com/guide/preview/welcome/mac"target="_blank" rel="noopener"&gt;Preview&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Built in&lt;/td&gt;
+&lt;td&gt;Built into macOS, and enough for reading, annotating and simple forms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://pdfexpert.com/"target="_blank" rel="noopener"&gt;PDF Expert&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Paid&lt;/td&gt;
+&lt;td&gt;Mac-native, far lighter than Acrobat&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://skim-app.sourceforge.io/"target="_blank" rel="noopener"&gt;Skim&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Open source&lt;/td&gt;
+&lt;td&gt;Built for annotating academic papers&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://www.pdfgear.com/"target="_blank" rel="noopener"&gt;PDFgear&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Freemium&lt;/td&gt;
+&lt;td&gt;Editing and conversion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="install"&gt;Install&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
+&lt;a href="#install" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="hextra-scrollbar hx:overflow-x-auto hx:overflow-y-hidden hx:overscroll-x-contain"&gt;
+&lt;div class="hx:mt-4 hx:flex hx:w-max hx:min-w-full hx:border-b hx:border-neutral-200 hx:pb-px hx:dark:border-neutral-800" role="tablist" data-tab-group="Homebrew,Direct download"&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-04-0" role="tab" type="button" aria-controls="tabs-panel-tabs-04-0" aria-selected="true" tabindex="0" data-state="selected"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;span&gt;Homebrew&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-04-1" role="tab" type="button" aria-controls="tabs-panel-tabs-04-1" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;span&gt;Direct download&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-04-0" role="tabpanel" aria-labelledby="tabs-tab-tabs-04-0" aria-hidden="false" tabindex="0" data-state="selected"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew install --cask adobe-acrobat-reader&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-04-1" role="tabpanel" aria-labelledby="tabs-tab-tabs-04-1" aria-hidden="true"&gt;&lt;a
+href="https://get.adobe.com/reader/"target="_blank" rel="noopener"&gt;Download from the developer&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 data-hextra-search-id="links"&gt;Links&lt;span class="hx:absolute hx:-mt-20" id="links"&gt;&lt;/span&gt;
+&lt;a href="#links" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 2;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://www.adobe.com/acrobat/pdf-reader.html"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/&gt;&lt;/svg&gt;Homepage&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Official site&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://formulae.brew.sh/cask/adobe-acrobat-reader"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/&gt;&lt;/svg&gt;Homebrew cask&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Cask definition and versions&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;</description></item><item><title>Stirling-PDF</title><link>https://homelabcentral.net/software/productivity/stirling-pdf/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://homelabcentral.net/software/productivity/stirling-pdf/</guid><description>
+&lt;div class="hextra-lead"&gt;&lt;p&gt;Everything the online PDF converters do, without uploading the document to anyone.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a href="https://formulae.brew.sh/cask/stirling-pdf" title="Homebrew cask" target="_blank" rel="noreferrer" class="hextra-badge-link not-prose hx:no-underline hover:hx:no-underline"&gt;&lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-blue-400 hx:bg-blue-100 hx:text-blue-950 hx:dark:border-blue-800 hx:dark:bg-blue-950 hx:dark:text-blue-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"&gt;&lt;path fill="currentColor" d="M39.677 32.971c-4.6 0-8.45 3.142-9.603 7.389c-4.063.572-7.218 4.032-7.218 8.247c0 4.1 2.954 7.522 6.84 8.293l.017.002q2.16.395 4.272.992l.014.004c5.603 1.511 16.501 3.582 28.567 3.28c.77 1.572 1.95 2.906 3.442 3.808l-.013-.007c.523.324.946 1.19.946 1.695a5.444 5.444 0 0 0 5.425 5.428c1.417 0 2.755-.428 3.77-1.286c1.014-.858 1.66-2.172 1.66-3.664l-.003-.807l-.004-.093a8.75 8.75 0 0 1 1.004-4.75V61.5c.433-.804.707-1.696.883-2.62c1.964-.515 3.918-1.088 5.831-1.81l.006-.002a9.5 9.5 0 0 1 2.08-.54h.005a8.39 8.39 0 0 0 7.229-8.3c0-4.613-3.765-8.379-8.378-8.379c-1.329 0-2.567.355-3.682.908c-1.607-3.64-5.226-6.192-9.448-6.192c-4.792 0-8.802 3.297-9.973 7.729c-1.763-2.056-4.317-3.42-7.231-3.42c-2.579 0-4.847 1.099-6.577 2.76c-.66-4.874-4.811-8.662-9.861-8.662zm0 2.288a7.692 7.692 0 0 1 7.267 10.265a1.144 1.144 0 0 0 .894 1.506l.027.005a1.144 1.144 0 0 0 1.235-.757l.001.003l.001-.005l.036-.021a7.32 7.32 0 0 1 6.977-5.095a7.32 7.32 0 0 1 6.958 5.042a1.144 1.144 0 0 0 2.224-.476a8.046 8.046 0 0 1 8.022-8.876a8.06 8.06 0 0 1 7.69 5.63a1.144 1.144 0 0 0 1.378.761l.802-.21a1 1 0 0 0 .273-.11a6.04 6.04 0 0 1 2.987-.785a6.07 6.07 0 0 1 6.09 6.09a6.08 6.08 0 0 1-5.255 6.034h-.006a11.8 11.8 0 0 0-2.585.672a57 57 0 0 1-6.272 1.944a1.14 1.14 0 0 0-.862.995a6.8 6.8 0 0 1-.78 2.548l-.002.004a11.04 11.04 0 0 0-1.27 5.996l-.002-.094l.005.826c0 .875-.313 1.465-.85 1.918c-.535.454-1.34.746-2.293.746a3.123 3.123 0 0 1-3.14-3.141a4.28 4.28 0 0 0-2.024-3.638l-.011-.007a6.85 6.85 0 0 1-2.84-3.395a1.14 1.14 0 0 0-1.105-.732c-12.054.406-23.121-1.72-28.638-3.207l-.015-.005a48 48 0 0 0-4.471-1.038l.017.004c-2.839-.563-4.997-3.046-4.997-6.049a6.07 6.07 0 0 1 5.872-6.08a1.144 1.144 0 0 0 1.085-.938a7.695 7.695 0 0 1 7.578-6.331zM42.135.018a1.14 1.14 0 0 0-.9.811c-1.683 5.888.956 11.472 4.474 15.656a32 32 0 0 0 2.54 2.679a10.9 10.9 0 0 0-3.551.1c-6.317 1.243-11.695 5.254-14.617 13.505c-1.198 3.384-1.251 6.903-.865 10.1a6.1 6.1 0 0 1 1.8-.338a1.1 1.1 0 0 0 .437-.173c-.32-2.887-.224-5.977.784-8.826c2.713-7.663 7.224-10.906 12.902-12.024c1.956-.385 3.544-.058 5.28.508c.868.283 1.763.632 2.724.965l.178.055c.91.31 1.875.604 2.933.808a1.144 1.144 0 0 0 1.344-1.312a13 13 0 0 1-.002-4.197c.045-.281.087-.564.148-.837c.348-1.561.946-2.992 1.65-4.268a19.8 19.8 0 0 1 3.534-4.598c.376.285.754.54 1.128.96c.183.205.173.215.312.387c-1.77 1.643-5.705 6.102-5.077 13.084a1.144 1.144 0 0 0 1.18 1.04c2.503-.09 4.175-.921 5.634-1.593c1.46-.673 2.712-1.217 4.968-1.147c4.667.147 8.738 3.814 10.34 6.052c1.729 2.633 3.858 5.907 3.512 14.883v.037a6 6 0 0 1 1.524-.196q.389.002.764.053c.316-9.267-2.162-13.402-3.907-16.06l-.025-.037c-1.945-2.722-6.366-6.837-12.136-7.017c-2.681-.084-4.49.66-5.996 1.354c-1.161.535-2.246.944-3.571 1.174c.008-6.857 5.037-10.568 5.037-10.568a1.144 1.144 0 0 0 .261-1.584s-.46-.653-1.112-1.384c-.65-.73-1.438-1.576-2.507-2.022a1.14 1.14 0 0 0-1.2.201a23 23 0 0 0-4.665 5.877c-.257.463-.481.97-.706 1.479c-.493-1.63-1.16-3.144-2.035-4.54c-2.415-3.849-6.316-6.74-11.888-8.98a1.14 1.14 0 0 0-.627-.066zm1.036 2.775c4.532 2.018 7.624 4.428 9.541 7.486c1.4 2.23 2.21 4.867 2.548 7.988c.016.152.025.312.037.466v.002c.085.902.138 1.834.148 2.818c-.33-.175-.724-.428-1.097-.655c-.243-.148-.456-.254-.711-.423c-1.953-1.284-4.252-3.17-6.179-5.46c-2.944-3.504-4.989-7.784-4.287-12.222m44.048 51.483a11.8 11.8 0 0 0-2.527.66a53 53 0 0 1-1.928.681l-.153.298c-.034.065-.148.236-.191.314h2.847v3.359a3.07 3.07 0 0 0 3.055 3.052h7.084a7.45 7.45 0 0 1 7.451 7.45v30.955a7.46 7.46 0 0 1-2.193 5.277a7.45 7.45 0 0 1-3.821 2.034a7.5 7.5 0 0 1-1.465.14h-.006c-2.389.005-4.897 0-6.987-.028a3.055 3.055 0 0 0-3.116 3.051c0 2.5 0 6.734-.009 8.553v.005a.76.76 0 0 1-.266.57c-1.156.863-4.513 2.629-10.991 3.83a65 65 0 0 1-4.268.64c-3.104.368-6.737.597-10.957.597c-16.572 0-24.462-2.779-26.607-4.009a.76.76 0 0 1-.349-.633l-.14-64.842h4.064c-.057-.106-.087-.177-.142-.281c-.327-.083-.699-.17-.996-.25l-.012-.003a48 48 0 0 0-4.473-1.038l.017.004a6 6 0 0 1-.517-.127a1.14 1.14 0 0 0-.228.553s.123 57.551.14 65.987a3.06 3.06 0 0 0 1.412 2.57l.042.024C33.85 125.326 41.904 128 58.777 128c17.268 0 25.066-3.614 27.629-5.55l.039-.032a3.05 3.05 0 0 0 1.1-2.342c.01-1.837.01-6.06.01-8.558a.76.76 0 0 1 .229-.546l.001-.001a.76.76 0 0 1 .552-.218h.008c2.11.03 4.629.033 7.025.027a9.74 9.74 0 0 0 9.772-9.736V70.09a9.74 9.74 0 0 0-9.738-9.739H88.32a.75.75 0 0 1-.764-.764v-4.504a1.14 1.14 0 0 0-.337-.81zm1.58 13.728a3.5 3.5 0 0 0-1.351.269a3.5 3.5 0 0 0-1.146.764v.001a3.5 3.5 0 0 0-.765 1.145a3.5 3.5 0 0 0-.269 1.351v27.781a3.5 3.5 0 0 0 .27 1.352a3.5 3.5 0 0 0 .764 1.146a3.5 3.5 0 0 0 1.146.764a3.5 3.5 0 0 0 1.351.269h6.082a3.5 3.5 0 0 0 1.351-.269a3.5 3.5 0 0 0 1.146-.764a3.5 3.5 0 0 0 .764-1.146a3.5 3.5 0 0 0 .27-1.352v-27.78a3.5 3.5 0 0 0-.269-1.35a3.5 3.5 0 0 0-.764-1.146h-.001a3.5 3.5 0 0 0-1.147-.765a3.5 3.5 0 0 0-1.35-.27zm0 2.288h6.082a1.244 1.244 0 0 1 1.243 1.242v27.781a1.243 1.243 0 0 1-1.243 1.244H88.8a1.24 1.24 0 0 1-.879-.363h-.001a1.24 1.24 0 0 1-.363-.88v-27.78a1.24 1.24 0 0 1 .767-1.15q.226-.092.476-.093zm-7.756.506c-.051.131-.1.264-.157.393a8.3 8.3 0 0 1-1.071 1.813a6.8 6.8 0 0 1-.973 1.014a9.2 9.2 0 0 1-2.277 1.417a10.2 10.2 0 0 1-3.35.826q-.425.034-.85.034h-.011a9.3 9.3 0 0 1-1.763-.176a9.2 9.2 0 0 1-3.156-1.264a9.5 9.5 0 0 1-1.934-1.62a10 10 0 0 1-1.03-1.339a10 10 0 0 1-1.09-2.319a10 10 0 0 1-.386-1.704a14 14 0 0 1-1.418-1.187a13 13 0 0 1-1.223-1.36a107 107 0 0 1-10.647-.513q-1.641-.163-3.186-.362c-.444-.057-.858-.122-1.29-.183a3 3 0 0 1 .058.29v45.745a2.6 2.6 0 0 1-.032.412a2.6 2.6 0 0 1-.096.402a2.6 2.6 0 0 1-.156.383a2.6 2.6 0 0 1-.22.352a3 3 0 0 1-.267.313a3 3 0 0 1-.313.267a2.6 2.6 0 0 1-.354.219a3 3 0 0 1-.38.156a2.6 2.6 0 0 1-.402.097a2.6 2.6 0 0 1-.412.031a2.6 2.6 0 0 1-1.009-.2a2.6 2.6 0 0 1-.852-.57a2.6 2.6 0 0 1-.568-.853a2.6 2.6 0 0 1-.202-1.009V64.557a2.6 2.6 0 0 1 .202-1.006l.06-.091c-.713-.136-1.418-.272-2.08-.412a99 99 0 0 1-2.165-.484v51.163a1.91 1.91 0 0 0 .956 1.656c2.416 1.152 9.426 3.9 21.715 3.9c12.372 0 19.172-3.341 21.45-4.718a1.9 1.9 0 0 0 .874-1.599c.004-5.664.005-27.954.005-42.168m-17.335-2.335c.058.04.008.035.08.08l.004-.008c-.032-.02-.052-.053-.084-.072"/&gt;&lt;/svg&gt;&lt;/span&gt;Homebrew cask&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt; &lt;a href="https://stirling.com/download" title="Direct download" target="_blank" rel="noreferrer" class="hextra-badge-link not-prose hx:no-underline hover:hx:no-underline"&gt;&lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-orange-400 hx:bg-orange-100 hx:text-orange-950 hx:dark:border-orange-800 hx:dark:bg-orange-950 hx:dark:text-orange-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"&gt;&lt;path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m3.25 13.25h9m-8.5-6.5 4 3.5 4-3.5m-4-5v8.5"/&gt;&lt;/svg&gt;&lt;/span&gt;Direct download&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-does"&gt;What it does&lt;span class="hx:absolute hx:-mt-20" id="what-it-does"&gt;&lt;/span&gt;
+&lt;a href="#what-it-does" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Stirling-PDF is a large collection of PDF operations behind one interface: merge, split, rotate, reorder and delete pages; convert to and from images, Office formats and HTML; compress; OCR with Tesseract; add or remove passwords and permissions; redact; sign; repair damaged files; compare two documents.&lt;/p&gt;
+&lt;p&gt;Its reason to exist is the alternative. &amp;ldquo;Free online PDF merge&amp;rdquo; means uploading the document to a stranger&amp;rsquo;s server, which is unacceptable for anything with an address, a signature or a bank detail on it. This runs locally.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="three-ways-to-run-it"&gt;Three ways to run it&lt;span class="hx:absolute hx:-mt-20" id="three-ways-to-run-it"&gt;&lt;/span&gt;
+&lt;a href="#three-ways-to-run-it" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The project started as a container and grew a desktop app, so there are now three deployments of the same tool. They differ in where the work happens, not in what it can do.&lt;/p&gt;
+&lt;div class="hextra-borderless-table" tabindex="0"&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Route&lt;/th&gt;
+&lt;th&gt;What it is&lt;/th&gt;
+&lt;th&gt;When&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Desktop app&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;A signed universal macOS &lt;code&gt;.dmg&lt;/code&gt; that bundles the server and runs it locally&lt;/td&gt;
+&lt;td&gt;One Mac, nothing to maintain&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Container&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;stirlingtools/s-pdf&lt;/code&gt;, reachable from every device on the network&lt;/td&gt;
+&lt;td&gt;A homelab, or a family that keeps asking you to merge PDFs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Hosted&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Stirling&amp;rsquo;s own instance&lt;/td&gt;
+&lt;td&gt;Never, for anything you would not email to a stranger&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;The standalone download is the newer of the two local options and needs no Docker, no Java and no configuration — install it and it is an ordinary Mac application, with the same operation set as the container.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="notes"&gt;Notes&lt;span class="hx:absolute hx:-mt-20" id="notes"&gt;&lt;/span&gt;
+&lt;a href="#notes" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;OCR language packs are downloaded separately and are worth adding for any non-English documents.&lt;/li&gt;
+&lt;li&gt;The container is the better choice the moment more than one device needs it: put it behind &lt;a
+href="https://homelabcentral.net/software/networking/tailscale/"&gt;Tailscale&lt;/a&gt; rather than on the open internet.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="alternative-to"&gt;Alternative to&lt;span class="hx:absolute hx:-mt-20" id="alternative-to"&gt;&lt;/span&gt;
+&lt;a href="#alternative-to" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-borderless-table" tabindex="0"&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Alternative&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Trade-off&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://www.adobe.com/acrobat/acrobat-pro.html"target="_blank" rel="noopener"&gt;Adobe Acrobat Pro&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Subscription&lt;/td&gt;
+&lt;td&gt;The commercial standard, subscription&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://pdfexpert.com/"target="_blank" rel="noopener"&gt;PDF Expert&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Paid&lt;/td&gt;
+&lt;td&gt;Native, covers editing and OCR&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://support.apple.com/guide/preview/welcome/mac"target="_blank" rel="noopener"&gt;Preview&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Built in&lt;/td&gt;
+&lt;td&gt;Handles merging and page reordering&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://qpdf.sourceforge.io/"target="_blank" rel="noopener"&gt;qpdf&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;, &lt;a
+href="https://www.ghostscript.com/"target="_blank" rel="noopener"&gt;Ghostscript&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt; and &lt;a
+href="https://ocrmypdf.readthedocs.io/"target="_blank" rel="noopener"&gt;OCRmyPDF&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Open source&lt;/td&gt;
+&lt;td&gt;The same operations as composable CLI tools&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://smallpdf.com/"target="_blank" rel="noopener"&gt;Smallpdf&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt; or &lt;a
+href="https://www.sejda.com/"target="_blank" rel="noopener"&gt;Sejda&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Freemium&lt;/td&gt;
+&lt;td&gt;The web services this exists to avoid uploading to&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="install"&gt;Install&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
+&lt;a href="#install" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="hextra-scrollbar hx:overflow-x-auto hx:overflow-y-hidden hx:overscroll-x-contain"&gt;
+&lt;div class="hx:mt-4 hx:flex hx:w-max hx:min-w-full hx:border-b hx:border-neutral-200 hx:pb-px hx:dark:border-neutral-800" role="tablist" data-tab-group="Homebrew,Docker,Direct download"&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-05-0" role="tab" type="button" aria-controls="tabs-panel-tabs-05-0" aria-selected="true" tabindex="0" data-state="selected"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;span&gt;Homebrew&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-05-1" role="tab" type="button" aria-controls="tabs-panel-tabs-05-1" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;span&gt;Docker&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-05-2" role="tab" type="button" aria-controls="tabs-panel-tabs-05-2" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;span&gt;Direct download&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-05-0" role="tabpanel" aria-labelledby="tabs-tab-tabs-05-0" aria-hidden="false" tabindex="0" data-state="selected"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew install --cask stirling-pdf&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-05-1" role="tabpanel" aria-labelledby="tabs-tab-tabs-05-1" aria-hidden="true"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;docker run -d -p 8080:8080 &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; -v ./trainingData:/usr/share/tessdata &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; --name stirling-pdf stirlingtools/s-pdf:latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-05-2" role="tabpanel" aria-labelledby="tabs-tab-tabs-05-2" aria-hidden="true"&gt;&lt;p&gt;A universal macOS &lt;code&gt;.dmg&lt;/code&gt; — the standalone desktop build, no Docker required:&lt;/p&gt;
+&lt;p&gt;&lt;a
+href="https://stirling.com/download"target="_blank" rel="noopener"&gt;Download from the developer&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt; · &lt;a
+href="https://github.com/Stirling-Tools/Stirling-PDF/releases/latest"target="_blank" rel="noopener"&gt;releases on GitHub&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;h2 data-hextra-search-id="links"&gt;Links&lt;span class="hx:absolute hx:-mt-20" id="links"&gt;&lt;/span&gt;
+&lt;a href="#links" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 2;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://stirling.com/"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/&gt;&lt;/svg&gt;Homepage&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Official site&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://stirling.com/download"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/&gt;&lt;/svg&gt;Downloads&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Standalone desktop builds&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://formulae.brew.sh/cask/stirling-pdf"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/&gt;&lt;/svg&gt;Homebrew cask&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Cask definition and versions&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://github.com/Stirling-Tools/Stirling-PDF"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg fill="currentColor" viewBox="3 3 18 18"&gt;
+&lt;path d="M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z"&gt;&lt;/path&gt;
+&lt;/svg&gt;
+Repository&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Source code&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://docs.stirling.com/"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/&gt;&lt;/svg&gt;Documentation&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Documentation&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;</description></item><item><title>FluxMarkdown</title><link>https://homelabcentral.net/software/productivity/flux-markdown/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://homelabcentral.net/software/productivity/flux-markdown/</guid><description>
+&lt;div class="hextra-lead"&gt;&lt;p&gt;Press Space on a &lt;code&gt;.md&lt;/code&gt; file and get rendered Markdown, with diagrams and maths.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a href="https://github.com/xykong/homebrew-tap" title="Homebrew cask" target="_blank" rel="noreferrer" class="hextra-badge-link not-prose hx:no-underline hover:hx:no-underline"&gt;&lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-blue-400 hx:bg-blue-100 hx:text-blue-950 hx:dark:border-blue-800 hx:dark:bg-blue-950 hx:dark:text-blue-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"&gt;&lt;path fill="currentColor" d="M39.677 32.971c-4.6 0-8.45 3.142-9.603 7.389c-4.063.572-7.218 4.032-7.218 8.247c0 4.1 2.954 7.522 6.84 8.293l.017.002q2.16.395 4.272.992l.014.004c5.603 1.511 16.501 3.582 28.567 3.28c.77 1.572 1.95 2.906 3.442 3.808l-.013-.007c.523.324.946 1.19.946 1.695a5.444 5.444 0 0 0 5.425 5.428c1.417 0 2.755-.428 3.77-1.286c1.014-.858 1.66-2.172 1.66-3.664l-.003-.807l-.004-.093a8.75 8.75 0 0 1 1.004-4.75V61.5c.433-.804.707-1.696.883-2.62c1.964-.515 3.918-1.088 5.831-1.81l.006-.002a9.5 9.5 0 0 1 2.08-.54h.005a8.39 8.39 0 0 0 7.229-8.3c0-4.613-3.765-8.379-8.378-8.379c-1.329 0-2.567.355-3.682.908c-1.607-3.64-5.226-6.192-9.448-6.192c-4.792 0-8.802 3.297-9.973 7.729c-1.763-2.056-4.317-3.42-7.231-3.42c-2.579 0-4.847 1.099-6.577 2.76c-.66-4.874-4.811-8.662-9.861-8.662zm0 2.288a7.692 7.692 0 0 1 7.267 10.265a1.144 1.144 0 0 0 .894 1.506l.027.005a1.144 1.144 0 0 0 1.235-.757l.001.003l.001-.005l.036-.021a7.32 7.32 0 0 1 6.977-5.095a7.32 7.32 0 0 1 6.958 5.042a1.144 1.144 0 0 0 2.224-.476a8.046 8.046 0 0 1 8.022-8.876a8.06 8.06 0 0 1 7.69 5.63a1.144 1.144 0 0 0 1.378.761l.802-.21a1 1 0 0 0 .273-.11a6.04 6.04 0 0 1 2.987-.785a6.07 6.07 0 0 1 6.09 6.09a6.08 6.08 0 0 1-5.255 6.034h-.006a11.8 11.8 0 0 0-2.585.672a57 57 0 0 1-6.272 1.944a1.14 1.14 0 0 0-.862.995a6.8 6.8 0 0 1-.78 2.548l-.002.004a11.04 11.04 0 0 0-1.27 5.996l-.002-.094l.005.826c0 .875-.313 1.465-.85 1.918c-.535.454-1.34.746-2.293.746a3.123 3.123 0 0 1-3.14-3.141a4.28 4.28 0 0 0-2.024-3.638l-.011-.007a6.85 6.85 0 0 1-2.84-3.395a1.14 1.14 0 0 0-1.105-.732c-12.054.406-23.121-1.72-28.638-3.207l-.015-.005a48 48 0 0 0-4.471-1.038l.017.004c-2.839-.563-4.997-3.046-4.997-6.049a6.07 6.07 0 0 1 5.872-6.08a1.144 1.144 0 0 0 1.085-.938a7.695 7.695 0 0 1 7.578-6.331zM42.135.018a1.14 1.14 0 0 0-.9.811c-1.683 5.888.956 11.472 4.474 15.656a32 32 0 0 0 2.54 2.679a10.9 10.9 0 0 0-3.551.1c-6.317 1.243-11.695 5.254-14.617 13.505c-1.198 3.384-1.251 6.903-.865 10.1a6.1 6.1 0 0 1 1.8-.338a1.1 1.1 0 0 0 .437-.173c-.32-2.887-.224-5.977.784-8.826c2.713-7.663 7.224-10.906 12.902-12.024c1.956-.385 3.544-.058 5.28.508c.868.283 1.763.632 2.724.965l.178.055c.91.31 1.875.604 2.933.808a1.144 1.144 0 0 0 1.344-1.312a13 13 0 0 1-.002-4.197c.045-.281.087-.564.148-.837c.348-1.561.946-2.992 1.65-4.268a19.8 19.8 0 0 1 3.534-4.598c.376.285.754.54 1.128.96c.183.205.173.215.312.387c-1.77 1.643-5.705 6.102-5.077 13.084a1.144 1.144 0 0 0 1.18 1.04c2.503-.09 4.175-.921 5.634-1.593c1.46-.673 2.712-1.217 4.968-1.147c4.667.147 8.738 3.814 10.34 6.052c1.729 2.633 3.858 5.907 3.512 14.883v.037a6 6 0 0 1 1.524-.196q.389.002.764.053c.316-9.267-2.162-13.402-3.907-16.06l-.025-.037c-1.945-2.722-6.366-6.837-12.136-7.017c-2.681-.084-4.49.66-5.996 1.354c-1.161.535-2.246.944-3.571 1.174c.008-6.857 5.037-10.568 5.037-10.568a1.144 1.144 0 0 0 .261-1.584s-.46-.653-1.112-1.384c-.65-.73-1.438-1.576-2.507-2.022a1.14 1.14 0 0 0-1.2.201a23 23 0 0 0-4.665 5.877c-.257.463-.481.97-.706 1.479c-.493-1.63-1.16-3.144-2.035-4.54c-2.415-3.849-6.316-6.74-11.888-8.98a1.14 1.14 0 0 0-.627-.066zm1.036 2.775c4.532 2.018 7.624 4.428 9.541 7.486c1.4 2.23 2.21 4.867 2.548 7.988c.016.152.025.312.037.466v.002c.085.902.138 1.834.148 2.818c-.33-.175-.724-.428-1.097-.655c-.243-.148-.456-.254-.711-.423c-1.953-1.284-4.252-3.17-6.179-5.46c-2.944-3.504-4.989-7.784-4.287-12.222m44.048 51.483a11.8 11.8 0 0 0-2.527.66a53 53 0 0 1-1.928.681l-.153.298c-.034.065-.148.236-.191.314h2.847v3.359a3.07 3.07 0 0 0 3.055 3.052h7.084a7.45 7.45 0 0 1 7.451 7.45v30.955a7.46 7.46 0 0 1-2.193 5.277a7.45 7.45 0 0 1-3.821 2.034a7.5 7.5 0 0 1-1.465.14h-.006c-2.389.005-4.897 0-6.987-.028a3.055 3.055 0 0 0-3.116 3.051c0 2.5 0 6.734-.009 8.553v.005a.76.76 0 0 1-.266.57c-1.156.863-4.513 2.629-10.991 3.83a65 65 0 0 1-4.268.64c-3.104.368-6.737.597-10.957.597c-16.572 0-24.462-2.779-26.607-4.009a.76.76 0 0 1-.349-.633l-.14-64.842h4.064c-.057-.106-.087-.177-.142-.281c-.327-.083-.699-.17-.996-.25l-.012-.003a48 48 0 0 0-4.473-1.038l.017.004a6 6 0 0 1-.517-.127a1.14 1.14 0 0 0-.228.553s.123 57.551.14 65.987a3.06 3.06 0 0 0 1.412 2.57l.042.024C33.85 125.326 41.904 128 58.777 128c17.268 0 25.066-3.614 27.629-5.55l.039-.032a3.05 3.05 0 0 0 1.1-2.342c.01-1.837.01-6.06.01-8.558a.76.76 0 0 1 .229-.546l.001-.001a.76.76 0 0 1 .552-.218h.008c2.11.03 4.629.033 7.025.027a9.74 9.74 0 0 0 9.772-9.736V70.09a9.74 9.74 0 0 0-9.738-9.739H88.32a.75.75 0 0 1-.764-.764v-4.504a1.14 1.14 0 0 0-.337-.81zm1.58 13.728a3.5 3.5 0 0 0-1.351.269a3.5 3.5 0 0 0-1.146.764v.001a3.5 3.5 0 0 0-.765 1.145a3.5 3.5 0 0 0-.269 1.351v27.781a3.5 3.5 0 0 0 .27 1.352a3.5 3.5 0 0 0 .764 1.146a3.5 3.5 0 0 0 1.146.764a3.5 3.5 0 0 0 1.351.269h6.082a3.5 3.5 0 0 0 1.351-.269a3.5 3.5 0 0 0 1.146-.764a3.5 3.5 0 0 0 .764-1.146a3.5 3.5 0 0 0 .27-1.352v-27.78a3.5 3.5 0 0 0-.269-1.35a3.5 3.5 0 0 0-.764-1.146h-.001a3.5 3.5 0 0 0-1.147-.765a3.5 3.5 0 0 0-1.35-.27zm0 2.288h6.082a1.244 1.244 0 0 1 1.243 1.242v27.781a1.243 1.243 0 0 1-1.243 1.244H88.8a1.24 1.24 0 0 1-.879-.363h-.001a1.24 1.24 0 0 1-.363-.88v-27.78a1.24 1.24 0 0 1 .767-1.15q.226-.092.476-.093zm-7.756.506c-.051.131-.1.264-.157.393a8.3 8.3 0 0 1-1.071 1.813a6.8 6.8 0 0 1-.973 1.014a9.2 9.2 0 0 1-2.277 1.417a10.2 10.2 0 0 1-3.35.826q-.425.034-.85.034h-.011a9.3 9.3 0 0 1-1.763-.176a9.2 9.2 0 0 1-3.156-1.264a9.5 9.5 0 0 1-1.934-1.62a10 10 0 0 1-1.03-1.339a10 10 0 0 1-1.09-2.319a10 10 0 0 1-.386-1.704a14 14 0 0 1-1.418-1.187a13 13 0 0 1-1.223-1.36a107 107 0 0 1-10.647-.513q-1.641-.163-3.186-.362c-.444-.057-.858-.122-1.29-.183a3 3 0 0 1 .058.29v45.745a2.6 2.6 0 0 1-.032.412a2.6 2.6 0 0 1-.096.402a2.6 2.6 0 0 1-.156.383a2.6 2.6 0 0 1-.22.352a3 3 0 0 1-.267.313a3 3 0 0 1-.313.267a2.6 2.6 0 0 1-.354.219a3 3 0 0 1-.38.156a2.6 2.6 0 0 1-.402.097a2.6 2.6 0 0 1-.412.031a2.6 2.6 0 0 1-1.009-.2a2.6 2.6 0 0 1-.852-.57a2.6 2.6 0 0 1-.568-.853a2.6 2.6 0 0 1-.202-1.009V64.557a2.6 2.6 0 0 1 .202-1.006l.06-.091c-.713-.136-1.418-.272-2.08-.412a99 99 0 0 1-2.165-.484v51.163a1.91 1.91 0 0 0 .956 1.656c2.416 1.152 9.426 3.9 21.715 3.9c12.372 0 19.172-3.341 21.45-4.718a1.9 1.9 0 0 0 .874-1.599c.004-5.664.005-27.954.005-42.168m-17.335-2.335c.058.04.008.035.08.08l.004-.008c-.032-.02-.052-.053-.084-.072"/&gt;&lt;/svg&gt;&lt;/span&gt;Homebrew cask&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt; &lt;a href="https://github.com/xykong/flux-markdown/releases" title="Direct download" target="_blank" rel="noreferrer" class="hextra-badge-link not-prose hx:no-underline hover:hx:no-underline"&gt;&lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-orange-400 hx:bg-orange-100 hx:text-orange-950 hx:dark:border-orange-800 hx:dark:bg-orange-950 hx:dark:text-orange-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"&gt;&lt;path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m3.25 13.25h9m-8.5-6.5 4 3.5 4-3.5m-4-5v8.5"/&gt;&lt;/svg&gt;&lt;/span&gt;Direct download&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-does"&gt;What it does&lt;span class="hx:absolute hx:-mt-20" id="what-it-does"&gt;&lt;/span&gt;
+&lt;a href="#what-it-does" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;FluxMarkdown is a Quick Look extension: selecting a Markdown file in Finder and pressing Space renders it rather than showing raw text. It handles GitHub-flavoured Markdown, code blocks with syntax highlighting, Mermaid diagrams and LaTeX maths.&lt;/p&gt;
+&lt;p&gt;For a machine whose content directory is entirely Markdown, that turns Finder into a usable way to skim what a file says without opening an editor.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="notes"&gt;Notes&lt;span class="hx:absolute hx:-mt-20" id="notes"&gt;&lt;/span&gt;
+&lt;a href="#notes" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Available from the developer&amp;rsquo;s own tap (&lt;code&gt;xykong/tap&lt;/code&gt;), not homebrew-cask.&lt;/li&gt;
+&lt;li&gt;The extension has to be enabled once in &lt;strong&gt;System Settings → Login Items &amp;amp; Extensions → Quick Look&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;It renders the file as written. Hugo shortcodes like &lt;code&gt;{{&amp;lt; cards &amp;gt;}}&lt;/code&gt; will appear as literal text, because nothing outside Hugo knows what they mean.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="alternative-to"&gt;Alternative to&lt;span class="hx:absolute hx:-mt-20" id="alternative-to"&gt;&lt;/span&gt;
+&lt;a href="#alternative-to" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-borderless-table" tabindex="0"&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Alternative&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Trade-off&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://github.com/sbarex/QLMarkdown"target="_blank" rel="noopener"&gt;QLMarkdown&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Open source&lt;/td&gt;
+&lt;td&gt;The best-known Quick Look Markdown plugin&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://marked2app.com/"target="_blank" rel="noopener"&gt;Marked 2&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Paid&lt;/td&gt;
+&lt;td&gt;A live previewer alongside your editor rather than in Finder&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://github.com/objective-see/Peek"target="_blank" rel="noopener"&gt;Peek&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Open source&lt;/td&gt;
+&lt;td&gt;A general-purpose Quick Look extension pack&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Any editor with preview&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;VS Code, Obsidian or Typora, if Finder is not where you read&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="install"&gt;Install&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
+&lt;a href="#install" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="hextra-scrollbar hx:overflow-x-auto hx:overflow-y-hidden hx:overscroll-x-contain"&gt;
+&lt;div class="hx:mt-4 hx:flex hx:w-max hx:min-w-full hx:border-b hx:border-neutral-200 hx:pb-px hx:dark:border-neutral-800" role="tablist" data-tab-group="Homebrew,Direct download"&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-04-0" role="tab" type="button" aria-controls="tabs-panel-tabs-04-0" aria-selected="true" tabindex="0" data-state="selected"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;span&gt;Homebrew&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-04-1" role="tab" type="button" aria-controls="tabs-panel-tabs-04-1" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;span&gt;Direct download&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-04-0" role="tabpanel" aria-labelledby="tabs-tab-tabs-04-0" aria-hidden="false" tabindex="0" data-state="selected"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew tap xykong/tap
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew install --cask xykong/tap/flux-markdown&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-04-1" role="tabpanel" aria-labelledby="tabs-tab-tabs-04-1" aria-hidden="true"&gt;&lt;a
+href="https://github.com/xykong/flux-markdown/releases"target="_blank" rel="noopener"&gt;Releases on GitHub&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 data-hextra-search-id="links"&gt;Links&lt;span class="hx:absolute hx:-mt-20" id="links"&gt;&lt;/span&gt;
+&lt;a href="#links" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 2;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://github.com/xykong/flux-markdown"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/&gt;&lt;/svg&gt;Homepage&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Official site&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://github.com/xykong/flux-markdown"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg fill="currentColor" viewBox="3 3 18 18"&gt;
+&lt;path d="M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z"&gt;&lt;/path&gt;
+&lt;/svg&gt;
+Repository&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Source code&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;</description></item><item><title>Discord</title><link>https://homelabcentral.net/software/productivity/discord/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://homelabcentral.net/software/productivity/discord/</guid><description>
+&lt;div class="hextra-lead"&gt;&lt;p&gt;Where most self-hosting and homelab project communities actually answer questions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a href="https://formulae.brew.sh/cask/discord" title="Homebrew cask" target="_blank" rel="noreferrer" class="hextra-badge-link not-prose hx:no-underline hover:hx:no-underline"&gt;&lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-blue-400 hx:bg-blue-100 hx:text-blue-950 hx:dark:border-blue-800 hx:dark:bg-blue-950 hx:dark:text-blue-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"&gt;&lt;path fill="currentColor" d="M39.677 32.971c-4.6 0-8.45 3.142-9.603 7.389c-4.063.572-7.218 4.032-7.218 8.247c0 4.1 2.954 7.522 6.84 8.293l.017.002q2.16.395 4.272.992l.014.004c5.603 1.511 16.501 3.582 28.567 3.28c.77 1.572 1.95 2.906 3.442 3.808l-.013-.007c.523.324.946 1.19.946 1.695a5.444 5.444 0 0 0 5.425 5.428c1.417 0 2.755-.428 3.77-1.286c1.014-.858 1.66-2.172 1.66-3.664l-.003-.807l-.004-.093a8.75 8.75 0 0 1 1.004-4.75V61.5c.433-.804.707-1.696.883-2.62c1.964-.515 3.918-1.088 5.831-1.81l.006-.002a9.5 9.5 0 0 1 2.08-.54h.005a8.39 8.39 0 0 0 7.229-8.3c0-4.613-3.765-8.379-8.378-8.379c-1.329 0-2.567.355-3.682.908c-1.607-3.64-5.226-6.192-9.448-6.192c-4.792 0-8.802 3.297-9.973 7.729c-1.763-2.056-4.317-3.42-7.231-3.42c-2.579 0-4.847 1.099-6.577 2.76c-.66-4.874-4.811-8.662-9.861-8.662zm0 2.288a7.692 7.692 0 0 1 7.267 10.265a1.144 1.144 0 0 0 .894 1.506l.027.005a1.144 1.144 0 0 0 1.235-.757l.001.003l.001-.005l.036-.021a7.32 7.32 0 0 1 6.977-5.095a7.32 7.32 0 0 1 6.958 5.042a1.144 1.144 0 0 0 2.224-.476a8.046 8.046 0 0 1 8.022-8.876a8.06 8.06 0 0 1 7.69 5.63a1.144 1.144 0 0 0 1.378.761l.802-.21a1 1 0 0 0 .273-.11a6.04 6.04 0 0 1 2.987-.785a6.07 6.07 0 0 1 6.09 6.09a6.08 6.08 0 0 1-5.255 6.034h-.006a11.8 11.8 0 0 0-2.585.672a57 57 0 0 1-6.272 1.944a1.14 1.14 0 0 0-.862.995a6.8 6.8 0 0 1-.78 2.548l-.002.004a11.04 11.04 0 0 0-1.27 5.996l-.002-.094l.005.826c0 .875-.313 1.465-.85 1.918c-.535.454-1.34.746-2.293.746a3.123 3.123 0 0 1-3.14-3.141a4.28 4.28 0 0 0-2.024-3.638l-.011-.007a6.85 6.85 0 0 1-2.84-3.395a1.14 1.14 0 0 0-1.105-.732c-12.054.406-23.121-1.72-28.638-3.207l-.015-.005a48 48 0 0 0-4.471-1.038l.017.004c-2.839-.563-4.997-3.046-4.997-6.049a6.07 6.07 0 0 1 5.872-6.08a1.144 1.144 0 0 0 1.085-.938a7.695 7.695 0 0 1 7.578-6.331zM42.135.018a1.14 1.14 0 0 0-.9.811c-1.683 5.888.956 11.472 4.474 15.656a32 32 0 0 0 2.54 2.679a10.9 10.9 0 0 0-3.551.1c-6.317 1.243-11.695 5.254-14.617 13.505c-1.198 3.384-1.251 6.903-.865 10.1a6.1 6.1 0 0 1 1.8-.338a1.1 1.1 0 0 0 .437-.173c-.32-2.887-.224-5.977.784-8.826c2.713-7.663 7.224-10.906 12.902-12.024c1.956-.385 3.544-.058 5.28.508c.868.283 1.763.632 2.724.965l.178.055c.91.31 1.875.604 2.933.808a1.144 1.144 0 0 0 1.344-1.312a13 13 0 0 1-.002-4.197c.045-.281.087-.564.148-.837c.348-1.561.946-2.992 1.65-4.268a19.8 19.8 0 0 1 3.534-4.598c.376.285.754.54 1.128.96c.183.205.173.215.312.387c-1.77 1.643-5.705 6.102-5.077 13.084a1.144 1.144 0 0 0 1.18 1.04c2.503-.09 4.175-.921 5.634-1.593c1.46-.673 2.712-1.217 4.968-1.147c4.667.147 8.738 3.814 10.34 6.052c1.729 2.633 3.858 5.907 3.512 14.883v.037a6 6 0 0 1 1.524-.196q.389.002.764.053c.316-9.267-2.162-13.402-3.907-16.06l-.025-.037c-1.945-2.722-6.366-6.837-12.136-7.017c-2.681-.084-4.49.66-5.996 1.354c-1.161.535-2.246.944-3.571 1.174c.008-6.857 5.037-10.568 5.037-10.568a1.144 1.144 0 0 0 .261-1.584s-.46-.653-1.112-1.384c-.65-.73-1.438-1.576-2.507-2.022a1.14 1.14 0 0 0-1.2.201a23 23 0 0 0-4.665 5.877c-.257.463-.481.97-.706 1.479c-.493-1.63-1.16-3.144-2.035-4.54c-2.415-3.849-6.316-6.74-11.888-8.98a1.14 1.14 0 0 0-.627-.066zm1.036 2.775c4.532 2.018 7.624 4.428 9.541 7.486c1.4 2.23 2.21 4.867 2.548 7.988c.016.152.025.312.037.466v.002c.085.902.138 1.834.148 2.818c-.33-.175-.724-.428-1.097-.655c-.243-.148-.456-.254-.711-.423c-1.953-1.284-4.252-3.17-6.179-5.46c-2.944-3.504-4.989-7.784-4.287-12.222m44.048 51.483a11.8 11.8 0 0 0-2.527.66a53 53 0 0 1-1.928.681l-.153.298c-.034.065-.148.236-.191.314h2.847v3.359a3.07 3.07 0 0 0 3.055 3.052h7.084a7.45 7.45 0 0 1 7.451 7.45v30.955a7.46 7.46 0 0 1-2.193 5.277a7.45 7.45 0 0 1-3.821 2.034a7.5 7.5 0 0 1-1.465.14h-.006c-2.389.005-4.897 0-6.987-.028a3.055 3.055 0 0 0-3.116 3.051c0 2.5 0 6.734-.009 8.553v.005a.76.76 0 0 1-.266.57c-1.156.863-4.513 2.629-10.991 3.83a65 65 0 0 1-4.268.64c-3.104.368-6.737.597-10.957.597c-16.572 0-24.462-2.779-26.607-4.009a.76.76 0 0 1-.349-.633l-.14-64.842h4.064c-.057-.106-.087-.177-.142-.281c-.327-.083-.699-.17-.996-.25l-.012-.003a48 48 0 0 0-4.473-1.038l.017.004a6 6 0 0 1-.517-.127a1.14 1.14 0 0 0-.228.553s.123 57.551.14 65.987a3.06 3.06 0 0 0 1.412 2.57l.042.024C33.85 125.326 41.904 128 58.777 128c17.268 0 25.066-3.614 27.629-5.55l.039-.032a3.05 3.05 0 0 0 1.1-2.342c.01-1.837.01-6.06.01-8.558a.76.76 0 0 1 .229-.546l.001-.001a.76.76 0 0 1 .552-.218h.008c2.11.03 4.629.033 7.025.027a9.74 9.74 0 0 0 9.772-9.736V70.09a9.74 9.74 0 0 0-9.738-9.739H88.32a.75.75 0 0 1-.764-.764v-4.504a1.14 1.14 0 0 0-.337-.81zm1.58 13.728a3.5 3.5 0 0 0-1.351.269a3.5 3.5 0 0 0-1.146.764v.001a3.5 3.5 0 0 0-.765 1.145a3.5 3.5 0 0 0-.269 1.351v27.781a3.5 3.5 0 0 0 .27 1.352a3.5 3.5 0 0 0 .764 1.146a3.5 3.5 0 0 0 1.146.764a3.5 3.5 0 0 0 1.351.269h6.082a3.5 3.5 0 0 0 1.351-.269a3.5 3.5 0 0 0 1.146-.764a3.5 3.5 0 0 0 .764-1.146a3.5 3.5 0 0 0 .27-1.352v-27.78a3.5 3.5 0 0 0-.269-1.35a3.5 3.5 0 0 0-.764-1.146h-.001a3.5 3.5 0 0 0-1.147-.765a3.5 3.5 0 0 0-1.35-.27zm0 2.288h6.082a1.244 1.244 0 0 1 1.243 1.242v27.781a1.243 1.243 0 0 1-1.243 1.244H88.8a1.24 1.24 0 0 1-.879-.363h-.001a1.24 1.24 0 0 1-.363-.88v-27.78a1.24 1.24 0 0 1 .767-1.15q.226-.092.476-.093zm-7.756.506c-.051.131-.1.264-.157.393a8.3 8.3 0 0 1-1.071 1.813a6.8 6.8 0 0 1-.973 1.014a9.2 9.2 0 0 1-2.277 1.417a10.2 10.2 0 0 1-3.35.826q-.425.034-.85.034h-.011a9.3 9.3 0 0 1-1.763-.176a9.2 9.2 0 0 1-3.156-1.264a9.5 9.5 0 0 1-1.934-1.62a10 10 0 0 1-1.03-1.339a10 10 0 0 1-1.09-2.319a10 10 0 0 1-.386-1.704a14 14 0 0 1-1.418-1.187a13 13 0 0 1-1.223-1.36a107 107 0 0 1-10.647-.513q-1.641-.163-3.186-.362c-.444-.057-.858-.122-1.29-.183a3 3 0 0 1 .058.29v45.745a2.6 2.6 0 0 1-.032.412a2.6 2.6 0 0 1-.096.402a2.6 2.6 0 0 1-.156.383a2.6 2.6 0 0 1-.22.352a3 3 0 0 1-.267.313a3 3 0 0 1-.313.267a2.6 2.6 0 0 1-.354.219a3 3 0 0 1-.38.156a2.6 2.6 0 0 1-.402.097a2.6 2.6 0 0 1-.412.031a2.6 2.6 0 0 1-1.009-.2a2.6 2.6 0 0 1-.852-.57a2.6 2.6 0 0 1-.568-.853a2.6 2.6 0 0 1-.202-1.009V64.557a2.6 2.6 0 0 1 .202-1.006l.06-.091c-.713-.136-1.418-.272-2.08-.412a99 99 0 0 1-2.165-.484v51.163a1.91 1.91 0 0 0 .956 1.656c2.416 1.152 9.426 3.9 21.715 3.9c12.372 0 19.172-3.341 21.45-4.718a1.9 1.9 0 0 0 .874-1.599c.004-5.664.005-27.954.005-42.168m-17.335-2.335c.058.04.008.035.08.08l.004-.008c-.032-.02-.052-.053-.084-.072"/&gt;&lt;/svg&gt;&lt;/span&gt;Homebrew cask&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt; &lt;a href="https://discord.com/download" title="Direct download" target="_blank" rel="noreferrer" class="hextra-badge-link not-prose hx:no-underline hover:hx:no-underline"&gt;&lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-orange-400 hx:bg-orange-100 hx:text-orange-950 hx:dark:border-orange-800 hx:dark:bg-orange-950 hx:dark:text-orange-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"&gt;&lt;path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m3.25 13.25h9m-8.5-6.5 4 3.5 4-3.5m-4-5v8.5"/&gt;&lt;/svg&gt;&lt;/span&gt;Direct download&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-does"&gt;What it does&lt;span class="hx:absolute hx:-mt-20" id="what-it-does"&gt;&lt;/span&gt;
+&lt;a href="#what-it-does" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Discord is servers of topic channels with text, voice, video and screen sharing. Its relevance to a homelab is not social: a large share of open-source infrastructure projects — Home Assistant, Proxmox community spaces, Jellyfin, countless smaller tools — run their support in Discord rather than a forum or mailing list.&lt;/p&gt;
+&lt;p&gt;That makes it a documentation source, with the accompanying problem that answers are not indexed by search engines and are hard to find again.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="notes"&gt;Notes&lt;span class="hx:absolute hx:-mt-20" id="notes"&gt;&lt;/span&gt;
+&lt;a href="#notes" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;The app self-updates, so Homebrew&amp;rsquo;s version lags.&lt;/li&gt;
+&lt;li&gt;Screen sharing needs &lt;strong&gt;Screen Recording&lt;/strong&gt; permission.&lt;/li&gt;
+&lt;li&gt;Nothing said in a Discord server is private from the server&amp;rsquo;s operators or Discord itself. Do not paste credentials or configuration containing them, which is a very common accident in support channels.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="alternative-to"&gt;Alternative to&lt;span class="hx:absolute hx:-mt-20" id="alternative-to"&gt;&lt;/span&gt;
+&lt;a href="#alternative-to" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-borderless-table" tabindex="0"&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Alternative&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Trade-off&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://slack.com/"target="_blank" rel="noopener"&gt;Slack&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Freemium&lt;/td&gt;
+&lt;td&gt;The same shape for work; better threading, worse for large communities&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://element.io/"target="_blank" rel="noopener"&gt;Matrix with Element&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Freemium&lt;/td&gt;
+&lt;td&gt;Open protocol, self-hostable, no single operator&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://zulip.com/"target="_blank" rel="noopener"&gt;Zulip&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Freemium&lt;/td&gt;
+&lt;td&gt;Threaded by design, and much better for searchable support channels&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://revolt.chat/"target="_blank" rel="noopener"&gt;Revolt&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Freemium&lt;/td&gt;
+&lt;td&gt;An open-source Discord clone, small but functional&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="install"&gt;Install&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
+&lt;a href="#install" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="hextra-scrollbar hx:overflow-x-auto hx:overflow-y-hidden hx:overscroll-x-contain"&gt;
+&lt;div class="hx:mt-4 hx:flex hx:w-max hx:min-w-full hx:border-b hx:border-neutral-200 hx:pb-px hx:dark:border-neutral-800" role="tablist" data-tab-group="Homebrew,Direct download"&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-04-0" role="tab" type="button" aria-controls="tabs-panel-tabs-04-0" aria-selected="true" tabindex="0" data-state="selected"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;span&gt;Homebrew&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-hextra-accent-500 hx:data-[state=selected]:text-hextra-accent-700 hx:data-[state=selected]:dark:border-hextra-accent-500 hx:data-[state=selected]:dark:text-hextra-accent-400 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-neutral-600 hx:hover:border-hextra-accent-600 hx:hover:border-b-2 hx:dark:hover:border-b-2 hx:dark:text-neutral-200 hx:dark:hover:border-hextra-accent-800 hx:hextra-focus-visible-inset" id="tabs-tab-tabs-04-1" role="tab" type="button" aria-controls="tabs-panel-tabs-04-1" aria-selected="false" tabindex="-1"&gt;&lt;span class="hx:inline-flex hx:items-center hx:gap-1.5"&gt;&lt;span&gt;Direct download&lt;/span&gt;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-04-0" role="tabpanel" aria-labelledby="tabs-tab-tabs-04-0" aria-hidden="false" tabindex="0" data-state="selected"&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew install --cask discord&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-04-1" role="tabpanel" aria-labelledby="tabs-tab-tabs-04-1" aria-hidden="true"&gt;&lt;a
+href="https://discord.com/download"target="_blank" rel="noopener"&gt;Download from the developer&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 data-hextra-search-id="links"&gt;Links&lt;span class="hx:absolute hx:-mt-20" id="links"&gt;&lt;/span&gt;
+&lt;a href="#links" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 2;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://discord.com/"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/&gt;&lt;/svg&gt;Homepage&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Official site&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://formulae.brew.sh/cask/discord"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/&gt;&lt;/svg&gt;Homebrew cask&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Cask definition and versions&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;</description></item><item><title>mas</title><link>https://homelabcentral.net/software/productivity/mas/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://homelabcentral.net/software/productivity/mas/</guid><description>
+&lt;div class="hextra-lead"&gt;&lt;p&gt;Lists, installs and upgrades App Store apps — the missing half of a scripted machine setup.&lt;/p&gt;
+&lt;/div&gt;
+&lt;a href="https://formulae.brew.sh/formula/mas" title="Homebrew formula" target="_blank" rel="noreferrer" class="hextra-badge-link not-prose hx:no-underline hover:hx:no-underline"&gt;&lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-green-400 hx:bg-green-100 hx:text-green-950 hx:dark:border-green-800 hx:dark:bg-green-950 hx:dark:text-green-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"&gt;&lt;path fill="currentColor" d="M39.677 32.971c-4.6 0-8.45 3.142-9.603 7.389c-4.063.572-7.218 4.032-7.218 8.247c0 4.1 2.954 7.522 6.84 8.293l.017.002q2.16.395 4.272.992l.014.004c5.603 1.511 16.501 3.582 28.567 3.28c.77 1.572 1.95 2.906 3.442 3.808l-.013-.007c.523.324.946 1.19.946 1.695a5.444 5.444 0 0 0 5.425 5.428c1.417 0 2.755-.428 3.77-1.286c1.014-.858 1.66-2.172 1.66-3.664l-.003-.807l-.004-.093a8.75 8.75 0 0 1 1.004-4.75V61.5c.433-.804.707-1.696.883-2.62c1.964-.515 3.918-1.088 5.831-1.81l.006-.002a9.5 9.5 0 0 1 2.08-.54h.005a8.39 8.39 0 0 0 7.229-8.3c0-4.613-3.765-8.379-8.378-8.379c-1.329 0-2.567.355-3.682.908c-1.607-3.64-5.226-6.192-9.448-6.192c-4.792 0-8.802 3.297-9.973 7.729c-1.763-2.056-4.317-3.42-7.231-3.42c-2.579 0-4.847 1.099-6.577 2.76c-.66-4.874-4.811-8.662-9.861-8.662zm0 2.288a7.692 7.692 0 0 1 7.267 10.265a1.144 1.144 0 0 0 .894 1.506l.027.005a1.144 1.144 0 0 0 1.235-.757l.001.003l.001-.005l.036-.021a7.32 7.32 0 0 1 6.977-5.095a7.32 7.32 0 0 1 6.958 5.042a1.144 1.144 0 0 0 2.224-.476a8.046 8.046 0 0 1 8.022-8.876a8.06 8.06 0 0 1 7.69 5.63a1.144 1.144 0 0 0 1.378.761l.802-.21a1 1 0 0 0 .273-.11a6.04 6.04 0 0 1 2.987-.785a6.07 6.07 0 0 1 6.09 6.09a6.08 6.08 0 0 1-5.255 6.034h-.006a11.8 11.8 0 0 0-2.585.672a57 57 0 0 1-6.272 1.944a1.14 1.14 0 0 0-.862.995a6.8 6.8 0 0 1-.78 2.548l-.002.004a11.04 11.04 0 0 0-1.27 5.996l-.002-.094l.005.826c0 .875-.313 1.465-.85 1.918c-.535.454-1.34.746-2.293.746a3.123 3.123 0 0 1-3.14-3.141a4.28 4.28 0 0 0-2.024-3.638l-.011-.007a6.85 6.85 0 0 1-2.84-3.395a1.14 1.14 0 0 0-1.105-.732c-12.054.406-23.121-1.72-28.638-3.207l-.015-.005a48 48 0 0 0-4.471-1.038l.017.004c-2.839-.563-4.997-3.046-4.997-6.049a6.07 6.07 0 0 1 5.872-6.08a1.144 1.144 0 0 0 1.085-.938a7.695 7.695 0 0 1 7.578-6.331zM42.135.018a1.14 1.14 0 0 0-.9.811c-1.683 5.888.956 11.472 4.474 15.656a32 32 0 0 0 2.54 2.679a10.9 10.9 0 0 0-3.551.1c-6.317 1.243-11.695 5.254-14.617 13.505c-1.198 3.384-1.251 6.903-.865 10.1a6.1 6.1 0 0 1 1.8-.338a1.1 1.1 0 0 0 .437-.173c-.32-2.887-.224-5.977.784-8.826c2.713-7.663 7.224-10.906 12.902-12.024c1.956-.385 3.544-.058 5.28.508c.868.283 1.763.632 2.724.965l.178.055c.91.31 1.875.604 2.933.808a1.144 1.144 0 0 0 1.344-1.312a13 13 0 0 1-.002-4.197c.045-.281.087-.564.148-.837c.348-1.561.946-2.992 1.65-4.268a19.8 19.8 0 0 1 3.534-4.598c.376.285.754.54 1.128.96c.183.205.173.215.312.387c-1.77 1.643-5.705 6.102-5.077 13.084a1.144 1.144 0 0 0 1.18 1.04c2.503-.09 4.175-.921 5.634-1.593c1.46-.673 2.712-1.217 4.968-1.147c4.667.147 8.738 3.814 10.34 6.052c1.729 2.633 3.858 5.907 3.512 14.883v.037a6 6 0 0 1 1.524-.196q.389.002.764.053c.316-9.267-2.162-13.402-3.907-16.06l-.025-.037c-1.945-2.722-6.366-6.837-12.136-7.017c-2.681-.084-4.49.66-5.996 1.354c-1.161.535-2.246.944-3.571 1.174c.008-6.857 5.037-10.568 5.037-10.568a1.144 1.144 0 0 0 .261-1.584s-.46-.653-1.112-1.384c-.65-.73-1.438-1.576-2.507-2.022a1.14 1.14 0 0 0-1.2.201a23 23 0 0 0-4.665 5.877c-.257.463-.481.97-.706 1.479c-.493-1.63-1.16-3.144-2.035-4.54c-2.415-3.849-6.316-6.74-11.888-8.98a1.14 1.14 0 0 0-.627-.066zm1.036 2.775c4.532 2.018 7.624 4.428 9.541 7.486c1.4 2.23 2.21 4.867 2.548 7.988c.016.152.025.312.037.466v.002c.085.902.138 1.834.148 2.818c-.33-.175-.724-.428-1.097-.655c-.243-.148-.456-.254-.711-.423c-1.953-1.284-4.252-3.17-6.179-5.46c-2.944-3.504-4.989-7.784-4.287-12.222m44.048 51.483a11.8 11.8 0 0 0-2.527.66a53 53 0 0 1-1.928.681l-.153.298c-.034.065-.148.236-.191.314h2.847v3.359a3.07 3.07 0 0 0 3.055 3.052h7.084a7.45 7.45 0 0 1 7.451 7.45v30.955a7.46 7.46 0 0 1-2.193 5.277a7.45 7.45 0 0 1-3.821 2.034a7.5 7.5 0 0 1-1.465.14h-.006c-2.389.005-4.897 0-6.987-.028a3.055 3.055 0 0 0-3.116 3.051c0 2.5 0 6.734-.009 8.553v.005a.76.76 0 0 1-.266.57c-1.156.863-4.513 2.629-10.991 3.83a65 65 0 0 1-4.268.64c-3.104.368-6.737.597-10.957.597c-16.572 0-24.462-2.779-26.607-4.009a.76.76 0 0 1-.349-.633l-.14-64.842h4.064c-.057-.106-.087-.177-.142-.281c-.327-.083-.699-.17-.996-.25l-.012-.003a48 48 0 0 0-4.473-1.038l.017.004a6 6 0 0 1-.517-.127a1.14 1.14 0 0 0-.228.553s.123 57.551.14 65.987a3.06 3.06 0 0 0 1.412 2.57l.042.024C33.85 125.326 41.904 128 58.777 128c17.268 0 25.066-3.614 27.629-5.55l.039-.032a3.05 3.05 0 0 0 1.1-2.342c.01-1.837.01-6.06.01-8.558a.76.76 0 0 1 .229-.546l.001-.001a.76.76 0 0 1 .552-.218h.008c2.11.03 4.629.033 7.025.027a9.74 9.74 0 0 0 9.772-9.736V70.09a9.74 9.74 0 0 0-9.738-9.739H88.32a.75.75 0 0 1-.764-.764v-4.504a1.14 1.14 0 0 0-.337-.81zm1.58 13.728a3.5 3.5 0 0 0-1.351.269a3.5 3.5 0 0 0-1.146.764v.001a3.5 3.5 0 0 0-.765 1.145a3.5 3.5 0 0 0-.269 1.351v27.781a3.5 3.5 0 0 0 .27 1.352a3.5 3.5 0 0 0 .764 1.146a3.5 3.5 0 0 0 1.146.764a3.5 3.5 0 0 0 1.351.269h6.082a3.5 3.5 0 0 0 1.351-.269a3.5 3.5 0 0 0 1.146-.764a3.5 3.5 0 0 0 .764-1.146a3.5 3.5 0 0 0 .27-1.352v-27.78a3.5 3.5 0 0 0-.269-1.35a3.5 3.5 0 0 0-.764-1.146h-.001a3.5 3.5 0 0 0-1.147-.765a3.5 3.5 0 0 0-1.35-.27zm0 2.288h6.082a1.244 1.244 0 0 1 1.243 1.242v27.781a1.243 1.243 0 0 1-1.243 1.244H88.8a1.24 1.24 0 0 1-.879-.363h-.001a1.24 1.24 0 0 1-.363-.88v-27.78a1.24 1.24 0 0 1 .767-1.15q.226-.092.476-.093zm-7.756.506c-.051.131-.1.264-.157.393a8.3 8.3 0 0 1-1.071 1.813a6.8 6.8 0 0 1-.973 1.014a9.2 9.2 0 0 1-2.277 1.417a10.2 10.2 0 0 1-3.35.826q-.425.034-.85.034h-.011a9.3 9.3 0 0 1-1.763-.176a9.2 9.2 0 0 1-3.156-1.264a9.5 9.5 0 0 1-1.934-1.62a10 10 0 0 1-1.03-1.339a10 10 0 0 1-1.09-2.319a10 10 0 0 1-.386-1.704a14 14 0 0 1-1.418-1.187a13 13 0 0 1-1.223-1.36a107 107 0 0 1-10.647-.513q-1.641-.163-3.186-.362c-.444-.057-.858-.122-1.29-.183a3 3 0 0 1 .058.29v45.745a2.6 2.6 0 0 1-.032.412a2.6 2.6 0 0 1-.096.402a2.6 2.6 0 0 1-.156.383a2.6 2.6 0 0 1-.22.352a3 3 0 0 1-.267.313a3 3 0 0 1-.313.267a2.6 2.6 0 0 1-.354.219a3 3 0 0 1-.38.156a2.6 2.6 0 0 1-.402.097a2.6 2.6 0 0 1-.412.031a2.6 2.6 0 0 1-1.009-.2a2.6 2.6 0 0 1-.852-.57a2.6 2.6 0 0 1-.568-.853a2.6 2.6 0 0 1-.202-1.009V64.557a2.6 2.6 0 0 1 .202-1.006l.06-.091c-.713-.136-1.418-.272-2.08-.412a99 99 0 0 1-2.165-.484v51.163a1.91 1.91 0 0 0 .956 1.656c2.416 1.152 9.426 3.9 21.715 3.9c12.372 0 19.172-3.341 21.45-4.718a1.9 1.9 0 0 0 .874-1.599c.004-5.664.005-27.954.005-42.168m-17.335-2.335c.058.04.008.035.08.08l.004-.008c-.032-.02-.052-.053-.084-.072"/&gt;&lt;/svg&gt;&lt;/span&gt;Homebrew formula&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt;
+&lt;h2 data-hextra-search-id="what-it-does"&gt;What it does&lt;span class="hx:absolute hx:-mt-20" id="what-it-does"&gt;&lt;/span&gt;
+&lt;a href="#what-it-does" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;mas&lt;/code&gt; drives the Mac App Store: list what is installed with version numbers, search the store, install by numeric ID, and upgrade everything outdated.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mas list &lt;span class="c1"&gt;# installed apps with their IDs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mas outdated
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mas upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mas install &lt;span class="m"&gt;497799835&lt;/span&gt; &lt;span class="c1"&gt;# Xcode, by ID&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mas search &lt;span class="s2"&gt;&amp;#34;color picker&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="why-it-matters"&gt;Why it matters&lt;span class="hx:absolute hx:-mt-20" id="why-it-matters"&gt;&lt;/span&gt;
+&lt;a href="#why-it-matters" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A setup script can install Homebrew formulae and casks, but App Store apps used to require clicking. &lt;code&gt;mas&lt;/code&gt; closes that gap, so a Brewfile plus a short &lt;code&gt;mas install&lt;/code&gt; list reproduces a machine&amp;rsquo;s software completely:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew bundle dump --describe &lt;span class="c1"&gt;# write a Brewfile from what is installed&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mas list &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{print $1}&amp;#39;&lt;/span&gt; &lt;span class="c1"&gt;# the App Store half&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="notes"&gt;Notes&lt;span class="hx:absolute hx:-mt-20" id="notes"&gt;&lt;/span&gt;
+&lt;a href="#notes" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Apps must already be associated with the signed-in Apple Account — &lt;code&gt;mas&lt;/code&gt; cannot make a first purchase, only install something the account owns. Signing in has to happen in the App Store app itself.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="alternative-to"&gt;Alternative to&lt;span class="hx:absolute hx:-mt-20" id="alternative-to"&gt;&lt;/span&gt;
+&lt;a href="#alternative-to" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-borderless-table" tabindex="0"&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Alternative&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Trade-off&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://www.apple.com/app-store/"target="_blank" rel="noopener"&gt;The App Store app&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Built in&lt;/td&gt;
+&lt;td&gt;The only way to make a first purchase or sign in&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://homelabcentral.net/software/development/homebrew-app/"&gt;Homebrew casks&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Open source&lt;/td&gt;
+&lt;td&gt;For anything that also ships outside the App Store; &lt;code&gt;mas&lt;/code&gt; is the fallback, not the default&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MDM (Jamf, Kandji, Mosyle)&lt;/td&gt;
+&lt;td&gt;Paid&lt;/td&gt;
+&lt;td&gt;How this is actually solved for fleets&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="install"&gt;Install&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
+&lt;a href="#install" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew install mas&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="links"&gt;Links&lt;span class="hx:absolute hx:-mt-20" id="links"&gt;&lt;/span&gt;
+&lt;a href="#links" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 2;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://github.com/mas-cli/mas"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/&gt;&lt;/svg&gt;Homepage&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Official site&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://formulae.brew.sh/formula/mas"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/&gt;&lt;/svg&gt;Homebrew formula&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Formula definition and versions&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://github.com/mas-cli/mas"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg fill="currentColor" viewBox="3 3 18 18"&gt;
+&lt;path d="M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z"&gt;&lt;/path&gt;
+&lt;/svg&gt;
+Repository&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Source code&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;</description></item><item><title>Toolbox Pro for Shortcuts</title><link>https://homelabcentral.net/software/productivity/toolbox-pro/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://homelabcentral.net/software/productivity/toolbox-pro/</guid><description>
+&lt;div class="hextra-lead"&gt;&lt;p&gt;Adds 130-plus actions Shortcuts does not ship, from custom UI to device and file operations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;a href="https://apps.apple.com/us/app/id1476205977" title="Mac App Store" target="_blank" rel="noreferrer" class="hextra-badge-link not-prose hx:no-underline hover:hx:no-underline"&gt;&lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-purple-400 hx:bg-purple-100 hx:text-purple-950 hx:dark:border-purple-800 hx:dark:bg-purple-950 hx:dark:text-purple-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/&gt;&lt;/svg&gt;&lt;/span&gt;Mac App Store&lt;/span&gt;
+&lt;/span&gt;&lt;/a&gt;
+&lt;h2 data-hextra-search-id="what-it-does"&gt;What it does&lt;span class="hx:absolute hx:-mt-20" id="what-it-does"&gt;&lt;/span&gt;
+&lt;a href="#what-it-does" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Shortcuts is capable but gapped. Toolbox Pro fills the gaps with actions callable from any shortcut: custom menus and input dialogs, list and text manipulation, file and folder operations, device state queries, calendar and reminder helpers, image work, and utilities for chaining shortcuts together.&lt;/p&gt;
+&lt;p&gt;It is the difference between a shortcut that automates three steps and one that can present a small interface and branch on what it gets back.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="notes"&gt;Notes&lt;span class="hx:absolute hx:-mt-20" id="notes"&gt;&lt;/span&gt;
+&lt;a href="#notes" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;An iPhone and iPad app running on Apple Silicon, which is why the interface is touch-shaped. The actions themselves work in Shortcuts on macOS.&lt;/li&gt;
+&lt;li&gt;Free with a one-off in-app purchase unlocking the full action set.&lt;/li&gt;
+&lt;li&gt;Actions appear in Shortcuts&amp;rsquo; action list under the app&amp;rsquo;s name once it has been launched at least once.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="alternative-to"&gt;Alternative to&lt;span class="hx:absolute hx:-mt-20" id="alternative-to"&gt;&lt;/span&gt;
+&lt;a href="#alternative-to" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-borderless-table" tabindex="0"&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Alternative&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Trade-off&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://github.com/sindresorhus/Actions"target="_blank" rel="noopener"&gt;Actions&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Open source&lt;/td&gt;
+&lt;td&gt;Sindre Sorhus&amp;rsquo;s free, open-source action pack; the usual first choice&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://scriptable.app/"target="_blank" rel="noopener"&gt;Scriptable&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Freemium&lt;/td&gt;
+&lt;td&gt;JavaScript inside Shortcuts, for anything a fixed action cannot do&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://www.pushcut.io/"target="_blank" rel="noopener"&gt;Pushcut&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Freemium&lt;/td&gt;
+&lt;td&gt;Automation triggers and notifications rather than extra actions&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://www.keyboardmaestro.com/"target="_blank" rel="noopener"&gt;Keyboard Maestro&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt; or &lt;a
+href="https://www.hammerspoon.org/"target="_blank" rel="noopener"&gt;Hammerspoon&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Paid / Open source&lt;/td&gt;
+&lt;td&gt;Heavier, Mac-only, far more capable&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="install"&gt;Install&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
+&lt;a href="#install" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a
+href="https://apps.apple.com/us/app/id1476205977"target="_blank" rel="noopener"&gt;Toolbox Pro for Shortcuts on the App Store&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Or with &lt;code&gt;mas&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mas install &lt;span class="m"&gt;1476205977&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-neutral-200 hx:border hx:border-black/5 hx:text-neutral-600 hx:hover:text-neutral-900 hx:rounded-md hx:p-1.5 hx:dark:bg-neutral-800 hx:dark:border-white/10 hx:dark:text-neutral-400 hx:dark:hover:text-neutral-50" title="Copy code" aria-label="Copy code" data-copied-label="Copied!"&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="links"&gt;Links&lt;span class="hx:absolute hx:-mt-20" id="links"&gt;&lt;/span&gt;
+&lt;a href="#links" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 2;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://apps.apple.com/us/app/id1476205977"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/&gt;&lt;/svg&gt;Mac App Store&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Free, iOS app on Apple Silicon&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://toolboxpro.app/"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/&gt;&lt;/svg&gt;Homepage&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Developer site&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;</description></item><item><title>Google Docs, Sheets &amp; Slides</title><link>https://homelabcentral.net/software/productivity/google-workspace-shortcuts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://homelabcentral.net/software/productivity/google-workspace-shortcuts/</guid><description>
+&lt;div class="hextra-lead"&gt;&lt;p&gt;Not applications — Chrome shortcuts that open the Google editors in their own window.&lt;/p&gt;
+&lt;/div&gt;
+&lt;span class="hextra-badge hextra-badge--lg "&gt;
+&lt;span class="hextra-badge__pill hx:border hx:border-orange-400 hx:bg-orange-100 hx:text-orange-950 hx:dark:border-orange-800 hx:dark:bg-orange-950 hx:dark:text-orange-100"&gt;&lt;span class="hextra-badge__icon"&gt;&lt;svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"&gt;&lt;path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m3.25 13.25h9m-8.5-6.5 4 3.5 4-3.5m-4-5v8.5"/&gt;&lt;/svg&gt;&lt;/span&gt;Direct download&lt;/span&gt;
+&lt;/span&gt;
+&lt;h2 data-hextra-search-id="what-it-does"&gt;What it does&lt;span class="hx:absolute hx:-mt-20" id="what-it-does"&gt;&lt;/span&gt;
+&lt;a href="#what-it-does" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Google Docs.app&lt;/code&gt;, &lt;code&gt;Google Sheets.app&lt;/code&gt; and &lt;code&gt;Google Slides.app&lt;/code&gt; in &lt;code&gt;/Applications&lt;/code&gt; are not native applications. Chrome&amp;rsquo;s &lt;strong&gt;Install page as app&lt;/strong&gt; (formerly &lt;em&gt;Create shortcut&lt;/em&gt;) writes a small bundle that launches Chrome with a fixed URL, no address bar, and its own Dock icon and window.&lt;/p&gt;
+&lt;p&gt;The effect is that the editors behave like separate apps: Cmd-Tab reaches them, they keep their own window state, and they are not lost among thirty browser tabs.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="notes"&gt;Notes&lt;span class="hx:absolute hx:-mt-20" id="notes"&gt;&lt;/span&gt;
+&lt;a href="#notes" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;They depend on the Chrome profile that created them. Removing that profile, or Chrome, breaks them.&lt;/li&gt;
+&lt;li&gt;They are not offline-capable beyond what Google&amp;rsquo;s own offline mode provides, and not native — everything runs in Chrome.&lt;/li&gt;
+&lt;li&gt;Recreate one from Chrome: open the site, then &lt;strong&gt;⋮ → Cast, save and share → Install page as app&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Nothing to install through Homebrew; the only prerequisite is &lt;a
+href="https://homelabcentral.net/software/browsers/google-chrome/"&gt;Google Chrome&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="alternative-to"&gt;Alternative to&lt;span class="hx:absolute hx:-mt-20" id="alternative-to"&gt;&lt;/span&gt;
+&lt;a href="#alternative-to" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-borderless-table" tabindex="0"&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Alternative&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Trade-off&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://www.apple.com/pages/"target="_blank" rel="noopener"&gt;Pages&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;, &lt;a
+href="https://www.apple.com/numbers/"target="_blank" rel="noopener"&gt;Numbers&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt; and &lt;a
+href="https://www.apple.com/keynote/"target="_blank" rel="noopener"&gt;Keynote&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Built in&lt;/td&gt;
+&lt;td&gt;Native, and they open Office formats&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://www.microsoft.com/microsoft-365"target="_blank" rel="noopener"&gt;Microsoft 365&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Subscription&lt;/td&gt;
+&lt;td&gt;Real desktop apps, the answer when documents must round-trip with Office users&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a
+href="https://www.libreoffice.org/"target="_blank" rel="noopener"&gt;LibreOffice&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt; or &lt;a
+href="https://www.onlyoffice.com/"target="_blank" rel="noopener"&gt;OnlyOffice&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Open source&lt;/td&gt;
+&lt;td&gt;Offline, no account&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Chrome&amp;rsquo;s Install page as app&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;The same trick for any web app, not just Google&amp;rsquo;s&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="install"&gt;Install&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
+&lt;a href="#install" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Open &lt;a
+href="https://docs.google.com"target="_blank" rel="noopener"&gt;docs.google.com&lt;svg class="hx:inline hx:rtl:rotate-270 hx:align-baseline" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;path d="m9.1716 7.7574h7.0711m0 0v7.0711m0-7.0711-8.4853 8.4853" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;&lt;/a&gt;, then &lt;strong&gt;⋮ → Cast, save and share → Install page as app&lt;/strong&gt;. Repeat for Sheets and Slides.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="links"&gt;Links&lt;span class="hx:absolute hx:-mt-20" id="links"&gt;&lt;/span&gt;
+&lt;a href="#links" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 2;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://docs.google.com/"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/&gt;&lt;/svg&gt;Google Docs&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;The web app itself&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://sheets.google.com/"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/&gt;&lt;/svg&gt;Google Sheets&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;The web app itself&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-neutral-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-neutral-100 hx:dark:hover:shadow-none hx:shadow-neutral-100 hx:active:shadow-sm hx:active:shadow-neutral-200 hx:transition-all hx:duration-200 hx:hover:border-hextra-accent-500 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-neutral-50 hx:hover:shadow-md hx:dark:hover:border-hextra-accent-500 hx:dark:hover:bg-neutral-900"href="https://slides.google.com/"
+target="_blank" rel="noreferrer"&gt;
+&lt;div&gt;
+&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-neutral-900 hx:dark:text-neutral-100"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M8 13v-1m4 1v-3m4 3V8M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/&gt;&lt;/svg&gt;Google Slides&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-neutral-500 hx:dark:text-neutral-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;The web app itself&lt;/div&gt;&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;</description></item></channel></rss>
