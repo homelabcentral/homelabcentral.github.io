@@ -1,0 +1,14 @@
+# AI & Local Models
+
+{{< lead >}}Models that run on your own hardware rather than someone else's — an LLM server, and four dictation apps that transcribe locally.{{< /lead >}}
+
+The common thread is that inference happens locally. Apple Silicon's unified memory makes a Mac a credible inference host, which is the same argument as self-hosting anything else — no per-token cost, no rate limit, and nothing leaves the machine.
+
+{{< cards cols="3" >}}
+{{< card link="ollama" title="Ollama" icon="cube-transparent" subtitle="Run large language models locally." >}}
+{{< card link="fluidvoice" title="FluidVoice" icon="microphone" subtitle="Offline voice-to-text dictation with AI cleanup." >}}
+{{< card link="voicebox" title="Voicebox" icon="volume-up" subtitle="Open-source local voice studio: dictation, TTS and voice cloning." >}}
+{{< card link="handy" title="Handy" icon="microphone" subtitle="Offline push-to-talk dictation, free and open source." >}}
+{{< card link="flowmoose" title="FlowMoose" icon="microphone" subtitle="Hold fn, speak, and the text lands where the cursor is." >}}
+{{< /cards >}}
+
